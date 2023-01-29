@@ -918,6 +918,27 @@ form {
   height: 1.5px;
 }
 
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2rem;
+  color:rgb(106, 0, 187)
+}
+
+.slide {
+  font-weight: bold;
+  transition: ease-out 0.4s;
+  text-align: center;
+  border-radius: 50px;
+  border-style: none;
+  background:rgb(106, 0, 187);
+  color: white;
+}
+
+.slide:hover {
+  box-shadow: inset 400px 0 0 0 #D80286;
+}
 
 /* to make the navbar open full screen on mobile */
 
