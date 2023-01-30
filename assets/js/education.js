@@ -5,113 +5,36 @@ AOS.init();
 const moocs = document.querySelector(".moocs");
 const moocscards = [
   {
-    title: "Data Science",
-    cardImage: "assets/images/education-page/coursera2.svg",
-    moocLink: "https://www.coursera.org/browse/data-science",
-  },
-  {
-    title: "Cryptography",
-    cardImage: "assets/images/education-page/udemy.svg",
-    moocLink: "https://www.udemy.com/course/cryptography-for-beginners/",
-  },
-  {
-    title: "Machine Learning",
-    cardImage: "assets/images/education-page/coursera2.svg",
-    moocLink: "https://www.coursera.org/learn/machine-learning",
-  },
-  {
-    title: "Introduction to HTML 5",
-    cardImage: "assets/images/education-page/udacity.svg",
-    moocLink: "https://www.udacity.com/course/intro-to-html-and-css--ud001",
-  },
-  {
-    title: "Introduction to CSS 3",
-    cardImage: "assets/images/education-page/udacity.svg",
-    moocLink: "https://www.udacity.com/course/intro-to-html-and-css--ud001",
-  },
-  {
-    title: "Javascript",
-    cardImage: "assets/images/education-page/udacity.svg",
-    moocLink: "https://www.udacity.com/course/intro-to-javascript--ud803",
-  },
-  {
-    title: "Bootstrap 4",
-    cardImage: "assets/images/education-page/udemy.svg",
-    moocLink: "https://www.udemy.com/course/bootstrap-4-tutorials/",
-  },
-  {
-    title: "Intro to React",
+    title: "AWS Development",
     cardImage: "assets/images/education-page/edx.svg",
-    moocLink: "https://www.edx.org/learn/reactjs",
+    moocLink: "https://www.edx.org/course/aws-developer-building-on-aws",
+    certificateLink: "https://courses.edx.org/certificates/64df34ff3cd54ac6ae0a9f76d287d4a2"
   },
   {
-    title: "Intro to React Native",
-    cardImage: "assets/images/education-page/coursera2.svg",
-    moocLink:
-      "https://www.coursera.org/lecture/react-native/introduction-to-react-native-Eax0D",
+    title: "Intro to Cloud Infrastructure Technologies",
+    cardImage: "assets/images/education-page/edx.svg",
+    moocLink: "https://www.edx.org/course/introduction-to-cloud-infrastructure-technologies",
+    certificateLink: "https://courses.edx.org/certificates/e411946a6dfc4dcb85690f306f1b4af3"
   },
   {
-    title: "NodeJS, Express and MongoDB",
-    cardImage: "assets/images/education-page/coursera2.svg",
-    moocLink: "https://www.coursera.org/learn/server-side-nodejs",
+    title: "Literacy in AI",
+    cardImage: "assets/images/education-page/aisg.png",
+    moocLink: "https://learn.aisingapore.org/courses/ai-for-industry-part-1/",
+    certificateLink: "https://certified.aisingapore.org/8e0a5389-a4a0-4fb8-bace-0f6610a49527#gs.nzq0ps"
   },
   {
-    title: "XML-AJAX",
-    cardImage: "assets/images/education-page/udemy.svg",
-    moocLink: "https://www.udemy.com/course/xml-from-beginner-to-expert/",
-  },
-  {
-    title: "Data Structures & Algorithms",
-    cardImage: "assets/images/education-page/udacity.svg",
-    moocLink:
-      "https://www.udacity.com/course/data-structures-and-algorithms-nanodegree--nd256",
-  },
+    title: "Foundations in AI",
+    cardImage: "assets/images/education-page/aisg.png",
+    moocLink: "https://learn.aisingapore.org/courses/ai-for-industry-part-2/",
+    certificateLink: "https://certified.aisingapore.org/8e0a5389-a4a0-4fb8-bace-0f6610a49527"
+  }
 ];
 
-const experience = [
-  {
-    img: "assets/images/education-page/c1.png",
-  },
-  {
-    img: "assets/images/education-page/c2.jpg",
-  },
-  {
-    img: "assets/images/education-page/c3.png",
-  },
-  {
-    img: "assets/images/education-page/c4.png",
-  },
-  {
-    img: "assets/images/education-page/c5.jpg",
-  },
-];
-
-let currentItem = 0;
-
-const img = document.getElementById("image");
-
-const prevBtn = document.querySelector("#prevBtn");
-const nextBtn = document.querySelector("#nextBtn");
-
-window.addEventListener("DOMContentLoaded", function () {
-  showExperience();
-});
-
-function showExperience() {
-  setInterval(function () {
-    if (currentItem === experience.length) {
-      currentItem = 0;
-    }
-    const item = experience[currentItem];
-    img.src = item.img;
-    currentItem++;
-  }, 3000);
-}
 
 const showCards = () => {
   let output = "";
   moocscards.forEach(
-    ({ title, cardImage, moocLink }) =>
+    ({ title, cardImage, moocLink, certificateLink }) =>
       (output += `        
         <div class="col-6 col-md-3 col-sm-4 column" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="600" >  
             <div class="card mb-3 mx-auto">
@@ -119,7 +42,8 @@ const showCards = () => {
                   <div class="content-overlay"></div>
                     <img src=${cardImage} class="card-img-top content-image">     
                   <div class="content-details fadeIn-bottom">
-                    <a href="${moocLink}" target="_blank"><i class="fa fa-info-circle fa-2x" aria-hidden="true" style="color: white;"></i></a>                                   
+                    <a href="${moocLink}" target="_blank"><i class="fa fa-info-circle fa-2x" aria-hidden="true" style="color: white;"></i></a>     
+                    <a href="${certificateLink}" target="_blank"><i class="fa fa-certificate fa-2x" aria-hidden="true" style="color: white;"></i></a>                               
                   </div>
                 </div>
                 <div class="card-body">
