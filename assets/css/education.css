@@ -135,6 +135,7 @@ p {
     margin-top: 50px; /*changed the margin-to from 250px to 50px to eliminate space */
   }
 }
+
 /* Card Hover Effect */
 .mooc-title {
   color: var(--head-col);
@@ -177,6 +178,8 @@ p {
   -webkit-transition: all 0.3s ease-in-out 0s;
   -moz-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
+  display: flex;
+  justify-content: space-evenly;
 }
 .content:hover .content-details {
   left: 50%;
@@ -348,7 +351,7 @@ p {
 }
 /* -----Education Timeline CSS----- */
 section {
-  padding: 100px 0;
+  padding: 20px 0;
 }
 html, body {
   overflow-x: hidden;
@@ -397,7 +400,7 @@ header p {
 
 .timeline-item {
   width: 100%;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
 .timeline-item:nth-child(even) .timeline-content {
@@ -416,7 +419,7 @@ header p {
 .timeline-item:nth-child(even) .timeline-content .bnt-more {
   position: absolute;
   right:0;
-  bottom: 65px;
+  bottom: 30px;
 }
 
 .timeline-item:nth-child(even) .timeline-content::after {
@@ -550,7 +553,6 @@ blockquote {
 
 .alignment{
   padding-left: 20px;
-  
 }
 
     /* Media Query  header/footer */
