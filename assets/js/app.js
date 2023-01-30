@@ -124,9 +124,27 @@ let footer = $(`
     
     <div class="container">
       <div class="row">
+
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0 form-comtainer">
+          <div class="form-style-6">
+             <div class="form-header"><h6 class="display">Get in Touch</h6></div>
+                <div id="button-container">
+                  <button class="slide" type="button"> 
+                    <a href="mailto:hutianran711@outlook.com" target="_blank" style="text-decoration:none;color:white">Email Me</a>
+                    <i class="fa fa-send"></i>
+                  </button>
+                  <button class="slide" type="button" 
+                    onclick="window.open('${resume_link}', '_blank')">
+                    View my RESUME 
+                    <i class="fa fa-file"></i>
+                  </button>
+              </div>
+          </div>
+        </div>
+
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0 justify-content-center">
-          <?xml version="1.0" encoding="UTF-8"?>
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500px" height="425px" viewBox="0 0 499 425" version="1.1">
+            <?xml version="1.0" encoding="UTF-8"?>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500px" height="400px" viewBox="0 0 499 425" version="1.1">
             <g id="surface1">
             <path style=" stroke:none;fill-rule:nonzero;fill:rgb(94.901961%,94.901961%,94.901961%);fill-opacity:1;" d="M 314.59375 57.929688 C 309.878906 67.707031 301.207031 74.988281 292.125 80.914062 C 282.488281 87.179688 272.128906 92.25 261.273438 96.015625 C 259.777344 96.539062 258.269531 97.039062 256.761719 97.511719 L 192.160156 97.511719 C 191.742188 97.03125 191.335938 96.53125 190.949219 96.015625 C 186.894531 90.640625 184.71875 83.839844 185.535156 77.171875 C 186.601562 68.433594 193.226562 60.398438 201.824219 58.535156 C 210.425781 56.679688 220.222656 61.820312 222.832031 70.230469 C 224.273438 54.015625 225.933594 37.121094 234.539062 23.308594 C 242.328125 10.804688 255.835938 1.855469 270.460938 0.253906 C 279.0625 -0.644531 287.742188 0.949219 295.472656 4.839844 C 296.179688 5.199219 296.882812 5.574219 297.570312 5.964844 C 302.207031 8.597656 306.300781 12.09375 309.625 16.265625 C 318.746094 27.835938 320.980469 44.648438 314.59375 57.929688 Z M 314.59375 57.929688 "/>
             <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 297.570312 5.964844 C 297.605469 6.363281 297.429688 6.753906 297.105469 6.988281 C 267.847656 30.851562 244.707031 61.375 229.613281 96.015625 C 229.390625 96.507812 229.175781 97.007812 228.964844 97.511719 L 225.992188 97.511719 C 226.199219 97.007812 226.410156 96.507812 226.625 96.015625 C 229.457031 89.398438 232.585938 82.921875 236.015625 76.574219 C 243.4375 62.875 252.167969 49.929688 262.085938 37.921875 C 272.003906 25.898438 283.082031 14.882812 295.15625 5.035156 C 295.253906 4.957031 295.359375 4.890625 295.472656 4.839844 C 295.894531 4.65625 296.382812 4.679688 296.789062 4.894531 C 297.199219 5.113281 297.484375 5.507812 297.570312 5.964844 Z M 297.570312 5.964844 "/>
@@ -150,33 +168,11 @@ let footer = $(`
             <path style=" stroke:none;fill-rule:nonzero;fill:rgb(42.352941%,38.823529%,100%);fill-opacity:1;" d="M 180.03125 184.304688 C 180.03125 197.53125 169.328125 208.25 156.128906 208.25 C 142.925781 208.25 132.222656 197.53125 132.222656 184.304688 C 132.222656 171.082031 142.925781 160.363281 156.128906 160.363281 C 169.328125 160.363281 180.03125 171.082031 180.03125 184.304688 Z M 180.03125 184.304688 "/>
             </g>
             </svg>
-          </div>
-
-
-
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0 form-comtainer">
-          <div class="form-style-6">
-             <div class="form-header">
-                <h6 class="display">Get in Touch</h6>
-              </div>
-                <form name="form1" action="https://formcarry.com/s/BywEPAJNb" method="POST" accept-charset="UTF-8" >
-                  <input id="name" type="text" name="name" placeholder="Your Name" required/>
-                  <input id="email" type="email" name="email" placeholder="Email Address" required/>                  
-                  <textarea id="textArea" name="message" placeholder="Type your Message" required></textarea>
-              
-                  <div id="main">
-                    <button id="lnch" type="button" value="Send" >Send</button>
-                    <div id="lnch_btn"><i class="fas fa-space-shuttle"></i></div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+        </div>
+  
         </div>
     </div>
 
-
-    
 
     <div class="rounded-social-buttons tag">
     
@@ -218,13 +214,6 @@ let footer = $(`
     </a>
 
     </div>
-    </div>
-    <div class="button-container"> 
-      <button class="slide" type="button" value="View my RESUME " 
-      onclick="window.open('${resume_link}', '_blank')">
-      View my RESUME 
-      <i class="fa fa-file"></i>
-      </button>
     </div>
 
 </footer>
