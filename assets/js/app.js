@@ -108,7 +108,7 @@ let header = $(`
 
 // Footer
 
-const resume_link = 'https://drive.google.com/file/d/1pihnxmrVf7QcbbSJCtrXL-8tPgRsF_yN/view?usp=share_link';
+const resume_link = 'https://drive.google.com/file/d/1mxFZu5kejrJ21bbYVSLZPGu5gF80WZye/view?usp=sharing';
 
 let footer = $(`
 <footer class="footer sticky-bottom"  style="background-color:#2b2a2a;">
