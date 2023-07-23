@@ -6,6 +6,13 @@ const projectcards = document.querySelector(".projectcards");
 // Array of object for projects
 const projects = [
   {
+    title: "YouTube Stock Video Summary by ChatGPT",
+    cardImage: "assets/images/project-page/chatgpt.png",
+    description: "Automated summary generation of stock-related YouTube videos using ChatGPT",
+    Previewlink: "https://github.com/Nature711/youtube-video-summary-with-chatgpt",
+    Githublink: "https://github.com/Nature711/youtube-video-summary-with-chatgpt",
+  },
+  {
     title: "My LeetHub",
     cardImage: "assets/images/project-page/leethub.png",
     description: "A Chrome extension that automatically integrates Leetcode submissions to GitHub",

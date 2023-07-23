@@ -108,10 +108,10 @@ let header = $(`
 
 // Footer
 
-const resume_link = 'https://drive.google.com/file/d/1pihnxmrVf7QcbbSJCtrXL-8tPgRsF_yN/view?usp=share_link';
+const resume_link = 'https://drive.google.com/file/d/1rc1naNFzr7cxsou1_UD160n6ot1sNEpa/view?usp=sharing';
 
 let footer = $(`
-<footer class="footer sticky-bottom"  style="background-color:#2b2a2a;">
+<footer class="footer sticky-bcanvsottom"  style="background-color:#2b2a2a;">
   <div class="p-4">
     <div class="container-fluid quote-container">
       <div class="quotes"    style="text-align:center;">
@@ -129,10 +129,6 @@ let footer = $(`
           <div class="form-style-6">
              <div class="form-header"><h6 class="display">Get in Touch</h6></div>
                 <div id="button-container">
-                  <button class="slide" type="button"> 
-                    <a href="mailto:hutianran711@outlook.com" target="_blank" style="text-decoration:none;color:white">Email Me</a>
-                    <i class="fa fa-send"></i>
-                  </button>
                   <button class="slide" type="button" 
                     onclick="window.open('${resume_link}', '_blank')">
                     View my RESUME 

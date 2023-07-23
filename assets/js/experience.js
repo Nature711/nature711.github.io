@@ -4,6 +4,14 @@ AOS.init();
 
 const experiencecards = document.querySelector(".experience-cards");
 
+const envisionExperiences = [
+  "Developed a comprehensive monitoring stack solution for seamless integration into existing services, enabling microservice providers to enhance observability and analysis.",
+  "Implemented Docker Compose and Helm charts as a foundation for future projects, enabling easy scalability and maintenance",
+  "Implemented Spring Aspect-Oriented Programming for monitoring aspects and self-contained modules,, allowing for custom metrics collection with minimal project modifications",
+  "Utilized relevant Spring Boot libraries to dynamically generate Excel sheets based on user selection, reducing manual generation efforts",
+  "Leveraged Spring Boot's Object-Relation Mapping (ORM) to develop a flexible solution for handling the storage and retrievalof complex and nested JSON objects, tailored to meet specificapplication requirements",
+];
+
 const autodeskExperiences = [
   "Developed a complete system to keep track of Autodesk's internal service-to-service proxy deployment metadata, saving service providers the time and effort of manual compilation",
   "Coded AWS Lambda function in JavaScript for core API logic. Mapped the needs of service providers to API features, allowing them to easily monitor service quality",
@@ -32,6 +40,15 @@ const formatExperiences = (experiences) => {
 }
 
 const exp = [
+  {
+    title: "Backend Engineer Intern",
+    subtitle: "",
+    cardImage: "assets/images/experience-page/envision-digital.png",
+    place: "Envision Digital (Singapore)",
+    companyURL: "https://envision-digital.com/",
+    time: "(May 2023 - Aug 2023)",
+    desp: formatExperiences(envisionExperiences)
+  },
   {
     title: "Software Developer Intern",
     subtitle: "(API Management Platform)",
