@@ -1,0 +1,113 @@
+<!DOCTYPE html><meta charset="utf-8"><h1 id="windows--wsl-部署方案">Windows + WSL 部署方案</h1>
+<h2 id="recommended-setup">Recommended Setup</h2>
+<blockquote>
+<p><strong>WSL2 with Docker CLI installed + Docker Desktop for Windows on the Windows host</strong></p>
+</blockquote>
+<h3 id="why-this-setup-works-best">Why This Setup Works Best</h3>
+<ul>
+<li>
+<p><strong>WSL2</strong>: Where most Linux-based development takes place (e.g., coding, running services).</p>
+</li>
+<li>
+<p><strong>Docker CLI in WSL2</strong>: Lets you run Docker commands directly inside WSL for convenience.</p>
+</li>
+<li>
+<p><strong>Docker Desktop for Windows</strong>:</p>
+<ul>
+<li>Provides the actual Docker <strong>daemon</strong> (<code>dockerd</code>), required to run containers.</li>
+<li>Seamlessly manages <strong>integration</strong> with WSL2 — including networking, socket communication, volumes, and performance tuning.</li>
+<li>Offers a <strong>GUI</strong> to manage containers, images, volumes, networks, and settings.</li>
+</ul>
+</li>
+</ul>
+<h2 id="understanding-the-components">Understanding the Components</h2>
+<h3 id="wsl2">WSL2</h3>
+<ul>
+<li>A full Linux kernel running inside a lightweight VM on Windows.</li>
+<li>Enables a native Linux development experience within Windows.</li>
+</ul>
+<h3 id="docker-desktop-for-windows">Docker Desktop for Windows</h3>
+<ul>
+<li>A GUI + background service that manages Docker on Windows.</li>
+</ul>
+<h4 id="key-components">Key Components</h4>
+<ul>
+<li><strong>Docker Daemon (<code>dockerd</code>)</strong>: The background engine that runs containers.</li>
+<li><strong>WSL2 Integration</strong>: Shares the Docker daemon with selected WSL2 distros.</li>
+<li><strong>UI/CLI Settings</strong>: Manage settings like resource limits, integrations, etc.</li>
+</ul>
+<h2 id="common-pitfall">Common Pitfall</h2>
+<h3 id="problem">Problem</h3>
+<ul>
+<li>Installing Docker inside WSL2 using `sudo apt install docker</li>
+<li>and assuming it works out of the box.</li>
+</ul>
+<h3 id="reality">Reality</h3>
+<ul>
+<li>This only installs the <strong>Docker CLI</strong> in WSL2.</li>
+<li><strong>No <code>dockerd</code> is running</strong>, and WSL2 doesn’t support it easily without systemd.</li>
+<li>Docker commands will fail unless Docker Desktop is running and providing the daemon.</li>
+</ul>
+<h4 id="how-to-verify">How to Verify</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Check if Docker CLI is installed</span></span>
+<span class="line"><span style="color:#79B8FF">which</span><span style="color:#9ECBFF"> docker</span></span>
+<span class="line"><span style="color:#B392F0">docker</span><span style="color:#79B8FF"> --version</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Check if the Docker daemon is running in WSL2</span></span>
+<span class="line"><span style="color:#B392F0">ps</span><span style="color:#9ECBFF"> aux</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#9ECBFF"> dockerd</span></span></code></pre>
+<p>Example output:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>nature  5184  0.0  0.0  4028  1920 pts/8  S+ 18:12 0:00 grep --color=auto dockerd</span></span></code></pre>
+<blockquote>
+<p>Only the <code>grep</code> process is shown. This means no <code>dockerd</code> is actually running inside WSL2.</p>
+</blockquote>
+<hr>
+<h2 id="docker-architecture-overview">Docker Architecture Overview</h2>
+<h3 id="core-components">Core Components</h3>
+<ul>
+<li>
+<p><strong>Docker Daemon (<code>dockerd</code>)</strong>:</p>
+<ul>
+<li>The backend engine that manages containers, images, volumes, networks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Docker CLI (<code>docker</code>)</strong>:</p>
+<ul>
+<li>The frontend command-line tool that communicates with the daemon.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="how-it-works-with-docker-desktop">How It Works with Docker Desktop</h3>
+<ol>
+<li><strong>Docker Desktop starts a <code>dockerd</code> process on the Windows side</strong>.</li>
+<li><strong>WSL2 integration</strong> mounts a <strong>Unix socket</strong> (Docker’s API endpoint) into your WSL2 distro.</li>
+<li><strong>Docker CLI in WSL2</strong> is configured (via <code>~/.docker/config.json</code>) to connect to this socket.</li>
+<li>So when you run <code>docker run</code> in WSL2, you’re <strong>talking to the Windows-side daemon</strong>.</li>
+</ol>
+<blockquote>
+<p>Even though you’re running Docker commands inside WSL2, <strong>the containers themselves are managed by Docker Desktop</strong> on Windows.</p>
+</blockquote>
+<h3 id="networking-behavior">Networking Behavior</h3>
+<p>With WSL2 integration enabled:</p>
+<ul>
+<li>WSL2 and Windows <strong>share the same loopback interface (<code>localhost</code>)</strong>.</li>
+<li>This allows seamless networking across environments.</li>
+</ul>
+<h4 id="example">Example</h4>
+<ul>
+<li>
+<p>After running <code>docker run -p 8080:80 nginx</code> (i.e. maps Window hosts port 8080 to container’s port 80)</p>
+<ul>
+<li>in WSL2: <code>curl localhost:8080</code></li>
+<li>in Windows host: accessing <code>http://localhost:8080</code></li>
+</ul>
+</li>
+<li>
+<p>Both work because:</p>
+<ul>
+<li>The NGINX container is running on the Windows-side Docker daemon.</li>
+<li>Port 8080 is published to Windows, and WSL2 shares that interface.</li>
+</ul>
+</li>
+</ul>
