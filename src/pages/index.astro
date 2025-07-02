@@ -32,38 +32,49 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       </p>
 
       <p class="mt-6 text-lg font-medium">
-        I'm a Computer Science graduate from NUS, currently working in the tech industry 
-        with experience across <span class="underline decoration-dashed underline-offset-4">cloud infrastructure</span>, 
-        <span class="underline decoration-dashed underline-offset-4">DevOps</span>, and 
-        <span class="underline decoration-dashed underline-offset-4">backend development</span>.
+        I'm a Computer Science graduate from NUS, currently working in the tech
+        industry with experience across <span
+          class="underline decoration-dashed underline-offset-4"
+          >cloud infrastructure</span
+        >,
+        <span class="underline decoration-dashed underline-offset-4"
+          >DevOps</span
+        >, and
+        <span class="underline decoration-dashed underline-offset-4"
+          >backend development</span
+        >.
       </p>
 
       <div class="mt-6">
-        <p class="mt-4">
-          Here, I share:
-        </p>
+        <p class="mt-4">Here, I share:</p>
         <ul class="mt-2 space-y-1">
-          <li>🧠 Notes on system design, infrastructure, and technical ideas</li>
+          <li>
+            🧠 Notes on system design, infrastructure, and technical ideas
+          </li>
           <li>✍️ Reflections on life, work, and learning</li>
-          <li>🌱 Logs of personal growth, career shifts, and the occasional epiphany</li>
+          <li>
+            🌱 Logs of personal growth, career shifts, and the occasional
+            epiphany
+          </li>
         </ul>
       </div>
 
       <div class="mt-8">
         <p class="mt-4">
-          I believe in learning in public — writing helps me clarify ideas, capture half-formed thoughts, and grow them over time.
+          I believe in learning in public — writing helps me clarify ideas,
+          capture half-formed thoughts, and grow them over time.
         </p>
 
-        <p class="mt-4">
-          Happy exploring ✨
-        </p>
+        <p class="mt-4">Happy exploring ✨</p>
       </div>
 
       {
         // only display if at least one social link is enabled
         SOCIALS.length > 0 && (
           <div class="mt-6 flex flex-col sm:flex-row sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">Connect with me:</div>
+            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">
+              Connect with me:
+            </div>
             <Socials />
           </div>
         )
