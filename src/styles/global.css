@@ -15,9 +15,9 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
   --background: #181825; /* 更深的背景，比原来更像 Obsidian */
   --foreground: #e0e1e8; /* 柔和浅灰白，护眼 */
-  --accent: #a78bfa;     /* 淡紫发光感 */
-  --muted: #1f1f2d;      /* 比原 muted 更深，更像Obsidian侧边栏 */
-  --border: #2e2e3e;     /* 深色边框，更隐形 */
+  --accent: #a78bfa; /* 淡紫发光感 */
+  --muted: #1f1f2d; /* 比原 muted 更深，更像Obsidian侧边栏 */
+  --border: #2e2e3e; /* 深色边框，更隐形 */
 }
 
 @theme inline {
