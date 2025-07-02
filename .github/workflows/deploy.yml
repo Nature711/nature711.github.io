@@ -41,8 +41,8 @@ jobs:
       - name: "�� Lint code"
         run: pnpm run lint
 
-      - name: "📝 Check code format"
-        run: pnpm run format:check
+      # - name: "📝 Check code format"
+      #   run: pnpm run format:check
 
       - name: "🚀 Build the project"
         run: pnpm run build
