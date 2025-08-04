@@ -1,0 +1,20 @@
+{
+  "obsidianPath": "../ideaverse",
+  "astroBlogPath": "src/data/blog",
+  "excludedFolders": [
+    "+"
+  ],
+  "publicTags": [
+    "#public"
+  ],
+  "defaultAuthor": "Nature",
+  "defaultTags": ["others"],
+  "cleanDestination": false,
+  "preserveFolderStructure": true,
+  "postProcessing": {
+    "removeFirstHeading": true,
+    "generateDescription": true,
+    "descriptionMaxLength": 160,
+    "defaultDescription": "A note from my digital garden"
+  }
+}
