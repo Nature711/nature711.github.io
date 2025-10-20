@@ -6,8 +6,8 @@ description: Why I built this garden, and why it's so hard
 date: 2025-10-19
 ---
 > [!TLDR] TL;DR
-I built this digital garden to turn messy thoughts into living, connected ideas.  
-It’s where I write to understand, link to discover, and grow clarity — one note at a time.
+> I built this digital garden to turn messy thoughts into living, connected ideas.  
+> It’s where I write to understand, link to discover, and grow clarity — one note at a time.
 
 ## 🌱 The Digital Equivalent of My Mind
 

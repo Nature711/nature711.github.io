@@ -5,6 +5,10 @@ tags:
 description: Landing page
 date:
 ---
+> [!warning] Site under active cultivation 🌱
+>⛏️ Porting notes from Obsidian → web  
+>🚧 Expect occasional broken paths — the garden’s still growing!
+
 ##  🌱 Welcome
 
 > **Welcome to a garden that never stops growing.**
