@@ -73,11 +73,11 @@ Like any long game — in programming or tennis — this is about **endurance, c
 > **There’s no fixed path here. Explore freely — the fun’s in the *discovery*.**
 
 - [[Garden Index]] – all the topics I’m exploring
-- [[Projects]] – infra experiments & mini tools
+- [[HoYoverse Project Summary|Projects]] – infra experiments & mini tools
 - [[Now]] – what I’m currently focused on
 - [[Meta Thinking]] – notes on PKM, Obsidian, learning, and systems of meaning
 - [[Infra Notes]] – technical explorations in Prometheus, Kafka, K8s, etc.
-- [[Reflections]] – sometimes soft, sometimes spiky
+- [[Learning to Choose -- A Late Start|Reflections]] – sometimes soft, sometimes spiky
 
 ---
 
