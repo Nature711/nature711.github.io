@@ -1,5 +1,5 @@
 ---
-title: Learning to Choose -- A Late Start
+title: Learning to Choose - A Late Start
 draft: false
 tags:
 description:

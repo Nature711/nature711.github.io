@@ -3,7 +3,7 @@ title: Welcome - Nature's Digital Garden
 draft: false
 tags:
 description: Landing page
-date:
+date: 2025-10-18
 ---
 > [!warning] Site under active cultivation 🌱
 >⛏️ Porting notes from Obsidian → web  
@@ -77,7 +77,7 @@ Like any long game — in programming or tennis — this is about **endurance, c
 - [[Now]] – what I’m currently focused on
 - [[Meta Thinking]] – notes on PKM, Obsidian, learning, and systems of meaning
 - [[Infra Notes]] – technical explorations in Prometheus, Kafka, K8s, etc.
-- [[Learning to Choose -- A Late Start|Reflections]] – sometimes soft, sometimes spiky
+- [[Learning to Choose - A Late Start|Reflections]] – sometimes soft, sometimes spiky
 
 ---
 
