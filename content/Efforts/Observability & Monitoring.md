@@ -1,5 +1,5 @@
 ---
-title: Observability & Monitoring Best Practices
+title:
 draft: false
 tags:
 description:

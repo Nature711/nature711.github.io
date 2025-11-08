@@ -1,13 +1,14 @@
 ---
-title: Personal Knowledge Management, the Database Way
+title:
 draft: false
 tags:
+  - "#pkm"
 description:
 date: 2025-11-07
 ---
 
 > [!TLDR] TL;DR
-This article explores the unexpected parallels between **database indexing** and **personal knowledge management** in Obsidian. From access patterns to atomic notes, it reflects on how database design principles can inform more intentional and efficient note organization. A fun crossover of system thinking and everyday workflows.
+> This article explores the unexpected parallels between **database indexing** and **personal knowledge management** in Obsidian. From access patterns to atomic notes, it reflects on how database design principles can inform more intentional and efficient note organization. A fun crossover of system thinking and everyday workflows.
 
 ## 📓 Drawing Parallels Between Database Indexes and My PKM (With Obsidian)
 
@@ -23,15 +24,17 @@ In databases, ***indexes*** help speed up data retrieval by creating additional 
 In Obsidian, we’re doing something eerily similar when we use **tags**, **dataview queries**, **folders**, or even custom link structures. Here's how it maps out:
 
 ---
-### 🗂️ Clustered vs. Non-Clustered Index = Folder Structure vs. Tags/Queries
+### ### 🗂️ Clustered vs. Non‑Clustered Index = Folder Structure vs. Tags/Queries
 
 - **Clustered Index** = The one and only physical order of data.  
-    In Obsidian terms? That’s our **folder structure**. It defines where notes _live_ on disk. You can only have _one_ physical organization.
+    In Obsidian terms, that’s our **folder structure** — it decides _where_ a note lives on disk. 
+    But a note can only “live” in **one** place, which forces a *single*, *rigid* categorization.
     
-- **Non-Clustered Index** = Additional logical views.  
-    This is where Obsidian shines: **tags**, **links**, **Dataview**, **backlinks**, **filters**… these are all ways to create multiple views of the same data — without changing where it physically resides.
+- **Non‑Clustered Index** = Flexible logical views.  
+    Notes are often *multi‑faceted* — a single idea might relate to learning, career, psychology, and a book you read. 
+    This is where Obsidian shines: **tags**, **links**, **Dataview**, **backlinks**, and **filters** allow you to create **multiple perspectives on the same note** without moving it. These act like additional indexes that let you retrieve information through different lenses.
 
-> Your folder structure doesn't have to do all the work — lean on logical organization too.
+> Because notes rarely fit into just one category, your folder structure shouldn’t carry all the weight. Logical organization gives your ideas room to be multi‑dimensional.
 
 ---
 ### 🔁 Write vs. Read: Think Like a Database

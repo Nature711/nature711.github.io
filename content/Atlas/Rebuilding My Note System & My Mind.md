@@ -1,7 +1,8 @@
 ---
-title: Rebuilding My Note System & My Mind
+title:
 draft: false
 tags:
+  - pkm
 description: A reflection on starting over in Obsidian — with less perfectionism and more purpose
 date: 2025-10-19
 ---

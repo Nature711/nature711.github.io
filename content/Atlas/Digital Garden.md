@@ -1,7 +1,8 @@
 ---
-title: The Digital Equivalent of My Mind
+title:
 draft: false
 tags:
+  - pkm
 description: Why I built this garden, and why it's so hard
 date: 2025-10-19
 ---

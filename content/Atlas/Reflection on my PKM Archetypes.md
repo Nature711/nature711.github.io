@@ -1,7 +1,8 @@
 ---
-title: Reflection on my PKM Archetypes
+title:
 draft: false
 tags:
+  - pkm
 description: A reflection on my PKM Archetypes
 date: 2025-10-20
 ---

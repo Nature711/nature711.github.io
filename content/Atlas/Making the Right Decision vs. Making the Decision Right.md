@@ -1,5 +1,5 @@
 ---
-title: Making the Right Decision vs. Making the Decision Right
+title:
 draft: false
 tags:
 description:

@@ -1,7 +1,8 @@
 ---
-title: "PKM: The Ultimate Learning Technique"
+title:
 draft: false
 tags:
+  - "#pkm"
 description:
 date: 2025-10-20
 ---

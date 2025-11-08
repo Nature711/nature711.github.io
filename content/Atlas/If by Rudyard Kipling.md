@@ -1,5 +1,5 @@
 ---
-title: If by Rudyard Kipling
+title:
 draft: false
 tags:
 description: An inspirational poem by Rudyard Kipling

@@ -1,5 +1,5 @@
 ---
-title: HoYoverse Project Summary
+title:
 draft: false
 tags:
 description:
