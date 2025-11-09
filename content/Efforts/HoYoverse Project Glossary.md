@@ -14,10 +14,18 @@ date: 2025-11-02
 [[Nginx-based Resource Whitelisting Automation]]
 
 [[Insight Service]]
+- [[Insight -- Core Reference]]
+- [[Insight -- Interview Talking Points]]
+- [[Insight -- Followup]]
 
 [[CloudWatch Exporter & Prometheus Integration]]
 
 [[AWS SaaS Deployment with CloudFormation]]
 
-[[Observability & Monitoring]]
+[[SES Asynchrouns Report Pipeline]]
+
+Generalizable Patterns:
+- [[Observability & Monitoring]]
+
+How to document them and describe confidently during interview: [[Project Documentation Template (Detailed)]]
 

@@ -14,7 +14,6 @@ date: 2025-11-08
 #### Functional Requirements:
 
 - "What operations should the cart support?"
-    
     - Add item to cart
     - Remove item from cart
     - Update item quantity
@@ -22,38 +21,30 @@ date: 2025-11-08
     - Clear cart
     - Merge carts (logged in user + guest cart)
 - "Should we handle guest carts (unauthenticated users)?"
-    
     - Yes - store by session ID
 - "What about cart persistence - how long should carts be saved?"
-    
     - Active users: Keep indefinitely
     - Inactive: Clean up after 30 days
 
 #### Non-Functional Requirements:
 
 - "What's the expected scale?"
-    
     - **DAU**: 10 million daily active users
     - **Peak QPS**: 50,000 requests per second
     - **Read:Write ratio**: 100:1 (users view cart 100x more than they modify it)
 - "What regions do we need to support?"
-    
     - Southeast Asia: Singapore, Indonesia, Malaysia, Thailand, Vietnam, Philippines
 - "What are the latency requirements?"
-    
     - **Target**: < 200ms for all cart operations
     - **P99 latency**: < 500ms
 - "What about availability?"
-    
     - **Target**: 99.9% uptime (SLA)
     - Cart is critical but not as critical as checkout
 - "Any consistency requirements?"
-    
     - **Eventual consistency is acceptable** for cart viewing
     - **Strong consistency needed** for checkout (when converting cart to order)
 
 ---
-
 ## Phase 2: Back-of-Envelope Calculations (3 minutes)
 
 Let's calculate to understand the scale:
@@ -102,157 +93,153 @@ Peak bandwidth: 50,000 QPS × 5KB = 250 MB/s = 2 Gbps
 **Conclusion**: Need caching, horizontal scaling, and database read replicas.
 
 ---
-
 ## Phase 3: High-Level Architecture (5 minutes)
 
-### Start Simple, Then Evolve:
+### Version 1: Baseline Architecture
 
-#### Version 1: Baseline Architecture
-
-```
-┌──────────┐
-│  Client  │ (Web/Mobile App)
-└────┬─────┘
-     │
-     ↓
-┌─────────────┐
-│   Gateway   │ (API Gateway / Load Balancer)
-└──────┬──────┘
-       │
-       ↓
-┌──────────────┐
-│ Cart Service │ (Stateless API servers)
-└──────┬───────┘
-       │
-       ↓
-┌──────────────┐
-│   Database   │ (MySQL)
-└──────────────┘
-```
+>[!info]- Diagram
+> ```
+> ┌──────────┐
+> │  Client  │ (Web/Mobile App)
+> └────┬─────┘
+>      │
+>      ↓
+> ┌─────────────┐
+> │   Gateway   │ (API Gateway / Load Balancer)
+> └──────┬──────┘
+>        │
+>        ↓
+> ┌──────────────┐
+> │ Cart Service │ (Stateless API servers)
+> └──────┬───────┘
+>        │
+>        ↓
+> ┌──────────────┐
+> │   Database   │ (MySQL)
+> └──────────────┘
+> ```
+> 
 
 **Explain**: "I'll start with a simple architecture and then discuss how to scale it."
 
 ---
+### Version 2: Production-Ready Architecture
 
-#### Version 2: Production-Ready Architecture
-
-```
-                    ┌─────────────┐
-                    │   Client    │
-                    │ (Web/Mobile)│
-                    └──────┬──────┘
-                           │
-                           ↓
-                    ┌─────────────┐
-                    │ API Gateway │ (Nginx / AWS ALB)
-                    │ Rate Limiter│
-                    └──────┬──────┘
-                           │
-        ┌──────────────────┼──────────────────┐
-        │                  │                  │
-        ↓                  ↓                  ↓
-   ┌─────────┐       ┌─────────┐       ┌─────────┐
-   │Cart API │       │Cart API │       │Cart API │
-   │Server 1 │       │Server 2 │       │Server 3 │
-   └────┬────┘       └────┬────┘       └────┬────┘
-        │                 │                  │
-        └─────────────────┼──────────────────┘
-                          │
-        ┌─────────────────┼─────────────────┐
-        │                 │                 │
-        ↓                 ↓                 ↓
-   ┌─────────┐      ┌──────────────────┐  ┌──────────┐
-   │  Redis  │      │     MySQL        │  │ Message  │
-   │ (Cache) │      │                  │  │  Queue   │
-   │         │      │  ┌────────────┐  │  │ (Kafka)  │
-   │ - Carts │      │  │   Master   │  │  └──────────┘
-   │ - Session│     │  │  (Write)   │  │       │
-   └─────────┘      │  └──────┬─────┘  │       │
-                    │         │         │       ↓
-                    │    ┌────┴────┐    │  ┌─────────┐
-                    │    │Replicate│    │  │Analytics│
-                    │    ↓         ↓    │  │ Service │
-                    │  ┌────┐   ┌────┐ │  └─────────┘
-                    │  │Read│   │Read│ │
-                    │  │Rep1│   │Rep2│ │
-                    │  └────┘   └────┘ │
-                    └──────────────────┘
-```
+>[!info]- Diagram
+> ```
+>                     ┌─────────────┐
+>                     │   Client    │
+>                     │ (Web/Mobile)│
+>                     └──────┬──────┘
+>                            │
+>                            ↓
+>                     ┌─────────────┐
+>                     │ API Gateway │ (Nginx / AWS ALB)
+>                     │ Rate Limiter│
+>                     └──────┬──────┘
+>                            │
+>         ┌──────────────────┼──────────────────┐
+>         │                  │                  │
+>         ↓                  ↓                  ↓
+>    ┌─────────┐       ┌─────────┐       ┌─────────┐
+>    │Cart API │       │Cart API │       │Cart API │
+>    │Server 1 │       │Server 2 │       │Server 3 │
+>    └────┬────┘       └────┬────┘       └────┬────┘
+>         │                 │                  │
+>         └─────────────────┼──────────────────┘
+>                           │
+>         ┌─────────────────┼─────────────────┐
+>         │                 │                 │
+>         ↓                 ↓                 ↓
+>    ┌─────────┐      ┌──────────────────┐  ┌──────────┐
+>    │  Redis  │      │     MySQL        │  │ Message  │
+>    │ (Cache) │      │                  │  │  Queue   │
+>    │         │      │  ┌────────────┐  │  │ (Kafka)  │
+>    │ - Carts │      │  │   Master   │  │  └──────────┘
+>    │ - Session│     │  │  (Write)   │  │       │
+>    └─────────┘      │  └──────┬─────┘  │       │
+>                     │         │        │       ↓
+>                     │    ┌────┴────┐   │  ┌─────────┐
+>                     │    │Replicate│   │  │Analytics│
+>                     │    ↓         ↓   │  │ Service │
+>                     │  ┌────┐   ┌────┐ │  └─────────┘
+>                     │  │Read│   │Read│ │
+>                     │  │Rep1│   │Rep2│ │
+>                     │  └────┘   └────┘ │
+>                     └──────────────────┘
+> ```
 
 ---
-
 ## Phase 4: API Design (3 minutes)
 
-### RESTful API Endpoints:
-
-```http
-# Add item to cart
-POST /api/v1/cart/items
-Request:
-{
-  "user_id": "user_123",
-  "item_id": "prod_456",
-  "quantity": 2,
-  "price": 29.99,
-  "variant": {
-    "size": "M",
-    "color": "blue"
-  }
-}
-Response:
-{
-  "success": true,
-  "cart": {
-    "user_id": "user_123",
-    "items": [...],
-    "total_items": 3,
-    "total_price": 89.97
-  }
-}
-
-# Get cart
-GET /api/v1/cart?user_id=user_123
-Response:
-{
-  "user_id": "user_123",
-  "items": [
-    {
-      "item_id": "prod_456",
-      "quantity": 2,
-      "price": 29.99,
-      "added_at": "2025-11-08T10:30:00Z"
-    }
-  ],
-  "total_items": 2,
-  "total_price": 59.98
-}
-
-# Update item quantity
-PUT /api/v1/cart/items/{item_id}
-Request:
-{
-  "user_id": "user_123",
-  "quantity": 5
-}
-
-# Remove item
-DELETE /api/v1/cart/items/{item_id}?user_id=user_123
-
-# Clear cart
-DELETE /api/v1/cart?user_id=user_123
-
-# Checkout (convert cart to order)
-POST /api/v1/cart/checkout
-Request:
-{
-  "user_id": "user_123",
-  "shipping_address": {...},
-  "payment_method": {...}
-}
-```
+> [!info]- RESTful API Endpoints
+> ```http
+> # Add item to cart
+> POST /api/v1/cart/items
+> Request:
+> {
+>   "user_id": "user_123",
+>   "item_id": "prod_456",
+>   "quantity": 2,
+>   "price": 29.99,
+>   "variant": {
+>     "size": "M",
+>     "color": "blue"
+>   }
+> }
+> Response:
+> {
+>   "success": true,
+>   "cart": {
+>     "user_id": "user_123",
+>     "items": [...],
+>     "total_items": 3,
+>     "total_price": 89.97
+>   }
+> }
+> 
+> # Get cart
+> GET /api/v1/cart?user_id=user_123
+> Response:
+> {
+>   "user_id": "user_123",
+>   "items": [
+>     {
+>       "item_id": "prod_456",
+>       "quantity": 2,
+>       "price": 29.99,
+>       "added_at": "2025-11-08T10:30:00Z"
+>     }
+>   ],
+>   "total_items": 2,
+>   "total_price": 59.98
+> }
+> 
+> # Update item quantity
+> PUT /api/v1/cart/items/{item_id}
+> Request:
+> {
+>   "user_id": "user_123",
+>   "quantity": 5
+> }
+> 
+> # Remove item
+> DELETE /api/v1/cart/items/{item_id}?user_id=user_123
+> 
+> # Clear cart
+> DELETE /api/v1/cart?user_id=user_123
+> 
+> # Checkout (convert cart to order)
+> POST /api/v1/cart/checkout
+> Request:
+> {
+>   "user_id": "user_123",
+>   "shipping_address": {...},
+>   "payment_method": {...}
+> }
+> ```
 
 ---
-
 ## Phase 5: Database Design (5 minutes)
 
 ### Schema Design:
@@ -312,8 +299,6 @@ CREATE TABLE cart_items (
 
 - For cleanup job: `DELETE FROM cart_items WHERE updated_at < DATE_SUB(NOW(), INTERVAL 30 DAY)`
 
----
-
 ### Guest Cart Handling:
 
 For unauthenticated users, use session ID as `user_id`:
@@ -330,7 +315,6 @@ WHERE user_id = 'session_abc123';
 ```
 
 ---
-
 ## Phase 6: Redis Cache Design (5 minutes)
 
 ### Cache Strategy: Cache-Aside Pattern
@@ -409,9 +393,9 @@ Commands:
 
 **Why Hash over String?**
 
-- ✅ Update individual items without fetching entire cart
-- ✅ Efficient memory usage
-- ✅ Atomic operations on single items
+- Update individual items without fetching entire cart
+- Efficient memory usage
+- Atomic operations on single items
 
 ### Cache Performance:
 
@@ -427,7 +411,6 @@ With Cache (95% hit rate):
 ```
 
 ---
-
 ## Phase 7: Scaling Strategy (8 minutes)
 
 ### Step 1: Horizontal Scaling (API Servers)
@@ -457,7 +440,6 @@ With Cache (95% hit rate):
 - **Health checks**: Remove unhealthy servers automatically
 
 ---
-
 ### Step 2: Database Read Replicas
 
 ```
@@ -510,7 +492,6 @@ func GetCart(userID string) {
 ```
 
 ---
-
 ### Step 3: Database Sharding (for 100M+ users)
 
 **Shard by `user_id`** using consistent hashing:
@@ -551,7 +532,6 @@ func GetCart(userID string) {
 - ✅ Simple routing logic
 
 ---
-
 ### Step 4: Multi-Region Deployment
 
 ```
@@ -570,14 +550,14 @@ func GetCart(userID string) {
 │        │        │   │        │        │
 │   ┌────┴───┐    │   │   ┌────┴───┐    │
 │   ↓        ↓    │   │   ↓        ↓    │
-│ ┌────┐  ┌────┐ │   │ ┌────┐  ┌────┐  │
-│ │API │  │API │ │   │ │API │  │API │  │
-│ └─┬──┘  └─┬──┘ │   │ └─┬──┘  └─┬──┘  │
-│   │       │    │   │   │       │     │
-│   ↓       ↓    │   │   ↓       ↓     │
-│ ┌──────────┐   │   │ ┌──────────┐    │
-│ │Redis + DB│   │   │ │Redis + DB│    │
-│ └──────────┘   │   │ └──────────┘    │
+│ ┌────┐  ┌────┐  │   │ ┌────┐  ┌────┐  │
+│ │API │  │API │  │   │ │API │  │API │  │
+│ └─┬──┘  └─┬──┘  │   │ └─┬──┘  └─┬──┘  │
+│   │       │     │   │   │       │     │
+│   ↓       ↓     │   │   ↓       ↓     │
+│ ┌──────────┐    │   │ ┌──────────┐    │
+│ │Redis + DB│    │   │ │Redis + DB│    │
+│ └──────────┘    │   │ └──────────┘    │
 └─────────────────┘   └─────────────────┘
 ```
 
@@ -588,7 +568,6 @@ func GetCart(userID string) {
 - Fault isolation (one region down ≠ all down)
 
 ---
-
 ## Phase 8: Handle Edge Cases & Failures (5 minutes)
 
 ### Edge Case 1: Concurrent Updates
@@ -646,7 +625,6 @@ WHERE user_id = ?
 ```
 
 ---
-
 ### Edge Case 2: Item Out of Stock
 
 **Problem:** User adds item, but inventory runs out before checkout
@@ -689,7 +667,6 @@ func Checkout(userID string) error {
 ```
 
 ---
-
 ### Edge Case 3: Price Changes
 
 **Problem:** Product price increases after user added to cart
@@ -724,7 +701,6 @@ func GetCart(userID string) {
 ```
 
 ---
-
 ### Failure Scenario 1: Database Goes Down
 
 **Problem:** MySQL master crashes
@@ -757,7 +733,6 @@ Replica 2
 - Cart viewing still works, adding items temporarily fails
 
 ---
-
 ### Failure Scenario 2: Redis Cache Goes Down
 
 **Problem:** Redis crashes
@@ -798,7 +773,6 @@ func GetCart(userID string) {
 ```
 
 ---
-
 ### Failure Scenario 3: API Server Crashes
 
 **Problem:** One API server dies
@@ -814,7 +788,7 @@ func GetCart(userID string) {
    ↓       ↓       ↓       ↓
 ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐
 │API-1│ │API-2│ │API-3│ │API-4│
-│  ✅  │ │  ✅  │ │  ❌  │ │  ✅  │
+│  ✅ │ │  ✅│ │  ❌ │ │  ✅ │
 └─────┘ └─────┘ └─────┘ └─────┘
                   ↑
             (unhealthy - remove from pool)
@@ -840,7 +814,6 @@ Response:
 - Traffic distributed to remaining servers
 
 ---
-
 ## Phase 9: Monitoring & Observability (3 minutes)
 
 ### Key Metrics to Track:
@@ -904,7 +877,6 @@ cacheHitRate := prometheus.NewGaugeVec(
 ```
 
 ---
-
 ### Alerting Rules:
 
 ```yaml
@@ -938,7 +910,6 @@ cacheHitRate := prometheus.NewGaugeVec(
 ```
 
 ---
-
 ### Logging Strategy:
 
 ```go
@@ -968,7 +939,6 @@ log.Error("database_query_failed",
 - ERROR: Failures (DB down, invalid data)
 
 ---
-
 ### Distributed Tracing:
 
 ```
@@ -993,7 +963,6 @@ Cart Service [abc123] - 50ms
 - Understand dependencies
 
 ---
-
 ## Phase 10: Security & Rate Limiting (2 minutes)
 
 ### Security Measures:
@@ -1130,7 +1099,6 @@ func SecurityMiddleware(next http.Handler) http.Handler {
 ```
 
 ---
-
 ## Phase 11: Advanced Features (Bonus) (3 minutes)
 
 ### Feature 1: Cart Recommendations
@@ -1212,7 +1180,6 @@ func ViewSharedCart(shareID string) (*Cart, error) {
 ```
 
 ---
-
 ### Feature 3: Save for Later
 
 **Move items from cart to "saved" list**
@@ -1247,7 +1214,6 @@ func GetSavedItems(userID string) ([]Item, error) {
 ```
 
 ---
-
 ### Feature 4: Cart Expiration & Cleanup
 
 **Clean up abandoned carts to save storage**
@@ -1283,7 +1249,6 @@ func SendCartReminderEmails() {
 ```
 
 ---
-
 ### Feature 5: Cart Analytics Events
 
 **Track user behavior for business intelligence**
@@ -1319,7 +1284,6 @@ func AddToCart(userID, itemID string, quantity int) error {
 - Peak shopping hours by region
 
 ---
-
 ## Phase 12: Trade-offs Discussion (3 minutes)
 
 ### Trade-off 1: Consistency vs Availability
@@ -1348,7 +1312,6 @@ Cons: May briefly see stale data
 - Can force strong consistency at checkout
 
 ---
-
 ### Trade-off 2: Normalization vs Denormalization
 
 **Normalized (Store product_id only):**
@@ -1380,7 +1343,6 @@ cart_items: user_id, product_id, quantity, price, name, image_url
 - Best of both worlds
 
 ---
-
 ### Trade-off 3: Cache Invalidation Strategy
 
 **Option A: Delete cache on write (Cache-Aside)**
@@ -1414,7 +1376,6 @@ AddToCart() {
 - Cache miss penalty acceptable (20ms vs 1ms)
 
 ---
-
 ### Trade-off 4: Synchronous vs Asynchronous Processing
 
 **Synchronous (Wait for all operations):**
@@ -1452,7 +1413,6 @@ func AddToCart() {
 - Non-critical async (analytics, recommendations)
 
 ---
-
 ### Trade-off 5: Microservices vs Monolith
 
 **Monolith:**
@@ -1488,12 +1448,7 @@ Each with own DB
 - Extract Cart Service when it becomes bottleneck
 
 ---
-
 ## Complete Interview Answer Template
-
-Here's how to structure your entire answer in a 45-minute interview:
-
----
 
 ### **Minutes 0-5: Clarify Requirements**
 
@@ -1516,7 +1471,6 @@ Here's how to structure your entire answer in a 45-minute interview:
     - Answer: Eventual consistency OK, except checkout
 
 ---
-
 ### **Minutes 5-8: Capacity Planning**
 
 **You**: "Let me do some back-of-envelope calculations."
@@ -1535,7 +1489,6 @@ With 95% cache hit rate:
 ```
 
 ---
-
 ### **Minutes 8-15: High-Level Design**
 
 **You**: "Here's my high-level architecture."
@@ -1562,7 +1515,6 @@ Walk through request flow:
 5. Store in cache for next request
 
 ---
-
 ### **Minutes 15-20: Database Design**
 
 **You**: "For the data model, I'll use this schema:"
@@ -1590,7 +1542,6 @@ Explain:
 - "JSON for flexible variant data"
 
 ---
-
 ### **Minutes 20-25: Caching Strategy**
 
 **You**: "I'll use Redis with cache-aside pattern."
@@ -1610,7 +1561,6 @@ Write flow:
 "Using Redis hash for efficient item-level operations."
 
 ---
-
 ### **Minutes 25-35: Scaling Strategy**
 
 **You**: "Here's how I'll scale to handle 10M users:"
@@ -1635,7 +1585,6 @@ Write flow:
 Draw scaling diagram showing progression.
 
 ---
-
 ### **Minutes 35-40: Handle Edge Cases**
 
 **You**: "Let me address some failure scenarios:"
@@ -1662,7 +1611,6 @@ Draw scaling diagram showing progression.
 - Show price difference in UI if current price changed
 
 ---
-
 ### **Minutes 40-43: Monitoring & Observability**
 
 **You**: "For production monitoring, I'd track:"
@@ -1685,7 +1633,6 @@ Draw scaling diagram showing progression.
 - Slack for warnings
 
 ---
-
 ### **Minutes 43-45: Trade-offs & Wrap-up**
 
 **You**: "Let me summarize the key trade-offs:"
@@ -1713,8 +1660,7 @@ Draw scaling diagram showing progression.
 "This design should handle 10M users with 50K QPS, <200ms latency, and 99.9% uptime."
 
 ---
-
-## Key Talking Points to Impress Shopee Interviewers
+## Key Talking Points to Impress Interviewers
 
 ### 1. **Show E-commerce Domain Knowledge**
 
@@ -1745,8 +1691,7 @@ Don't just list options - explain WHY you'd choose one:
 "I'd choose cache-aside over write-through because carts are read-heavy, and the complexity of keeping write-through consistent isn't worth the marginal performance gain."
 
 ---
-
-## Common Follow-up Questions & Answers
+## Common Follow-ups
 
 ### Q: "How would you handle a flash sale with 100x normal traffic?"
 
@@ -1762,7 +1707,6 @@ Don't just list options - explain WHY you'd choose one:
 Most importantly, **communicate with users** - show queue position, estimated wait time."
 
 ---
-
 ### Q: "What if two users try to add the last item in stock simultaneously?"
 
 **A**: "This is a classic race condition. Solutions:
@@ -1803,7 +1747,6 @@ WHERE item_id = ? AND quantity >= 1;
 For Shopee, I'd use option 3 - better UX, handle edge case at checkout."
 
 ---
-
 ### Q: "How do you prevent bots from adding items to cart and not buying?"
 
 **A**: "Bot protection strategy:
@@ -1834,7 +1777,6 @@ func CleanupInactiveCarts() {
 6. **Require login**: For high-demand items, require authentication"
 
 ---
-
 ### Q: "Your cache is showing 60% hit rate instead of 95%. How do you debug?"
 
 **A**: "Systematic debugging approach:
@@ -1887,7 +1829,6 @@ Solution depends on root cause:
 - Wrong caching strategy → Rethink what to cache"
 
 ---
-
 ### Q: "How would you migrate 10M carts from old schema to new schema with zero downtime?"
 
 **A**: "Zero-downtime migration strategy:
@@ -1952,7 +1893,6 @@ Key principles:
 - Have rollback plan ready"
 
 ---
-
 ## Final Tips for the Interview
 
 ### DO:
