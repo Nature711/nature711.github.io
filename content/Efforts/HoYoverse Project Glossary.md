@@ -6,17 +6,18 @@ description:
 date: 2025-11-02
 ---
 [[Resource Utilization Report System]]
+- [[Resource Utilization System -- Core Reference]]
+- [[Resource Utilization System -- Interview Talking Points]]
+
+[[Insight Service]]
+- [[Insight -- Core Reference]]
+- [[Insight -- Interview Talking Points]]
 
 [[Global Network Probe System]]
 
 [[Kafka MM2 Rollback System]]
 
 [[Nginx-based Resource Whitelisting Automation]]
-
-[[Insight Service]]
-- [[Insight -- Core Reference]]
-- [[Insight -- Interview Talking Points]]
-- [[Insight -- Followup]]
 
 [[CloudWatch Exporter & Prometheus Integration]]
 

@@ -39,43 +39,38 @@ date: 2025-11-09
 ### Navigating Takumi's hidden complexity
 
 > **S**:  
-> I was building a cross-region observability tool on top of **Takumi**, our internal Go framework. While Takumi abstracts a lot of infra functionality, it had minimal documentation and behaved unpredictably when stepping outside its default flow.
+> One of the more interesting challenges I ran into during the Insight project was actually working with **Takumi**, which is our internal Go framework. 
+> While Takumi abstracts a lot of infra functionality, it had minimal documentation and behaved unpredictably when stepping outside its default flow.
 
 > **T**:  
-> To deliver the observability tool, I needed to work closely with Takumi’s internal components — like config injection, lifecycle hooks, and metric registration — even though their behavior was undocumented and difficult to debug.
+> To deliver the observability tool, I needed to deeply understand how Takumi works under the hood — even though it wasn’t well-documented or transparent.
 
 > **A**:  
-> I cloned Takumi’s source code into my project and set up **Cursor** as my reading/debugging environment. I configured custom navigation rules so I could jump between Takumi’s layers easily and trace internal behavior. I documented every “gotcha” I found and compiled an internal guide to help others avoid the same pitfalls.
+> To deal with this, I decided to treat Takumi as a **first-class dependency** rather than a black box, and built a workflow to understand it deeply. I:
+> 
+> - pulled the full Takumi codebase and related dependencies to my local workspace (using `go mod vendor`)
+> - configured **Cursor** with custom rules (`.cursor/ruls`), so that it could index those dependency directories more accurately
+> - installed Go language server (`golps`), which enabled features like symbol resolution, jump-to-definition, allowing me to trace Takumi's internal logic more efficiently
+> 
+> This setup let me **leverage AI tools efficiently** — not just for code suggestions, but as a way to **accelerate deep code navigation and debugging**. When something broke, I wasn’t stuck grepping logs — I could follow the flow all the way into Takumi’s internals.
+> 
+> Along the way, I documented common pitfalls and created an internal "gotchas" guide to help others debug faster.
 
 > **R**:  
-> This let me **move from “guess and check” to actual understanding**, which improved both the reliability of my code and my ability to debug future issues.  
-> More Importantly, I gained the ability to navigate and work productively with internal systems — something I now see as essential in any real-world engineering team.
-
-
-> [!info]- More Detailed Version
-> One of the biggest challenges in this project was actually working with **Takumi**, our in-house Go application framework.  
-> On paper, it's designed to handle everything for you — service discovery, config loading, Prometheus metrics, graceful shutdown, etc.  
-> But in reality, it has a lot of **undocumented behaviors**, **hard-to-reason-about abstractions**, and what I’d call "black magic" — meaning: when you step even slightly outside of the happy path, **strange things happen**, and it’s not always clear why.
-> 
-> I hit this multiple times during development — like when metrics weren’t exposed correctly, or tracing headers weren’t propagating as expected.  
-> Rather than guess or workaround blindly, I decided to **dig into Takumi’s source code** to understand how it really works.
-> 
-> To do this efficiently, I:
-> 
-> - Pulled the entire Takumi repo and all relevant dependencies into my local project
->     
-> - Used **Cursor** to configure a unified workspace with proper symbol resolution and jump-to-definition across packages
->     
-> - Wrote custom Cursor rules so I could navigate internal abstractions, like the lifecycle hooks and config injection flow
->     
-> - Traced through multiple layers of internal service setup logic to understand where behavior diverged
->     
-> After figuring things out, I also started maintaining **internal notes** to document these “gotchas” — basically creating a dev guide for others who might run into the same problems.
-> 
-> This dramatically improved my ability to work with internal infrastructure code, and helped stabilize Insight’s behavior under different environments.  
-> 
-> The guide I wrote is now used internally by other team members working with Takumi.  
-> More importantly, I developed the confidence and methodology to deal with undocumented or "black magic" systems — which I’ve come to see as a core part of backend/infra work.
+> In the end, this whole workflow helped me understand Takumi on a much deeper level, and it gave me a repeatable way to handle **complex internal systems**, which I now see as a core skill in any real-world engineering team.
 
 ---
+## Follow-up Q&A
+
+[To-do]
+
+---
+## Resume Points
+
+> [!important] ATS optimized 
+> Built a Go-based cross-region monitoring service that measures service latency through non-intrusive health checks, integrating with internal Gateway, Consul, and Prometheus to provide hop-level infrastructure visibility for faster incident isolation
+
+- Designed and implemented black-box and white-box probing logic integrated with **Prometheus / Grafana / Thanos**, improving cross-region observability and reliability.
+
+- Leveraged **AI-assisted tooling (Cursor + gopls)** to navigate internal frameworks efficiently, accelerating development and debugging within complex, undocumented systems.
 
