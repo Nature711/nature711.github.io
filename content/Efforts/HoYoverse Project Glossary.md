@@ -5,11 +5,11 @@ tags:
 description:
 date: 2025-11-02
 ---
-[[Resource Utilization Report System]]
+Resource Utilization Report System
 - [[Resource Utilization System -- Core Reference]]
 - [[Resource Utilization System -- Interview Talking Points]]
 
-[[Insight Service]]
+Insight Service
 - [[Insight -- Core Reference]]
 - [[Insight -- Interview Talking Points]]
 
@@ -23,10 +23,14 @@ date: 2025-11-02
 
 [[AWS SaaS Deployment with CloudFormation]]
 
-[[SES Asynchrouns Report Pipeline]]
+[[SES Asynchronous Report Pipeline]]
 
 Generalizable Patterns:
 - [[Observability & Monitoring]]
 
-How to document them and describe confidently during interview: [[Project Documentation Template (Detailed)]]
+How to document them and describe confidently during interview
+- [[Project Documentation Template (Detailed)]]
+- [[Project Documentation Template (Concise)]]
+
+
 

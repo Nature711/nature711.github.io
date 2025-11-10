@@ -162,3 +162,8 @@ date: 2025-11-03
 - Custom probes (ICMP, TCP, MTR) deployed in each AZ
 - Export Prometheus-compatible metrics (latency, packet loss, routing hops)
 - Registered with Consul → Scraped by Prometheus → Visualized in Grafana 
+
+
+> [!info] See also
+> [[Observability & Monitoring -- Interview Ready Explanation]]
+

@@ -11,6 +11,10 @@ date: 2025-11-09
 
 It’s deployed as a standalone microservice built on **[[Takumi Framework|Takumi]]** (our in-house Golang framework), integrates seamlessly with **Prometheus**, **Consul**, and **Grafana**, and is actively used to diagnose cross-region communication problems without modifying any business services.
 
+- **Environment:** Golang, Takumi framework, gRPC, Mediary (cross-region proxy), Consul (service discovery), Prometheus (metrics), Gateway
+    
+- **Role:** End-to-end contributor — system architecture, latency measurement pipeline, validation logic, alerting setup, developer documentation
+
 ---
 ## Background
 
@@ -31,7 +35,7 @@ Build a tool that:
 - Integrates into our existing observability stack
 
 ---
-## Technical Architecture
+## Core Architecture
 
 ### System Architecture 
 
@@ -91,15 +95,6 @@ Insight → Prometheus Exporter → Prometheus → Grafana
 5. Insight measures **end-to-end latency** including all intermediate hops
 
 ---
-## My Contributions
-
-- Designed and implemented full system in Go using **Takumi framework**
-- Integrated with existing infrastructure (Consul, Mediary, Gateway, Prometheus)
-- Built both black-box and white-box probing capabilities
-- Designed internal request tracing mechanism for **hop-level latency attribution**
-- Set up multi-region deployment strategy
-
----
 ## Impact
 
 - **Reliability:** Proactive detection of cross-region connectivity issues before they impact users
@@ -107,3 +102,9 @@ Insight → Prometheus Exporter → Prometheus → Grafana
 - **Visibility:** First-time visibility into cross-region latency and intermediate component performance (Gateway, Mediary)
 - **Risk Reduction:** Early detection of degraded performance or connectivity failures between regions
 - **Scalability:** Monitoring system scales independently of business services; can monitor any gRPC service
+
+---
+
+>[!info] See also
+>[[Insight -- Interview Talking Points]]
+

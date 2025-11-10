@@ -73,4 +73,3 @@ date: 2025-11-09
 - Designed and implemented black-box and white-box probing logic integrated with **Prometheus / Grafana / Thanos**, improving cross-region observability and reliability.
 
 - Leveraged **AI-assisted tooling (Cursor + gopls)** to navigate internal frameworks efficiently, accelerating development and debugging within complex, undocumented systems.
-
