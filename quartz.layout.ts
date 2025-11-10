@@ -1,16 +1,19 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import CustomFooter from "./quartz/components/CustomFooter"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [],
-  footer: Component.Footer({
+  footer: CustomFooter({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/Nature711/",
+      Linkedin: "https://www.linkedin.com/in/tianran-hu-6b59b0228/",
     },
+    showQuartzCredit: false, // Set to true if you want to show "Created with Quartz"
+    customText: "© 2025 Nature's Digital Garden", // Your custom footer text
   }),
 }
 
