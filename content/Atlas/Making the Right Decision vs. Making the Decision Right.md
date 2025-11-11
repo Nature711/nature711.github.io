@@ -3,7 +3,6 @@ title:
 draft: false
 tags:
   - "#reflection"
-description:
 date: 2025-10-22
 ---
 When I spoke with my career advisor about my [[Learning to Choose - A Late Start|struggles with decision-making]], he said something that completely shifted my thinking:

@@ -16,6 +16,7 @@ date: 2025-11-11
 - [[PKM Map]] — Why PKM matters to me and what I expect from my system
 - [[Reflection on my PKM Archetypes]] — A personal take on how I approach knowledge
 - [[PKM Archetypes]] — The framework I used to analyze myself
+- [[Maps, Not Folders]] — The structure philosophy: folders for storage, maps for navigation  
 
 ---
 ## 🧩 2. Systems & Models

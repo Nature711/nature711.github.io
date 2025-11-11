@@ -3,7 +3,6 @@ title:
 draft: false
 tags:
   - "#pkm"
-description:
 date: 2025-10-20
 ---
 ## 🧠 What Is PKM?

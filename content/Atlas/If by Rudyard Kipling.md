@@ -2,7 +2,6 @@
 title:
 draft: false
 tags:
-description: An inspirational poem by Rudyard Kipling
 date: 2025-10-19
 ---
 If you can keep your head when all about you  

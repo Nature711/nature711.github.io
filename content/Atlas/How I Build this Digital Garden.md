@@ -3,7 +3,6 @@ title:
 draft: false
 tags:
   - "#pkm"
-description:
 date: 2025-11-11
 ---
 ## 🔒Before: Keeping Everything Private
@@ -35,7 +34,7 @@ I started creating my own publishing pipeline — I wrote scripts to:
 It worked… **but it was brittle and exhausting**.  
 Every update felt like redeploying a full app, not nurturing a garden.
 
-The **friction** is just too **HIGH**...
+The **friction** was just too **HIGH**...
 
 ---
 ## 🌟 The Breakthrough: Quartz

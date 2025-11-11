@@ -2,7 +2,6 @@
 title:
 draft: false
 tags:
-description:
 date: 2025-11-03
 ---
 ## Background

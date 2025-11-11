@@ -2,7 +2,6 @@
 title:
 draft: false
 tags:
-description:
 date: 2025-10-25
 ---
 ## Opening

@@ -2,7 +2,6 @@
 title:
 draft: false
 tags:
-description:
 date: 2025-11-08
 ---
 ## Phase 1: Clarify Requirements (5 minutes)

@@ -3,7 +3,6 @@ title:
 draft: false
 tags:
   - "#reflection"
-description:
 date: 2025-10-21
 ---
 ## A Life of Decisions Made by Others

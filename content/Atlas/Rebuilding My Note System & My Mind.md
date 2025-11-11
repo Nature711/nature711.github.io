@@ -4,7 +4,6 @@ draft: false
 tags:
   - pkm
   - "#reflection"
-description: A reflection on starting over in Obsidian — with less perfectionism and more purpose
 date: 2025-10-19
 ---
 > [!TLDR] TL;DR

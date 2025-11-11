@@ -3,7 +3,6 @@ title:
 draft: false
 tags:
   - "#pkm"
-description: Why I built this garden, and why it's so hard
 date: 2025-10-19
 ---
 > [!TLDR] TL;DR
@@ -39,7 +38,7 @@ That’s how I make sense of myself.
 It’s not just fear of forgetting tasks or trivia —  
 I sometimes **fear losing my own thoughts** before I understand them.
 
-Each idea feels fragile. Catching it here gives me peace.  
+Each idea feels fragile. Catching it here gives me **peace**.  
 I know it’s planted. I can come back to it. That gives me breathing room.
 
 ### To unlock deeper clarity through linking
@@ -92,6 +91,6 @@ That’s what I’ll be exploring — one leaf, one link, one layer at a time.
 
 ---
 
->[!tip] Follow-up
+>[!tip] See Also
 >[[Rebuilding My Note System & My Mind]] — a deeper reflection on perfectionism, hoarding, and starting over with more intention.
 

@@ -3,14 +3,12 @@ title:
 draft: false
 tags:
   - "#pkm"
-description:
 date: 2025-11-11
 ---
-# 🌱 Garden Changelog
-
-This page records the **milestones and shifts** in the structure, intent, and growth of this digital garden.
-
-I treat it like ***photographing*** a real garden — to remember where things took root, and how they changed.
+> [!info]
+> This page records the milestones and shifts in the structure, intent, and growth of this digital garden.
+> 
+> I treat it like ***photographing*** a real garden — to remember where things took root, and how they changed.
 
 ---
 ### 🗓️ 2025-10-18 — First Planting

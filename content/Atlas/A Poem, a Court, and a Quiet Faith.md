@@ -2,7 +2,6 @@
 title:
 draft: false
 tags:
-description:
 date: 2025-10-19
 ---
 ![[wimbledon-center-court.png|300]]

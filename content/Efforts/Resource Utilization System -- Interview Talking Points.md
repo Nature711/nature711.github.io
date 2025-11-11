@@ -2,7 +2,6 @@
 title:
 draft: false
 tags:
-description:
 date: 2025-11-10
 ---
 ## Describing the Project 
@@ -63,7 +62,6 @@ date: 2025-11-10
 > The change cut query latency from minutes to seconds and stabilized the whole pipeline — and it taught me that reliability often comes from **putting computation in the right place**, not just fixing code.
 
 >[!info]- How Prometheus Recording Rules Work
-> 
 > Recording rules reduce the load on Prometheus by **pre-calculating** the results of computationally expensive queries and saving them as new, simple time series data — trading **Space** (additional storage) for **Time** (faster query).
 > 
 > Instead of the query engine re-running a complex aggregation over raw data every time a dashboard or alert requests it, the "ruler" component runs the calculation periodically in the background.
@@ -74,7 +72,6 @@ date: 2025-11-10
 > - **Amortized Computation:** The heavy lifting is done once per evaluation interval, not every time the data is accessed.
 > - **Data Aggregation:** Thousands of raw time series are aggregated into a few simple ones, reducing the amount of data processed during queries.
 > - **Eliminates Redundancy:** A single recording rule replaces multiple identical slow queries across different dashboards and alerts.
-> -
 
 ---
 ## Follow-up Q&A

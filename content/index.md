@@ -2,7 +2,6 @@
 title: Welcome - Nature's Digital Garden
 draft: false
 tags:
-description: Landing page
 date: 2025-11-11
 ---
 ##  🌱 Welcome
@@ -47,13 +46,16 @@ This site is where I weave all these threads together — through notes, systems
 
 This is more than a blog or portfolio — it’s a **Digital Garden**, where ideas grow and evolve over time.
 
-- 📚 **[[Digital Garden|What is a Digital Garden?]]**  
-  Why I chose this approach — evolving thoughts, bidirectional links, and writing in public
+- 📚 **[[Digital Garden|What this Digital Garden is & Why I Build it]]**  
+  What this space is, what it means to me, and why building it was hard (but worth it)
 
-- 🔧 **[[How I Build this Digital Garden|How This Site Was Built]]**   
-  Notes on using Quartz + Obsidian to build this site, with custom tweaks and workflows
+- 🤔 **[[Maps, Not Folders|How this Garden is Organized & How to Explore it]]**
+   The **design philosophy** behind my structure — folders are for storage, maps are for navigation
 
-- 🌱 **[[Garden Changelog]]**  
+- 🔧 **[[How I Build this Digital Garden|How I Built this Garden]]**   
+  The tech behind it: **Quartz + Obsidian**, and the lightweight publishing workflow  
+
+- 🌱 **[[Garden Changelog|How this Garden has Grown over Time]]**  
   Snapshots of growth over time (graph views, structure updates)
 
 ---
