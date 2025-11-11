@@ -3,6 +3,7 @@ title:
 draft: false
 tags:
   - pkm
+  - "#reflection"
 description: A reflection on my PKM Archetypes
 date: 2025-10-20
 ---

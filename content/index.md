@@ -3,12 +3,8 @@ title: Welcome - Nature's Digital Garden
 draft: false
 tags:
 description: Landing page
-date: 2025-10-18
+date: 2025-11-11
 ---
-> [!warning] Site under active cultivation 🌱
->⛏️ Porting notes from Obsidian → web  
->🚧 Expect occasional broken paths — the garden’s still growing!
-
 ##  🌱 Welcome
 
 > **Welcome to a garden that never stops growing.**
@@ -18,66 +14,47 @@ This is my **[[Digital Garden]]** — where I ***write*** what I learn, ***link*
 Some notes are _evergreen_, some are still _seeds_ — all part of a living **[[Atlas/PKM|PKM]] system** that evolves with how I think.
 
 ---
-## 🧠 Who am I?
+## 🚀 Start Exploring
 
-> By day, I build what's **reliable & impactful**. 
-> By night, I explore what’s **fun & meaningful**.
+> **Choose your path — the joy is in the discovery**.
 
-Hi, I’m **Tianran** (Nature).  
-
-I’m a **Software Engineer** based in Singapore, currently growing toward **infrastructure / platform / cloud engineering**.
-
-### Some parts of me:
-
-- 💻 **Programmer** — working with Prometheus, Kubernetes, Go, and building infra tools
-- 🎾 **Tennis fan/player** — I obsess over the geometry of the game and ATP tour schedules
-- 🧠 **Obsidian power user** — my second brain lives there
-- 📒 **Journal addict** — I reflect a lot, probably too much
-- 🌱 **Lifelong learner** — each note, each commit, each insight adds to the whole
-
-I believe **consistency beats intensity**, and **notes are seeds**.  
-This site is the **ecosystem** where I plant them.
+- 🧠 **[[PKM Map|PKM Hub]]** — second brain, workflows, systems of meaning  
+- 🏗 **[[System Design Map|System Design]]** — concepts, interviews, architecture maps  
+- 🛠 **[[HoYoverse Project Map|Project Glossary]]** — real infra docs, dashboards, and templates  
+- 💭 **[[Dots Map|Reflections & Dots]]** — soft thoughts on decisions, growth, and learning  
 
 ---
-## 🌍 Where do I come from?
+## 🧠 About Me
 
-> **I believe clarity comes from writing, not before it.**
+> Infra Engineer by Day, 
+> Reflective Journaler by Night.
 
-I used to think I had to have everything figured out before putting it online. But turns out… it’s the other way around.
+Hi, I’m **Tianran** (Nature).
+I’m a **Software Engineer based in Singapore**, focusing on Cloud & Infrastructure. 
 
-I started this site as a way to:
-- 📚 Writing through system design, infra concepts, and distributed systems
-- 🛠 Documenting my experiments, learnings, and “aha” moments
-- ✍️ Publishing thoughts on how we grow — not just technically, but mentally
+But that’s just part of the picture.
 
-This garden is a record of that process.  
-Nothing here is final — everything here is *becoming*.
+I’m also:
+- 🧠 A **PKM nerd** — building my second brain in Obsidian, one linked insight at a time  
+- 🎾 A **tennis player & fan** — obsessed with footwork, match geometry, and ATP/WTA tour  
+- ✍️ A **reflective thinker** — I journal often, question deeply, and write to find clarity  
+- 🌱 A **lifelong learner** — curious about systems, growth, and how to live intentionally  
 
----
-## 🌻 Where am I going?
-
-> **I’m building toward clarity, confidence, and good systems — in work and life.**
-
-Right now, I’m:
-- Deepening my systems knowledge through **real projects**
-- Sharpening my thinking by **writing openly and frequently**
-- Studying infra patterns, cloud-native tools, and observability practices
-- Reflecting on how to grow well — in code, career, and life
-
-I don’t expect mastery overnight.  
-Like any long game — in programming or tennis — this is about **endurance, curiosity, and refinement**.
+This site is where I weave all these threads together — through notes, systems, and stories.
 
 ---
-## 🧭 Where to start?
+## 🪷 About this Garden
 
-> **There’s no fixed path here. Explore freely — the fun’s in the *discovery*.**
+This is more than a blog or portfolio — it’s a **Digital Garden**, where ideas grow and evolve over time.
 
-- [[Garden Index]] – all the topics I’m exploring
-- [[HoYoverse Project Summary|Projects]] – infra experiments & mini tools
-- [[Now]] – what I’m currently focused on
-- [[Meta Thinking]] – notes on PKM, Obsidian, learning, and systems of meaning
-- [[Infra Notes]] – technical explorations in Prometheus, Kafka, K8s, etc.
-- [[Learning to Choose - A Late Start|Reflections]] – sometimes soft, sometimes spiky
+- 📚 **[[Digital Garden|What is a Digital Garden?]]**  
+  Why I chose this approach — evolving thoughts, bidirectional links, and writing in public
+
+- 🔧 **[[How I Build this Digital Garden|How This Site Was Built]]**   
+  Notes on using Quartz + Obsidian to build this site, with custom tweaks and workflows
+
+- 🌱 **[[Garden Changelog]]**  
+  Snapshots of growth over time (graph views, structure updates)
 
 ---
 

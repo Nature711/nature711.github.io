@@ -2,7 +2,7 @@
 title:
 draft: false
 tags:
-  - pkm
+  - "#pkm"
 description: Why I built this garden, and why it's so hard
 date: 2025-10-19
 ---

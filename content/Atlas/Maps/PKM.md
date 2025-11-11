@@ -1,3 +1,0 @@
-```dataview
-list from #pkm 
-```
