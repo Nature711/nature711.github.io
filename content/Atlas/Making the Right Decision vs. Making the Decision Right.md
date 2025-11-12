@@ -5,14 +5,13 @@ tags:
   - "#reflection"
 date: 2025-10-22
 ---
-When I spoke with my career advisor about my [[Learning to Choose - A Late Start|struggles with decision-making]], he said something that completely shifted my thinking:
+When I spoke with my career advisor about my [[Learning to Choose -- A Late Start|struggles with decision-making]], he said something that completely shifted my thinking:
 
 > There’s a difference between “making the right decision” and “making the decision right.”
 
 At first, it sounded like just a clever wordplay. But the more I thought about it, the more I realized — this single shift in mindset could solve a big part of my decision paralysis.
 
 ---
-
 ### What’s the difference?
 
 **Making the right decision** means trying to find the best possible option from the start.  

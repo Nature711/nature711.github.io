@@ -18,5 +18,5 @@ I listened to it several times a day, copied it into my notebook, and held it cl
 
 Looking back now, that was a time when life felt *simpler*. No AI, no tangled relationships, no constant flood of distractions. Just a girl at her desk, chasing better grades, holding onto small things — like this poem — and feeling *complete*.
 
-Now, I have more, yet I often drift in the endless ocean of possibilities, lost in the pull of “what-ifs.” And sometimes, I wish I could return to that desk, that poem, that quiet certainty — and remember how it felt to have **enough**.
+Now, I have more, yet I often drift in the endless ocean of possibilities, lost in the pull of “*what-ifs*.” And sometimes, I wish I could return to that desk, that poem, that quiet certainty — and remember how it felt to have **enough**.
 

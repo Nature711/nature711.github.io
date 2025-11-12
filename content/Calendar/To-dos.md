@@ -23,5 +23,13 @@ date: 2025-11-11
 
 > hopefully to finish by the end of November, but I have more urgent & important stuff to deal with which may cause some delay xD
 
+---
+### Technical content
+
+- [ ] monitor the monitoring system itself
+- prom deployed with 3 replicas
+- probe itself -- with metrics
+- can add to [[Observability & Monitoring]] -- best practices
+	- answering the qn -- how do u ensure the monitoring system itself is reliable & available?
 
 

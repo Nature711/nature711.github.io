@@ -15,7 +15,7 @@ date: 2025-11-11
 ## 🧭 1. Decision & Direction
 
 - [[Making the Right Decision vs. Making the Decision Right]] — A core shift in mindset around agency and forward momentum
-- [[Learning to Choose - A Late Start]] — My journey of reclaiming choice after years of deferring decisions
+- [[Learning to Choose -- A Late Start]] — My journey of reclaiming choice after years of deferring decisions
 
 ---
 ## 🧠 2. Identity & Self-Understanding
