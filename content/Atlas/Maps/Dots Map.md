@@ -15,7 +15,8 @@ date: 2025-11-11
 ## 🧭 1. Decision & Direction
 
 - [[Making the Right Decision vs. Making the Decision Right]] — A core shift in mindset around agency and forward momentum
-- [[Learning to Choose -- A Late Start]] — My journey of reclaiming choice after years of deferring decisions
+- [[Learning to Choose (A Late Start)]] — My journey of reclaiming choice after years of deferring decisions
+- [[Letter to Future Me, 20251114]] — A letter to the me who might feel lost again
 
 ---
 ## 🧠 2. Identity & Self-Understanding
@@ -31,6 +32,9 @@ date: 2025-11-11
 ---
 
 ```dataview
-list from #reflection 
+list from #reflection
 ```
 
+```dataview
+list from "Atlas/Dots"
+```

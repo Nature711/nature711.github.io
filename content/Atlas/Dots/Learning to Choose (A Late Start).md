@@ -7,7 +7,7 @@ tags:
 date: 2025-10-21
 ---
 ## A Life of Decisions Made by Others
-
+``
 I recently had a really uncomfortable but important realization:  
 I may have never truly made a decision for myself.
 
@@ -29,7 +29,7 @@ If I let someone else decide for me, then when things go wrong, at least I won�
 
 But slowly, that mindset chipped away at my sense of autonomy. I became someone who didn’t know what I wanted — or even how to figure it out.
 
-## Everyone’s Choosing—Except Me
+## Everyone’s Choosing — Except Me
 
 Now I’m 23. I look around, and many of my peers have already started designing their own lives:  
 some bought homes, some changed careers, some moved to new countries, some pursued masters degrees or just packed up to travel. Big decisions. Scary decisions. But _their_ decisions.  

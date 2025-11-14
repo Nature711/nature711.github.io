@@ -50,7 +50,7 @@ This is more than a blog or portfolio — it’s a **Digital Garden**, where ide
   What this space is, what it means to me, and why building it was hard (but worth it)
 
 - 🤔 **[[Maps, Not Folders|How this Garden is Organized & How to Explore it]]**
-   The **design philosophy** behind my structure — folders are for storage, maps are for navigation
+  The **design philosophy** behind my structure — folders are for storage, maps are for navigation
 
 - 🔧 **[[How I Build this Digital Garden|How I Built this Garden]]**   
   The tech behind it: **Quartz + Obsidian**, and the lightweight publishing workflow  
