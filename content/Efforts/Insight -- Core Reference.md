@@ -74,8 +74,8 @@ Insight → Prometheus Exporter → Prometheus → Grafana
         
 - **Monitoring**:
     - All metrics are exposed via Prometheus
-    - Collected by Grafana & Thanos for historical analysis
-    
+    - Collected by [[Insight -- Output]].
+
 ### Data Flow
 
 #### Intra-Region Path

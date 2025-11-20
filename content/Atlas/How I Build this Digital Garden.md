@@ -55,7 +55,7 @@ Once I set it up, publishing became effortless:
 ```bash
 npx quartz sync
 ```
-`
+
 That’s it. No more writing conversion scripts. No broken links. No fighting Markdown quirks.
 
 Just focus on writing in Obsidian — and let Quartz handle the rest.  

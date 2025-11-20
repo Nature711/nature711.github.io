@@ -4,13 +4,9 @@ draft: false
 tags:
 date: 2025-11-08
 ---
-## Phase 1: Clarify Requirements (5 minutes)
+## Phase 1: Clarify Requirements
 
-### Ask These Questions:
-
-**You**: "Before I start designing, I'd like to clarify a few things about the scope and requirements."
-
-#### Functional Requirements:
+### Functional Requirements
 
 - "What operations should the cart support?"
     - Add item to cart
@@ -25,7 +21,7 @@ date: 2025-11-08
     - Active users: Keep indefinitely
     - Inactive: Clean up after 30 days
 
-#### Non-Functional Requirements:
+#### Non-Functional Requirements
 
 - "What's the expected scale?"
     - **DAU**: 10 million daily active users
@@ -44,11 +40,9 @@ date: 2025-11-08
     - **Strong consistency needed** for checkout (when converting cart to order)
 
 ---
-## Phase 2: Back-of-Envelope Calculations (3 minutes)
+## Phase 2: Back-of-Envelope Calculations
 
-Let's calculate to understand the scale:
-
-### Storage Calculation:
+### Storage Calculation
 
 ```
 Assumptions:
@@ -67,7 +61,7 @@ Keep carts for 30 days:
 With 3x replication: ~1TB storage needed
 ```
 
-### QPS Calculation:
+### QPS Calculation
 
 ```
 Peak QPS: 50,000 requests/second
@@ -82,7 +76,7 @@ Database can handle:
 - Total DB load: 2,475 + 500 = ~3,000 QPS ✅ Manageable
 ```
 
-### Bandwidth:
+### Bandwidth
 
 ```
 Average response size: 5KB (cart with 5 items)
@@ -92,7 +86,7 @@ Peak bandwidth: 50,000 QPS × 5KB = 250 MB/s = 2 Gbps
 **Conclusion**: Need caching, horizontal scaling, and database read replicas.
 
 ---
-## Phase 3: High-Level Architecture (5 minutes)
+## Phase 3: High-Level Architecture
 
 ### Version 1: Baseline Architecture
 
@@ -119,9 +113,6 @@ Peak bandwidth: 50,000 QPS × 5KB = 250 MB/s = 2 Gbps
 > ```
 > 
 
-**Explain**: "I'll start with a simple architecture and then discuss how to scale it."
-
----
 ### Version 2: Production-Ready Architecture
 
 >[!info]- Diagram
@@ -169,109 +160,76 @@ Peak bandwidth: 50,000 QPS × 5KB = 250 MB/s = 2 Gbps
 > ```
 
 ---
-## Phase 4: API Design (3 minutes)
+## Phase 4: API Design (CRUD)
 
-> [!info]- RESTful API Endpoints
-> ```http
-> # Add item to cart
-> POST /api/v1/cart/items
-> Request:
-> {
->   "user_id": "user_123",
->   "item_id": "prod_456",
->   "quantity": 2,
->   "price": 29.99,
->   "variant": {
->     "size": "M",
->     "color": "blue"
->   }
-> }
-> Response:
-> {
->   "success": true,
->   "cart": {
->     "user_id": "user_123",
->     "items": [...],
->     "total_items": 3,
->     "total_price": 89.97
->   }
-> }
-> 
-> # Get cart
-> GET /api/v1/cart?user_id=user_123
-> Response:
-> {
->   "user_id": "user_123",
->   "items": [
->     {
->       "item_id": "prod_456",
->       "quantity": 2,
->       "price": 29.99,
->       "added_at": "2025-11-08T10:30:00Z"
->     }
->   ],
->   "total_items": 2,
->   "total_price": 59.98
-> }
-> 
-> # Update item quantity
-> PUT /api/v1/cart/items/{item_id}
-> Request:
-> {
->   "user_id": "user_123",
->   "quantity": 5
-> }
-> 
-> # Remove item
-> DELETE /api/v1/cart/items/{item_id}?user_id=user_123
-> 
-> # Clear cart
-> DELETE /api/v1/cart?user_id=user_123
-> 
-> # Checkout (convert cart to order)
-> POST /api/v1/cart/checkout
-> Request:
-> {
->   "user_id": "user_123",
->   "shipping_address": {...},
->   "payment_method": {...}
-> }
-> ```
+### Add item to cart
 
----
-## Phase 5: Database Design (5 minutes)
-
-### Schema Design:
-
-```sql
--- Cart Items Table (Main table)
-CREATE TABLE cart_items (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    user_id VARCHAR(64) NOT NULL,          -- User identifier
-    item_id VARCHAR(64) NOT NULL,          -- Product ID
-    quantity INT NOT NULL DEFAULT 1,       -- How many
-    price DECIMAL(10,2) NOT NULL,          -- Price at time of adding
-    variant_data JSON,                      -- Size, color, etc.
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    
-    -- Indexes
-    PRIMARY KEY (user_id, item_id),        -- Composite PK (no duplicates)
-    INDEX idx_user_id (user_id),           -- Fast user cart lookup
-    INDEX idx_updated_at (updated_at)      -- For cleanup jobs
-) ENGINE=InnoDB;
-
--- Example data:
-+----------+---------+----------+-------+-------+------------------+
-| user_id  | item_id | quantity | price | variant_data         |
-+----------+---------+----------+-------+------------------+
-| user_123 | prod_1  | 2        | 29.99 | {"size":"M","color":"blue"}|
-| user_123 | prod_5  | 1        | 15.50 | {"size":"L"}         |
-| user_456 | prod_3  | 3        | 45.00 | null                 |
-+----------+---------+----------+-------+------------------+
+```http
+POST /cart/items
 ```
 
-### Why This Schema?
+- Request includes: `user_id`, `item_id`, quantity, price, variant details
+- Response returns: updated cart with total items and total price
+
+### Get cart
+
+```http
+GET /cart?user_id=user_123
+```
+
+- Returns all items in cart with quantities, prices, timestamps
+- Includes total items count and total price
+
+### Update item quantity
+
+```http
+PUT /cart/items/{item_id}
+```
+
+- Request includes: `user_id`, new quantity
+- Updates the quantity for specific item
+
+### Remove item
+
+```http
+DELETE /api/v1/cart/items/{item_id}?user_id=user_123
+```
+
+- Removes specific item from cart
+
+---
+## Phase 5: Database Design
+### Schema Design
+
+> [!info]- Schema
+> 
+> ```sql
+> -- Cart Items Table (Main table)
+> CREATE TABLE cart_items (
+>     id BIGINT PRIMARY KEY AUTO_INCREMENT,
+>     user_id VARCHAR(64) NOT NULL,          -- User identifier
+>     item_id VARCHAR(64) NOT NULL,          -- Product ID
+>     quantity INT NOT NULL DEFAULT 1,       -- How many
+>     price DECIMAL(10,2) NOT NULL,          -- Price at time of adding
+>     variant_data JSON,                      -- Size, color, etc.
+>     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+>     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+>     
+>     -- Indexes
+>     PRIMARY KEY (user_id, item_id),        -- Composite PK (no duplicates)
+>     INDEX idx_user_id (user_id),           -- Fast user cart lookup
+>     INDEX idx_updated_at (updated_at)      -- For cleanup jobs
+> ) ENGINE=InnoDB;
+> 
+> -- Example data:
+> +----------+---------+----------+-------+-------+--------------------+
+> | user_id  | item_id | quantity | price | variant_data               |
+> +----------+---------+----------+-------+----------------------------+
+> | user_123 | prod_1  | 2        | 29.99 | {"size":"M","color":"blue"}|
+> | user_123 | prod_5  | 1        | 15.50 | {"size":"L"}               |
+> | user_456 | prod_3  | 3        | 45.00 | null                       |
+> +----------+---------+----------+-------+----------------------------+
+> ```
 
 **1. Composite Primary Key `(user_id, item_id)`:**
 
@@ -298,83 +256,29 @@ CREATE TABLE cart_items (
 
 - For cleanup job: `DELETE FROM cart_items WHERE updated_at < DATE_SUB(NOW(), INTERVAL 30 DAY)`
 
-### Guest Cart Handling:
-
-For unauthenticated users, use session ID as `user_id`:
-
-```sql
--- Guest cart
-INSERT INTO cart_items (user_id, item_id, quantity, price)
-VALUES ('session_abc123', 'prod_1', 1, 29.99);
-
--- When user logs in, merge guest cart with user cart:
-UPDATE cart_items 
-SET user_id = 'user_123' 
-WHERE user_id = 'session_abc123';
-```
-
 ---
-## Phase 6: Redis Cache Design (5 minutes)
+## Phase 6: Redis Cache Design
 
 ### Cache Strategy: Cache-Aside Pattern
 
-```go
-// Read Operation (Get Cart)
-func GetCart(userID string) (*Cart, error) {
-    cacheKey := "cart:" + userID
-    
-    // 1. Try Redis first
-    cachedData, err := redis.HGetAll(cacheKey)
-    if err == nil && len(cachedData) > 0 {
-        // Cache HIT - fast path
-        return parseCartFromRedis(cachedData), nil
-    }
-    
-    // 2. Cache MISS - query database
-    cart, err := db.Query(`
-        SELECT item_id, quantity, price, variant_data 
-        FROM cart_items 
-        WHERE user_id = ?
-    `, userID)
-    if err != nil {
-        return nil, err
-    }
-    
-    // 3. Store in Redis for next time
-    for _, item := range cart.Items {
-        redis.HSet(cacheKey, item.ItemID, serializeItem(item))
-    }
-    redis.Expire(cacheKey, 1*time.Hour)  // TTL = 1 hour
-    
-    return cart, nil
-}
+**Read Operation (Get Cart)**
 
-// Write Operation (Add Item)
-func AddItemToCart(userID, itemID string, quantity int, price float64) error {
-    // 1. Write to database first (source of truth)
-    err := db.Execute(`
-        INSERT INTO cart_items (user_id, item_id, quantity, price)
-        VALUES (?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE 
-            quantity = quantity + VALUES(quantity),
-            updated_at = CURRENT_TIMESTAMP
-    `, userID, itemID, quantity, price)
-    if err != nil {
-        return err
-    }
-    
-    // 2. Invalidate cache (delete from Redis)
-    cacheKey := "cart:" + userID
-    redis.Del(cacheKey)
-    
-    // Next read will reload from DB
-    return nil
-}
-```
+1. Try Redis first with cache key `cart:user_id`
+2. Cache HIT: Return cached data immediately (fast path)
+3. Cache MISS: Query database
+4. Store result in Redis for next time with TTL = 1 hour
+5. Return cart data
 
-### Redis Data Structure:
+**Write Operation (Add Item)**
 
-**Use Redis Hash** (recommended for cart):
+1. Write to database first (source of truth)
+2. Use `INSERT ON DUPLICATE KEY UPDATE` for quantity updates
+3. Invalidate cache by deleting Redis key
+4. Next read will reload from database
+
+### Redis Data Structure
+
+Use **Redis Hash** (recommended for cart):
 
 ```redis
 Key: "cart:user_123"
@@ -396,21 +300,21 @@ Commands:
 - Efficient memory usage
 - Atomic operations on single items
 
-### Cache Performance:
+### Cache Performance
 
-```
-Without Cache:
+**Without Cache**
+
 - All 50K QPS hit MySQL
-- MySQL dies at ~1K QPS 💀
+- MySQL dies at ~1K QPS
 
-With Cache (95% hit rate):
-- Redis handles: 47,500 QPS ✅
-- MySQL handles: 2,500 QPS (cache misses) + 500 QPS (writes) = 3,000 QPS ✅
+**With Cache (95% hit rate)**
+
+- Redis handles: 47,500 QPS
+- MySQL handles: 2,500 QPS (cache misses) + 500 QPS (writes) = 3,000 QPS
 - Response time: 20ms → 1ms (20x faster)
-```
 
 ---
-## Phase 7: Scaling Strategy (8 minutes)
+## Phase 7: Scaling Strategy
 
 ### Step 1: Horizontal Scaling (API Servers)
 
@@ -438,7 +342,6 @@ With Cache (95% hit rate):
 - **Least connections** if some requests are slower
 - **Health checks**: Remove unhealthy servers automatically
 
----
 ### Step 2: Database Read Replicas
 
 ```
@@ -456,58 +359,27 @@ With Cache (95% hit rate):
         └──────────┘      └──────────┘
 ```
 
-**Read/Write Split:**
+**Read/Write Split**
 
-```go
-func GetCart(userID string) {
-    // Read from replica
-    return readReplica.Query("SELECT * FROM cart_items WHERE user_id = ?", userID)
-}
+- Read operations (GetCart): Query read replicas
+- Write operations (AddToCart): Execute on master
+- Master replicates changes to replicas
 
-func AddToCart(userID, itemID string) {
-    // Write to master
-    return master.Execute("INSERT INTO cart_items ...")
-}
-```
+**Handling Replication Lag**
 
-**Handling Replication Lag:**
+- After write operation, delete cache and set flag
+- Flag indicates: read from master for next 5 seconds
+- Ensures user sees their own writes immediately
+- After flag expires, reads go back to replicas
+- Balances strong consistency for writes with eventual consistency for reads
 
-```go
-func AddToCart(userID, itemID string) {
-    master.Execute("INSERT INTO cart_items ...")
-    redis.Del("cart:" + userID)
-    
-    // Force next read from master (not replica)
-    redis.Set("read_from_master:" + userID, "1", 5*time.Second)
-}
-
-func GetCart(userID string) {
-    // Check if we should read from master
-    if redis.Get("read_from_master:" + userID) != nil {
-        return master.Query(...)  // Strong consistency
-    }
-    return replica.Query(...)  // Eventual consistency OK
-}
-```
-
----
 ### Step 3: Database Sharding (for 100M+ users)
 
 **Shard by `user_id`** using consistent hashing:
 
-```go
-func GetShardForUser(userID string) int {
-    hash := crc32.ChecksumIEEE([]byte(userID))
-    return int(hash % NUM_SHARDS)
-}
-
-func GetCart(userID string) {
-    shardID := GetShardForUser(userID)
-    db := dbConnections[shardID]
-    
-    return db.Query("SELECT * FROM cart_items WHERE user_id = ?", userID)
-}
-```
+- Hash the user_id to determine shard number
+- Route all operations for that user to specific shard
+- Each shard handles subset of users
 
 **Shard architecture:**
 
@@ -526,11 +398,10 @@ func GetCart(userID string) {
 
 **Why shard by `user_id`?**
 
-- ✅ All cart operations are per-user (no cross-shard queries)
-- ✅ Evenly distributes data
-- ✅ Simple routing logic
+- All cart operations are per-user (no cross-shard queries)
+- Evenly distributes data
+- Simple routing logic
 
----
 ### Step 4: Multi-Region Deployment
 
 ```
@@ -567,7 +438,7 @@ func GetCart(userID string) {
 - Fault isolation (one region down ≠ all down)
 
 ---
-## Phase 8: Handle Edge Cases & Failures (5 minutes)
+## Phase 8: Handle Edge Cases & Failures
 
 ### Edge Case 1: Concurrent Updates
 
@@ -582,122 +453,57 @@ Time 3: Request 2 writes quantity = 3  ❌ Should be 4!
 
 **Solution 1: Idempotency Key**
 
-```http
-POST /api/v1/cart/items
-Headers:
-  Idempotency-Key: uuid-12345
-
-# Same key = same result (deduplicated)
-```
-
-```go
-func AddToCart(userID, itemID string, idempotencyKey string) {
-    // Check if we've seen this key before
-    if redis.Exists("idempotency:" + idempotencyKey) {
-        return getCachedResult(idempotencyKey)  // Return same result
-    }
-    
-    // Process request
-    result := processAddToCart(userID, itemID)
-    
-    // Cache result for 24 hours
-    redis.Set("idempotency:" + idempotencyKey, result, 24*time.Hour)
-    return result
-}
-```
+- Client generates unique key per request
+- Server checks if key already processed
+- If yes, return cached result
+- If no, process and cache result for 24 hours
+- Same key always returns same result (deduplicated)
 
 **Solution 2: Optimistic Locking**
 
-```sql
--- Add version column
-ALTER TABLE cart_items ADD COLUMN version INT DEFAULT 0;
+- Add version column to cart_items table
+- UPDATE statement includes WHERE version = current_version
+- Only succeeds if version matches
+- If 0 rows affected, version changed (concurrent update detected)
+- Retry with new version
 
--- Update with version check
-UPDATE cart_items 
-SET quantity = quantity + 1, 
-    version = version + 1
-WHERE user_id = ? 
-  AND item_id = ? 
-  AND version = ?;  -- Only succeed if version matches
-
--- If 0 rows affected, retry
-```
-
----
 ### Edge Case 2: Item Out of Stock
 
-**Problem:** User adds item, but inventory runs out before checkout
+**Problem**: User adds item, but inventory runs out before checkout
 
 **Solution: Check inventory at critical points**
 
-```go
-func AddToCart(userID, itemID string, quantity int) error {
-    // 1. Check inventory service (optional - soft check)
-    available := inventoryService.CheckAvailability(itemID, quantity)
-    if !available {
-        return errors.New("item out of stock")
-    }
-    
-    // 2. Add to cart (may still succeed even if low stock)
-    db.Execute("INSERT INTO cart_items ...")
-    
-    return nil
-}
+Add to cart flow:
 
-func Checkout(userID string) error {
-    // 3. MUST check inventory again (hard check)
-    cartItems := getCart(userID)
-    
-    for _, item := range cartItems {
-        available := inventoryService.ReserveInventory(item.ItemID, item.Quantity)
-        if !available {
-            return errors.New("item " + item.ItemID + " no longer available")
-        }
-    }
-    
-    // 4. Create order
-    createOrder(cartItems)
-    
-    // 5. Clear cart
-    clearCart(userID)
-    
-    return nil
-}
-```
+- Check inventory service for availability (soft check)
+- If available, add to cart
+- User may still succeed even if low stock
 
----
+Checkout flow:
+
+- MUST check inventory again (hard check)
+- Reserve inventory for each item
+- If any item unavailable, return error
+- If all available, create order and clear cart
+
+Key principle: Soft check at add-to-cart, hard check at checkout
+
 ### Edge Case 3: Price Changes
 
-**Problem:** Product price increases after user added to cart
+**Problem**: Product price increases after user added to cart
 
 **Solution: Store price at add-to-cart time**
 
-```sql
--- Cart stores price when added
-INSERT INTO cart_items (user_id, item_id, quantity, price)
-VALUES ('user_123', 'prod_1', 2, 29.99);
+- Cart stores price when item added
+- At checkout, use cart price (not current product price)
+- This matches user expectation
 
--- At checkout, use cart price (not current product price)
-SELECT item_id, quantity, price FROM cart_items WHERE user_id = 'user_123';
-```
+**Show price difference in UI**
 
-**Show price difference in UI:**
-
-```go
-func GetCart(userID string) {
-    cartItems := db.Query("SELECT * FROM cart_items WHERE user_id = ?", userID)
-    
-    for i, item := range cartItems {
-        currentPrice := productService.GetPrice(item.ItemID)
-        if currentPrice != item.Price {
-            cartItems[i].PriceChanged = true
-            cartItems[i].CurrentPrice = currentPrice
-        }
-    }
-    
-    return cartItems
-}
-```
+- When fetching cart, compare cart price vs current price
+- If different, flag item as price_changed
+- Display both old and current price to user
+- User decides whether to proceed
 
 ---
 ### Failure Scenario 1: Database Goes Down
@@ -731,34 +537,31 @@ Replica 2
 - Reads continue working (from replicas)
 - Cart viewing still works, adding items temporarily fails
 
----
 ### Failure Scenario 2: Redis Cache Goes Down
 
-**Problem:** Redis crashes
+**Problem**: Redis crashes
 
 **Solution: Graceful degradation**
 
-```go
-func GetCart(userID string) {
-    // Try cache first
-    cart, err := getCartFromRedis(userID)
-    if err == nil {
-        return cart
-    }
-    
-    // Redis down - fall back to database
-    log.Warn("Redis unavailable, reading from DB")
-    return getCartFromDatabase(userID)
-}
-```
+Read operation logic:
 
-**Impact:**
+- Try cache first
+- If Redis unavailable, log warning
+- Fall back to database directly
+- Return cart data from database
+
+**Impact**
 
 - Response time increases: 1ms → 20ms
 - Database load increases: 2,500 QPS → 50,000 QPS
-- May need to rate limit if DB can't handle load
+- May need rate limiting if database can't handle load
 
 **Prevention: Redis Sentinel / Cluster**
+
+- Deploy Redis with master and replicas
+- Sentinel monitors health
+- Auto-failover if master dies
+- Replicas promoted automatically
 
 ```
 ┌─────────┐   ┌─────────┐   ┌─────────┐
@@ -774,171 +577,99 @@ func GetCart(userID string) {
 ---
 ### Failure Scenario 3: API Server Crashes
 
-**Problem:** One API server dies
+**Problem**: One API server dies
 
 **Solution: Load balancer health checks**
 
-```
-┌─────────────┐
-│Load Balancer│
-└──────┬──────┘
-       │ Health check every 5 seconds
-   ┌───┴───┬───────┬───────┐
-   ↓       ↓       ↓       ↓
-┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐
-│API-1│ │API-2│ │API-3│ │API-4│
-│  ✅ │ │  ✅│ │  ❌ │ │  ✅ │
-└─────┘ └─────┘ └─────┘ └─────┘
-                  ↑
-            (unhealthy - remove from pool)
-```
+Health check mechanism:
 
-**Health check endpoint:**
+- Load balancer pings /health endpoint every 5 seconds
+- If server fails health check, marked unhealthy
+- Load balancer stops sending new requests
+- Existing requests complete gracefully
+- Traffic redistributed to healthy servers
 
-```go
-GET /health
-Response:
-{
-  "status": "healthy",
-  "database": "connected",
-  "redis": "connected",
-  "timestamp": "2025-11-08T10:30:00Z"
-}
-```
+Health check endpoint response:
 
-**Load balancer removes unhealthy server:**
-
-- Stops sending new requests
-- Existing requests complete
-- Traffic distributed to remaining servers
+- Status: healthy/unhealthy
+- Database connection status
+- Redis connection status
+- Timestamp
 
 ---
-## Phase 9: Monitoring & Observability (3 minutes)
+## Phase 9: Monitoring & Observability
 
-### Key Metrics to Track:
+### Key Metrics to Track
 
-**1. Application Metrics (Prometheus)**
+**Application Metrics (Prometheus)**
 
-```go
-// Request latency
-httpRequestDuration := prometheus.NewHistogramVec(
-    prometheus.HistogramOpts{
-        Name: "cart_request_duration_seconds",
-        Help: "Cart API request latency",
-    },
-    []string{"method", "endpoint"},
-)
+- Request latency (P50, P95, P99)
+- Request count by method, endpoint, status
+- Cache hit rate by operation
+- Error rate
 
-// Request count
-httpRequestTotal := prometheus.NewCounterVec(
-    prometheus.CounterOpts{
-        Name: "cart_requests_total",
-        Help: "Total cart API requests",
-    },
-    []string{"method", "endpoint", "status"},
-)
+**Database Metrics**
 
-// Cache hit rate
-cacheHitRate := prometheus.NewGaugeVec(
-    prometheus.GaugeOpts{
-        Name: "cart_cache_hit_rate",
-        Help: "Redis cache hit rate",
-    },
-    []string{"operation"},
-)
-```
-
-**2. Database Metrics**
-
-```
 - Query latency (P50, P95, P99)
 - Connection pool usage
 - Slow query count (queries > 100ms)
-- Replication lag (replica behind master by how much)
-```
+- Replication lag (replica behind master)
 
-**3. Redis Metrics**
+**Redis Metrics**
 
-```
 - Memory usage
 - Evicted keys per second
 - Cache hit rate
 - Command latency
-```
 
-**4. Business Metrics**
+**Business Metrics**
 
-```
 - Active carts count
 - Average cart size (items per cart)
 - Cart abandonment rate
 - Checkout conversion rate
-```
 
----
-### Alerting Rules:
+### Alerting Rules
 
-```yaml
-# High latency
-- alert: HighCartLatency
-  expr: cart_request_duration_seconds{quantile="0.99"} > 0.5
-  for: 5m
-  annotations:
-    summary: "Cart API P99 latency > 500ms"
+**High latency alert**
 
-# Low cache hit rate
-- alert: LowCacheHitRate
-  expr: cart_cache_hit_rate < 0.9
-  for: 10m
-  annotations:
-    summary: "Cache hit rate dropped below 90%"
+- Trigger: P99 latency > 500ms for 5 minutes
+- Action: Page on-call engineer
 
-# Database replication lag
-- alert: HighReplicationLag
-  expr: mysql_replication_lag_seconds > 10
-  for: 5m
-  annotations:
-    summary: "Replication lag > 10 seconds"
+**Low cache hit rate alert**
 
-# High error rate
-- alert: HighErrorRate
-  expr: rate(cart_requests_total{status="5xx"}[5m]) > 0.01
-  for: 2m
-  annotations:
-    summary: "Error rate > 1%"
-```
+- Trigger: Cache hit rate < 90% for 10 minutes
+- Action: Investigate cache issues
 
----
-### Logging Strategy:
+**Database replication lag alert**
 
-```go
-// Structured logging
-log.Info("cart_item_added", 
-    "user_id", userID,
-    "item_id", itemID,
-    "quantity", quantity,
-    "latency_ms", latency,
-    "cache_hit", cacheHit,
-)
+- Trigger: Replication lag > 10 seconds for 5 minutes
+- Action: Check replica health
 
-// Error logging
-log.Error("database_query_failed",
-    "user_id", userID,
-    "query", query,
-    "error", err.Error(),
-    "retry_count", retryCount,
-)
-```
+**High error rate alert**
 
-**Log levels:**
+- Trigger: Error rate > 1% for 2 minutes
+- Action: Page on-call engineer
 
-- DEBUG: Detailed flow (disabled in production)
-- INFO: Normal operations (cart added, checkout)
+### Logging Strategy
+
+**Structured logging format**
+
+- Log level: DEBUG, INFO, WARN, ERROR
+- Include: timestamp, trace_id, user_id, operation, latency, status
+- Normal operations: INFO level
+- Errors: ERROR level with stack trace
+- Retries: WARN level
+
+**Log levels in production**
+
+- DEBUG: Disabled (too verbose)
+- INFO: Cart operations (add, remove, checkout)
 - WARN: Unusual but not error (cache miss, retry)
-- ERROR: Failures (DB down, invalid data)
+- ERROR: Failures (database down, invalid data)
 
 ---
-### Distributed Tracing:
+### Distributed Tracing
 
 ```
 Request flow with trace ID:
@@ -962,380 +693,94 @@ Cart Service [abc123] - 50ms
 - Understand dependencies
 
 ---
-## Phase 10: Security & Rate Limiting (2 minutes)
+## Phase 10: Security & Rate Limiting
 
-### Security Measures:
+### Security Measures
 
-**1. Authentication & Authorization**
+#### Authentication & Authorization
 
-```go
-func AddToCart(userID, itemID string, authToken string) error {
-    // Verify token
-    authenticatedUserID, err := validateJWT(authToken)
-    if err != nil {
-        return errors.New("unauthorized")
-    }
-    
-    // Ensure user can only modify their own cart
-    if authenticatedUserID != userID {
-        return errors.New("forbidden: cannot modify another user's cart")
-    }
-    
-    // Proceed with add to cart
-    return addItemToCart(userID, itemID)
-}
-```
+- Verify JWT token on every request
+- Extract authenticated user_id from token
+- Ensure user can only modify their own cart
+- Return 401 Unauthorized for invalid token
+- Return 403 Forbidden for wrong user_id
 
-**2. Input Validation**
+#### Input Validation
 
-```go
-func ValidateAddToCartRequest(req AddToCartRequest) error {
-    // Validate user_id format
-    if !isValidUserID(req.UserID) {
-        return errors.New("invalid user_id format")
-    }
-    
-    // Validate quantity
-    if req.Quantity < 1 || req.Quantity > 999 {
-        return errors.New("quantity must be between 1 and 999")
-    }
-    
-    // Validate price (prevent negative prices)
-    if req.Price < 0 || req.Price > 1000000 {
-        return errors.New("invalid price")
-    }
-    
-    // Sanitize item_id to prevent SQL injection
-    if containsSQLInjection(req.ItemID) {
-        return errors.New("invalid item_id")
-    }
-    
-    return nil
-}
-```
+- Validate user_id format
+- Validate quantity range (1-999)
+- Validate price range (prevent negative prices)
+- Sanitize item_id to prevent SQL injection
+- Return 400 Bad Request for invalid input
 
-**3. Rate Limiting**
+#### SQL Injection Prevention
 
-Prevent abuse and protect system from overload:
+- Always use prepared statements with parameters
+- Never concatenate user input into SQL queries
+- Use parameterized queries with placeholders
 
-```go
-// Token bucket algorithm
-type RateLimiter struct {
-    redis *redis.Client
-}
+#### API Security Headers
 
-func (r *RateLimiter) AllowRequest(userID string) bool {
-    key := "rate_limit:" + userID
-    
-    // Allow 100 requests per minute per user
-    count, err := r.redis.Incr(key).Result()
-    if err != nil {
-        return true // Fail open (allow request if Redis unavailable)
-    }
-    
-    if count == 1 {
-        // First request - set expiration
-        r.redis.Expire(key, 1*time.Minute)
-    }
-    
-    return count <= 100
-}
+- X-Frame-Options: DENY (prevent clickjacking)
+- X-Content-Type-Options: nosniff (prevent XSS)
+- X-XSS-Protection: 1; mode=block
+- Strict-Transport-Security: HTTPS only
 
-// Usage
-func AddToCartHandler(w http.ResponseWriter, req *http.Request) {
-    userID := getUserID(req)
-    
-    if !rateLimiter.AllowRequest(userID) {
-        http.Error(w, "Rate limit exceeded. Try again later.", 429)
-        return
-    }
-    
-    // Process request
-    addToCart(userID, ...)
-}
-```
+### Rate Limiting
 
-**Rate limit tiers:**
+Token bucket algorithm implementation:
 
-```
-Guest users: 10 requests/minute
-Registered users: 100 requests/minute
-Premium users: 1000 requests/minute
-Internal services: No limit
-```
-
-**4. SQL Injection Prevention**
-
-Always use prepared statements:
-
-```go
-// BAD - Vulnerable to SQL injection
-query := "SELECT * FROM cart_items WHERE user_id = '" + userID + "'"
-db.Query(query)
-
-// GOOD - Safe with parameterized query
-db.Query("SELECT * FROM cart_items WHERE user_id = ?", userID)
-```
-
-**5. API Security Headers**
-
-```go
-func SecurityMiddleware(next http.Handler) http.Handler {
-    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-        // Prevent clickjacking
-        w.Header().Set("X-Frame-Options", "DENY")
-        
-        // Prevent XSS
-        w.Header().Set("X-Content-Type-Options", "nosniff")
-        w.Header().Set("X-XSS-Protection", "1; mode=block")
-        
-        // HTTPS only
-        w.Header().Set("Strict-Transport-Security", "max-age=31536000")
-        
-        next.ServeHTTP(w, r)
-    })
-}
-```
+- Store request count in Redis
+- Key format: "rate_limit:user_id"
+- Increment counter on each request
+- If count = 1, set expiration to 1 minute
+- Allow request if count <= limit
+- Return 429 Too Many Requests if exceeded
+- Different tiers for different types of users / services
 
 ---
-## Phase 11: Advanced Features (Bonus) (3 minutes)
-
-### Feature 1: Cart Recommendations
-
-**"Users who added this item also added..."**
-
-```go
-func GetCartRecommendations(userID string) []Product {
-    cart := getCart(userID)
-    itemIDs := extractItemIDs(cart)
-    
-    // Query recommendation service
-    recommendations := recommendationService.GetRelatedProducts(itemIDs)
-    
-    // Filter out items already in cart
-    return filterExistingItems(recommendations, itemIDs)
-}
-```
-
-**Architecture addition:**
-
-```
-Cart Service
-     ↓
-Message Queue (Kafka)
-     ↓
-Analytics Service → ML Model → Recommendation DB
-```
-
-When item added to cart:
-
-1. Publish event to Kafka
-2. Analytics service processes for recommendations
-3. ML model generates "frequently bought together" data
-
----
-
-### Feature 2: Cart Sharing
-
-**Share cart with friends/family**
-
-```sql
--- Shared carts table
-CREATE TABLE shared_carts (
-    share_id VARCHAR(64) PRIMARY KEY,
-    owner_user_id VARCHAR(64) NOT NULL,
-    expires_at TIMESTAMP,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
-    INDEX idx_owner (owner_user_id)
-);
-```
-
-```go
-func ShareCart(userID string) (string, error) {
-    // Generate unique share link
-    shareID := generateUUID()
-    
-    // Store share metadata
-    db.Execute(`
-        INSERT INTO shared_carts (share_id, owner_user_id, expires_at)
-        VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 7 DAY))
-    `, shareID, userID)
-    
-    // Return share URL
-    return "https://shopee.com/cart/shared/" + shareID, nil
-}
-
-func ViewSharedCart(shareID string) (*Cart, error) {
-    // Get owner
-    owner := db.QueryRow(`
-        SELECT owner_user_id FROM shared_carts 
-        WHERE share_id = ? AND expires_at > NOW()
-    `, shareID)
-    
-    // Return owner's cart (read-only)
-    return getCart(owner.UserID)
-}
-```
-
----
-### Feature 3: Save for Later
-
-**Move items from cart to "saved" list**
-
-```sql
-ALTER TABLE cart_items ADD COLUMN status ENUM('active', 'saved') DEFAULT 'active';
-```
-
-```go
-func SaveForLater(userID, itemID string) error {
-    return db.Execute(`
-        UPDATE cart_items 
-        SET status = 'saved' 
-        WHERE user_id = ? AND item_id = ?
-    `, userID, itemID)
-}
-
-func GetCart(userID string) (*Cart, error) {
-    // Only get active items
-    return db.Query(`
-        SELECT * FROM cart_items 
-        WHERE user_id = ? AND status = 'active'
-    `, userID)
-}
-
-func GetSavedItems(userID string) ([]Item, error) {
-    return db.Query(`
-        SELECT * FROM cart_items 
-        WHERE user_id = ? AND status = 'saved'
-    `, userID)
-}
-```
-
----
-### Feature 4: Cart Expiration & Cleanup
-
-**Clean up abandoned carts to save storage**
-
-```go
-// Cron job runs daily
-func CleanupAbandonedCarts() {
-    // Delete carts not updated in 30 days
-    result := db.Execute(`
-        DELETE FROM cart_items 
-        WHERE updated_at < DATE_SUB(NOW(), INTERVAL 30 DAY)
-    `)
-    
-    log.Info("cleaned_up_carts", "rows_deleted", result.RowsAffected)
-}
-
-// Before deleting, send reminder email
-func SendCartReminderEmails() {
-    // Find carts abandoned for 3 days
-    abandonedCarts := db.Query(`
-        SELECT user_id, COUNT(*) as item_count
-        FROM cart_items
-        WHERE updated_at BETWEEN 
-            DATE_SUB(NOW(), INTERVAL 4 DAY) AND 
-            DATE_SUB(NOW(), INTERVAL 3 DAY)
-        GROUP BY user_id
-    `)
-    
-    for _, cart := range abandonedCarts {
-        emailService.Send(cart.UserID, "You have items in your cart!")
-    }
-}
-```
-
----
-### Feature 5: Cart Analytics Events
-
-**Track user behavior for business intelligence**
-
-```go
-// Publish events to analytics pipeline
-func AddToCart(userID, itemID string, quantity int) error {
-    // Add to cart in database
-    err := db.Execute(...)
-    
-    // Publish event (async, non-blocking)
-    go publishEvent(Event{
-        Type: "cart_item_added",
-        UserID: userID,
-        ItemID: itemID,
-        Quantity: quantity,
-        Timestamp: time.Now(),
-        Metadata: map[string]interface{}{
-            "source": "web",
-            "device": "mobile",
-        },
-    })
-    
-    return err
-}
-```
-
-**Analytics questions answered:**
-
-- Which products are frequently added to cart but not purchased? (low conversion)
-- What's the average time between add-to-cart and checkout?
-- Which items are frequently removed from cart?
-- Peak shopping hours by region
-
----
-## Phase 12: Trade-offs Discussion (3 minutes)
+## Phase 11: Trade-offs Discussion
 
 ### Trade-off 1: Consistency vs Availability
 
-**Strong Consistency:**
+**Strong Consistency**
 
-```
-User adds item → Write to master → Wait for replica sync → Return success
-Pros: Always see latest data
-Cons: Slower writes (50ms+), Lower availability
-```
+- Write to master, wait for replica sync, then return success
+- Pros: Always see latest data
+- Cons: Slower writes (50ms+), lower availability
 
-**Eventual Consistency:**
+**Eventual Consistency**
 
-```
-User adds item → Write to master → Return success immediately
-Replicas sync in background (100ms lag)
-Pros: Faster writes (10ms), Higher availability
-Cons: May briefly see stale data
-```
+- Write to master, return success immediately
+- Replicas sync in background (100ms lag)
+- Pros: Faster writes (10ms), higher availability
+- Cons: May briefly see stale data
 
-**Decision for Cart:** Eventual consistency is acceptable
+**Decision for Cart**: Eventual consistency acceptable
 
 - Users won't notice 100ms lag
-- Cart is not mission-critical like payment
+- Cart not mission-critical like payment
 - Can force strong consistency at checkout
 
 ---
 ### Trade-off 2: Normalization vs Denormalization
 
-**Normalized (Store product_id only):**
+**Normalized (Store product_id only)**
 
-```sql
-cart_items: user_id, product_id, quantity
-products: product_id, name, price, image_url
+- Cart table has: `user_id`, `product_id`, quantity
+- Products table has: `product_id`, name, price, image_url
+- Get cart requires JOIN between tables
+- **Pros**: Single source of truth, current prices
+- **Cons**: Slower queries (JOIN overhead), higher database load
 
--- Get cart requires JOIN
-SELECT c.*, p.name, p.price 
-FROM cart_items c 
-JOIN products p ON c.product_id = p.product_id
-```
+**Denormalized (Store product details in cart)**
 
-**Pros:** Single source of truth, current prices **Cons:** Slower queries (JOIN), Higher DB load
+- Cart table has: `user_id`, `product_id`, quantity, price, name, image_url
+- No JOIN needed
+- **Pros**: Faster queries, lower database load
+- **Cons**: Stale data if product changes, more storage
 
-**Denormalized (Store product details in cart):**
-
-```sql
-cart_items: user_id, product_id, quantity, price, name, image_url
-```
-
-**Pros:** Faster queries (no JOIN), Lower DB load **Cons:** Stale data if product changes, More storage
-
-**Decision for Cart:** Denormalize price only
+**Decision for Cart**: Denormalize price only
 
 - Store price when added (user expectation)
 - Fetch name/image from Product Service (can change)
@@ -1344,31 +789,27 @@ cart_items: user_id, product_id, quantity, price, name, image_url
 ---
 ### Trade-off 3: Cache Invalidation Strategy
 
-**Option A: Delete cache on write (Cache-Aside)**
+#### Option A: Delete cache on write (Cache-Aside)
 
-```go
-AddToCart() {
-    db.Execute(...)
-    redis.Del("cart:" + userID)  // Delete cache
-    // Next read reloads from DB
-}
-```
+- On write: Update database, delete cache key
+- Next read: Cache miss, reload from database
+- Pros: Simple, safe (database is source of truth)
+- Cons: First read after write is slow (cache miss)
 
-**Pros:** Simple, Safe (DB is truth) **Cons:** First read after write is slow (cache miss)
+- **Pros:** Simple, Safe (DB is truth) 
+- **Cons:** First read after write is slow (cache miss)
 
-**Option B: Update cache on write (Write-Through)**
+#### Option B: Update cache on write (Write-Through)
 
-```go
-AddToCart() {
-    db.Execute(...)
-    cart := getCartFromDB(userID)
-    redis.Set("cart:" + userID, cart)  // Update cache
-}
-```
+- On write: Update database, fetch latest data, update cache
+- Next read: Cache hit, fast
+- Pros: No cache miss after write
+- Cons: Extra database read, risk of cache inconsistency
 
-**Pros:** No cache miss after write **Cons:** Extra DB read, Can get out of sync
+- **Pros:** No cache miss after write 
+- **Cons:** Extra DB read, Can get out of sync
 
-**Decision for Cart:** Cache-Aside (Option A)
+#### Decision for Cart: Cache-Aside
 
 - Simpler implementation
 - Safer (avoids cache inconsistency bugs)
@@ -1377,7 +818,7 @@ AddToCart() {
 ---
 ### Trade-off 4: Synchronous vs Asynchronous Processing
 
-**Synchronous (Wait for all operations):**
+#### Synchronous (Wait for all operations)
 
 ```go
 func AddToCart() {
@@ -1388,9 +829,10 @@ func AddToCart() {
 }
 ```
 
-**Pros:** Immediate consistency, Simple error handling **Cons:** Slower response time, Cascading failures
+- **Pros:** Immediate consistency, Simple error handling 
+- **Cons:** Slower response time, Cascading failures
 
-**Asynchronous (Fire and forget):**
+#### Asynchronous (Fire and forget)
 
 ```go
 func AddToCart() {
@@ -1404,9 +846,10 @@ func AddToCart() {
 }
 ```
 
-**Pros:** Faster response, Isolated failures **Cons:** Eventual consistency, Complex error handling
+- **Pros:** Faster response, Isolated failures 
+- **Cons:** Eventual consistency, Complex error handling
 
-**Decision for Cart:** Hybrid approach
+#### Decision for Cart: Hybrid approach
 
 - Critical path synchronous (DB write, cache invalidation)
 - Non-critical async (analytics, recommendations)
@@ -1414,503 +857,72 @@ func AddToCart() {
 ---
 ### Trade-off 5: Microservices vs Monolith
 
-**Monolith:**
+#### Monolith
 
-```
-Single application:
-- Cart logic
-- User logic
-- Product logic
-- Order logic
-All in one codebase
-```
+- Single application with cart, user, product, order logic
+- All in one codebase
+- **Pros**: Simple deployment, easy testing, low latency (in-process calls)
+- **Cons**: Hard to scale independently, single point of failure
 
-**Pros:** Simple deployment, Easy testing, Low latency (in-process calls) **Cons:** Hard to scale independently, Single point of failure
+#### Microservices
 
-**Microservices:**
+- Separate services: Cart Service, User Service, Product Service, Order Service
+- Each with own database
+- **Pros**: Independent scaling, technology flexibility, team autonomy
+- **Cons**: Network overhead, complex deployment, distributed debugging
 
-```
-Separate services:
-- Cart Service
-- User Service
-- Product Service
-- Order Service
-Each with own DB
-```
-
-**Pros:** Independent scaling, Technology flexibility, Team autonomy **Cons:** Network overhead, Complex deployment, Distributed debugging
-
-**Decision for Cart:** Start monolith, extract to microservice later
+#### Decision for Cart: Start monolith, extract to microservice later
 
 - Shopee scale requires microservices
 - But prove product-market fit first with monolith
 - Extract Cart Service when it becomes bottleneck
 
 ---
-## Complete Interview Answer Template
-
-### **Minutes 0-5: Clarify Requirements**
-
-**You**: "Let me clarify the requirements before designing the system."
-
-**Functional:**
-
-- "The cart should support add, remove, update, view, and checkout operations. Should we handle guest carts?"
-- "How long should carts persist?"
-
-**Non-functional:**
-
-- "What's the expected scale? DAU? Peak QPS?"
-    - Answer: 10M DAU, 50K QPS
-- "What regions?"
-    - Answer: Southeast Asia
-- "Latency requirements?"
-    - Answer: <200ms
-- "Consistency requirements?"
-    - Answer: Eventual consistency OK, except checkout
-
----
-### **Minutes 5-8: Capacity Planning**
-
-**You**: "Let me do some back-of-envelope calculations."
-
-```
-Storage: 10M users × 5 items × 200 bytes = 10GB/day
-30 days retention = 300GB with replication = ~1TB
-
-QPS: 50K total
-- Read: 49,500 QPS (99%)
-- Write: 500 QPS (1%)
-
-With 95% cache hit rate:
-- Redis: 47,500 QPS ✅
-- DB: 2,975 QPS ✅ Manageable
-```
-
----
-### **Minutes 8-15: High-Level Design**
-
-**You**: "Here's my high-level architecture."
-
-Draw the diagram:
-
-```
-Client → Gateway → Load Balancer 
-                      ↓
-               [API Servers] (stateless)
-                      ↓
-            ┌─────────┴─────────┐
-            ↓                   ↓
-       [Redis Cache]        [MySQL]
-                          (Master + Replicas)
-```
-
-Walk through request flow:
-
-1. Client sends request to gateway
-2. Load balancer routes to API server
-3. API checks Redis cache first
-4. On cache miss, query MySQL replica
-5. Store in cache for next request
-
----
-### **Minutes 15-20: Database Design**
-
-**You**: "For the data model, I'll use this schema:"
-
-```sql
-CREATE TABLE cart_items (
-    user_id VARCHAR(64),
-    item_id VARCHAR(64),
-    quantity INT,
-    price DECIMAL(10,2),
-    variant_data JSON,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP,
-    
-    PRIMARY KEY (user_id, item_id),
-    INDEX idx_user_id (user_id)
-);
-```
-
-Explain:
-
-- "Composite PK prevents duplicates"
-- "Index on user_id for fast lookups"
-- "Denormalize price for consistency"
-- "JSON for flexible variant data"
-
----
-### **Minutes 20-25: Caching Strategy**
-
-**You**: "I'll use Redis with cache-aside pattern."
-
-```
-Read flow:
-1. Check Redis (GET cart:user_123)
-2. If miss, query MySQL
-3. Store in Redis with 1-hour TTL
-
-Write flow:
-1. Update MySQL
-2. Delete Redis key
-3. Next read reloads from DB
-```
-
-"Using Redis hash for efficient item-level operations."
-
----
-### **Minutes 25-35: Scaling Strategy**
-
-**You**: "Here's how I'll scale to handle 10M users:"
-
-**1. Horizontal scaling:**
-
-- Multiple stateless API servers behind load balancer
-- Can add servers dynamically
-
-**2. Database scaling:**
-
-- Add read replicas for read traffic
-- Master handles writes, replicas handle reads
-- If needed, shard by user_id using consistent hashing
-
-**3. Multi-region:**
-
-- Deploy in each geographic region
-- Route users to nearest region
-- Reduces latency from 200ms to 10ms
-
-Draw scaling diagram showing progression.
-
----
-### **Minutes 35-40: Handle Edge Cases**
-
-**You**: "Let me address some failure scenarios:"
-
-**1. Concurrent updates:**
-
-- Use idempotency keys to prevent duplicate adds
-- Optimistic locking with version numbers
-
-**2. Database failure:**
-
-- Promote replica to master (auto-failover)
-- Writes fail for ~30 seconds during failover
-- Reads continue working
-
-**3. Cache failure:**
-
-- Fall back to database
-- Response time degrades but system still works
-
-**4. Price changes:**
-
-- Store price when added (user expectation)
-- Show price difference in UI if current price changed
-
----
-### **Minutes 40-43: Monitoring & Observability**
-
-**You**: "For production monitoring, I'd track:"
-
-**Metrics:**
-
-- P99 latency (alert if >500ms)
-- Cache hit rate (alert if <90%)
-- Error rate (alert if >1%)
-- Database replication lag
-
-**Logging:**
-
-- Structured logs with trace IDs
-- Track all cart operations
-
-**Alerting:**
-
-- PagerDuty for critical issues
-- Slack for warnings
-
----
-### **Minutes 43-45: Trade-offs & Wrap-up**
-
-**You**: "Let me summarize the key trade-offs:"
-
-**1. Eventual consistency over strong consistency**
-
-- Faster, more available
-- Acceptable for cart (not payment)
-
-**2. Cache-aside over write-through**
-
-- Simpler, safer
-- Slight performance penalty acceptable
-
-**3. Denormalize price only**
-
-- Balance between consistency and performance
-
-**Improvements if more time:**
-
-- Add recommendation engine
-- Implement cart sharing
-- Advanced analytics
-
-"This design should handle 10M users with 50K QPS, <200ms latency, and 99.9% uptime."
-
----
 ## Key Talking Points to Impress Interviewers
 
-### 1. **Show E-commerce Domain Knowledge**
+### 1. Show E-commerce Domain Knowledge
 
 "In my experience with marketplace systems, cart abandonment is around 70%, so we need efficient cleanup jobs and reminder emails to recover revenue."
 
-### 2. **Reference Your Background**
+### 2. Reference Your Background
 
 "Similar to how I implemented notification systems with SES at my previous role, I'd use async message queues for cart events to avoid blocking the critical path."
 
 "I've worked with gRPC services in the Takumi framework, so I'd expose cart operations as gRPC endpoints for low-latency internal communication."
 
-### 3. **Think About Operations**
+### 3. Think About Operations
 
 "I'd expose Prometheus metrics for latency, error rate, and cache hit rate, and visualize them in Grafana - similar dashboards helped us reduce P99 latency by 30% in my last project."
 
-### 4. **Consider Regional Challenges**
+### 4. Consider Regional Challenges
 
 "For Shopee's Southeast Asia market, multi-region deployment is critical. Indonesian users shouldn't experience 200ms latency because the database is in Singapore."
 
-### 5. **Focus on Reliability**
+### 5. Focus on Reliability
 
 "I'd implement circuit breakers for external service calls, so if the Product Service is slow, cart operations still succeed with cached data or graceful degradation."
 
-### 6. **Discuss Real Trade-offs**
+### 6. Discuss Real Trade-offs
 
 Don't just list options - explain WHY you'd choose one:
 
 "I'd choose cache-aside over write-through because carts are read-heavy, and the complexity of keeping write-through consistent isn't worth the marginal performance gain."
 
 ---
-## Common Follow-ups
-
-### Q: "How would you handle a flash sale with 100x normal traffic?"
-
-**A**: "For flash sales, I'd implement several strategies:
-
-1. **Pre-warm cache**: Load popular items into Redis before sale starts
-2. **Rate limiting**: Aggressive rate limits to protect backend (1000 req/min → 100 req/min)
-3. **Queue system**: Add items to queue, process async instead of real-time
-4. **Auto-scaling**: Scale API servers from 10 → 50 based on CPU metrics
-5. **Read-only mode**: Temporarily disable non-critical writes
-6. **CDN for static content**: Serve product images/details from CDN
-
-Most importantly, **communicate with users** - show queue position, estimated wait time."
-
----
-### Q: "What if two users try to add the last item in stock simultaneously?"
-
-**A**: "This is a classic race condition. Solutions:
-
-1. **Reserve inventory first** (before adding to cart):
-
-```go
-func AddToCart(userID, itemID string) error {
-    // Try to reserve inventory
-    reserved := inventoryService.TryReserve(itemID, 1)
-    if !reserved {
-        return errors.New("out of stock")
-    }
-    
-    // Add to cart with reservation
-    db.Execute("INSERT INTO cart_items ...")
-    
-    // Release reservation after 10 minutes if not checked out
-    scheduleReservationExpiry(itemID, 10*time.Minute)
-}
-```
-
-2. **Optimistic locking in inventory service**:
-
-```sql
-UPDATE inventory 
-SET quantity = quantity - 1 
-WHERE item_id = ? AND quantity >= 1;
--- Only one succeeds
-```
-
-3. **Accept over-selling, handle at checkout**:
-
-- Let both add to cart
-- At checkout, first to pay wins
-- Second gets 'out of stock' error with voucher compensation
-
-For Shopee, I'd use option 3 - better UX, handle edge case at checkout."
-
----
-### Q: "How do you prevent bots from adding items to cart and not buying?"
-
-**A**: "Bot protection strategy:
-
-1. **Rate limiting per IP**: Block IPs making >1000 requests/hour
-    
-2. **CAPTCHA**: Show CAPTCHA after suspicious behavior
-    
-3. **Behavioral analysis**:
-    
-    - Bots add items in milliseconds
-    - Real users browse for seconds
-    - Flag accounts with bot-like patterns
-4. **Temporary cart holds**:
-    
-
-```go
-// Release cart items after 30 minutes of inactivity
-func CleanupInactiveCarts() {
-    db.Execute(`
-        DELETE FROM cart_items 
-        WHERE updated_at < NOW() - INTERVAL 30 MINUTE
-    `)
-}
-```
-
-5. **Fingerprinting**: Track device fingerprint, not just IP
-6. **Require login**: For high-demand items, require authentication"
-
----
-### Q: "Your cache is showing 60% hit rate instead of 95%. How do you debug?"
-
-**A**: "Systematic debugging approach:
-
-1. **Check cache TTL**:
-
-```bash
-redis-cli TTL cart:user_123
-# If returning -1 (no expiry) or very short, that's the issue
-```
-
-2. **Check cache eviction**:
-
-```bash
-redis-cli INFO stats | grep evicted_keys
-# High evictions = not enough memory
-```
-
-3. **Check access patterns**:
-
-```sql
-SELECT user_id, COUNT(*) as access_count 
-FROM access_logs 
-GROUP BY user_id 
-ORDER BY access_count DESC;
-# Are we caching the right users? (80/20 rule)
-```
-
-4. **Check invalidation logic**:
-
-- Are we invalidating too aggressively?
-- Every write = cache delete = next read is miss
-
-5. **Check cache warming**:
-
-- For popular users, pre-load cache
-- Morning traffic spike = cache cold start
-
-6. **Monitor cache key distribution**:
-
-```bash
-redis-cli --bigkeys
-# Are some keys huge, causing memory issues?
-```
-
-Solution depends on root cause:
-
-- Low memory → Add more Redis nodes
-- Poor eviction policy → Switch to LRU
-- Wrong caching strategy → Rethink what to cache"
-
----
-### Q: "How would you migrate 10M carts from old schema to new schema with zero downtime?"
-
-**A**: "Zero-downtime migration strategy:
-
-**Phase 1: Dual writes (Week 1-2)**
-
-```go
-func AddToCart(userID, itemID string) {
-    // Write to old schema
-    oldDB.Execute("INSERT INTO cart_items ...")
-    
-    // Also write to new schema
-    newDB.Execute("INSERT INTO cart_items_v2 ...")
-}
-```
-
-**Phase 2: Backfill (Week 2-3)**
-
-```go
-// Background job migrates old data
-func MigrateOldCarts() {
-    oldCarts := oldDB.Query("SELECT * FROM cart_items WHERE migrated = 0 LIMIT 1000")
-    
-    for _, cart := range oldCarts {
-        newCart := transformToNewSchema(cart)
-        newDB.Execute("INSERT INTO cart_items_v2 ...", newCart)
-        
-        oldDB.Execute("UPDATE cart_items SET migrated = 1 WHERE id = ?", cart.ID)
-    }
-}
-```
-
-**Phase 3: Dual reads (Week 3-4)**
-
-```go
-func GetCart(userID string) {
-    // Try new schema first
-    cart := newDB.Query("SELECT * FROM cart_items_v2 WHERE user_id = ?", userID)
-    if cart != nil {
-        return cart
-    }
-    
-    // Fallback to old schema
-    return oldDB.Query("SELECT * FROM cart_items WHERE user_id = ?", userID)
-}
-```
-
-**Phase 4: Switch (Week 4)**
-
-- All reads/writes go to new schema
-- Monitor for 1 week
-
-**Phase 5: Cleanup (Week 5)**
-
-- Drop old schema after verifying everything works
-
-Key principles:
-
-- Always maintain backward compatibility
-- Feature flags to rollback instantly
-- Monitor error rates at each phase
-- Have rollback plan ready"
-
----
 ## Final Tips for the Interview
 
-### DO:
+ - **Ask clarifying questions** - Shows you think before coding  
+ - **Draw diagrams** - Visual communication is key  
+ - **Discuss trade-offs** - No perfect solution, show you understand pros/cons  
+ - **Scale incrementally** - Start simple, then add complexity  
+ - **Think about failures** - What happens when things break?  
+ - **Reference your experience** - "In my previous role, I..."  
+ - **Consider operations** - Monitoring, debugging, maintenance  
+ - **Think about business impact** - Cart abandonment, conversion rate
 
-✅ **Ask clarifying questions** - Shows you think before coding  
-✅ **Draw diagrams** - Visual communication is key  
-✅ **Discuss trade-offs** - No perfect solution, show you understand pros/cons  
-✅ **Scale incrementally** - Start simple, then add complexity  
-✅ **Think about failures** - What happens when things break?  
-✅ **Reference your experience** - "In my previous role, I..."  
-✅ **Consider operations** - Monitoring, debugging, maintenance  
-✅ **Think about business impact** - Cart abandonment, conversion rate
+---
 
-### DON'T:
+> [!info] See also: 
+> - [[Design a Shopping Cart System -- Complete Interview Template|Complete Interview Answer Template]]
+> - [[Design a Shopping Cart System -- Common Follow-ups|Common Follow-ups]]
 
-❌ Jump straight to solution without clarifying  
-❌ Over-engineer for scale you don't need  
-❌ Ignore failures and edge cases  
-❌ Forget about monitoring and operations  
-❌ Get defensive when challenged - embrace feedback  
-❌ Use buzzwords without understanding (blockchain, AI, etc.)  
-❌ Say "I don't know" without attempting to reason through it

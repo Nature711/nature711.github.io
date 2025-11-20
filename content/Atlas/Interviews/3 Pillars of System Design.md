@@ -233,11 +233,8 @@ date: 2025-11-09
 When discussing these, always:
 
 1. **Connect to business impact**: "High availability ensures we don't lose revenue during checkout"
-
 2. **Give specific numbers**: "We handle 50K QPS during normal hours, 200K during flash sales"
-
 3. **Mention trade-offs**: "Sharding improves scalability but makes joins expensive"
-
 4. **Use real examples**: "At my previous company, we used Redis to cache product catalog, improving throughput from 5K to 50K QPS"
 
 ---

@@ -46,7 +46,7 @@ This site is where I weave all these threads together — through notes, systems
 
 This is more than a blog or portfolio — it’s a **Digital Garden**, where ideas grow and evolve over time.
 
-- 📚 **[[Digital Garden|What this Digital Garden is & Why I Build it]]**  
+- 📚 **[[Digital Garden|What this Digital Garden is & Why I Build it]]**
   What this space is, what it means to me, and why building it was hard (but worth it)
 
 - 🤔 **[[Maps, Not Folders|How this Garden is Organized & How to Explore it]]**

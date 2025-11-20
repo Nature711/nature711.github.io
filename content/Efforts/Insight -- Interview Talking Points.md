@@ -12,9 +12,9 @@ date: 2025-11-09
 
 > **T**: We need a diagnostics tool to monitor cross-region performance and isolate infrastructure issues.  
 
-> **A**: I built **Insight**, a Go-based service that performs non-intrusive black-box and white-box probes across services, breaking down latency into hop-level segments like gateway, proxy, and target.  
+> **A**: I built a Go-based internal probing tool to monitor cross-region service latency in our distributed infrastructure. It performs non-intrusive black-box and white-box probes across regions, measuring both end-to-end latency and server-side processing time through our gateway and cross-region forwarding layer, and exposing them as metrics to Prometheus.
 
-> **R**: It’s now used by infra teams to detect degradation early, isolate faults faster, and improve observability without requiring any changes to business code.
+> **R**: This gives our infra teams a real-time, global view of inter-region health and lets us identify issues — like routing degradation or overloaded proxy nodes — well before they impact users.
 
 ### In 2 min
 
@@ -24,13 +24,20 @@ date: 2025-11-09
 > **T**: 
 > I was asked to build an observability system that could help us **monitor cross-region service health and break down latency by infrastructure hop**, ideally without requiring changes to any business code.
 
-> A:
-> I built the service in **Go**, using our internal framework called **Takumi**. The idea was to simulate real production traffic by sending gRPC requests across regions — and for each request, we’d capture timing data at different points. That let us measure both **end-to-end latency** and **hop-level delays** — like how much time was spent in the Gateway, the forwarding layer, and the actual target service.
+> **A**:
+> I built Insight as a **non-intrusive, Go-based probe** that simulates real inter-region traffic using gRPC. It measures both **end-to-end latency** and **server-side timing** by leveraging standard context metadata provided by our framework. For cross-region calls, the probe explicitly routes traffic through the forwarding layer so we can measure that path independently.
 > 
-> Inside the same region, services are discovered dynamically through **Consul**, but cross-region paths had to be routed explicitly through Mediary. I handled all of that logic inside Insight, and exposed the metrics through **Prometheus**, which were then visualized on **Grafana**.
+> Insight exposes these probe results as Prometheus metrics — for example:  
+> **`cross_region_latency_ms{source="eu", target="sg"}`**  
+> We also correlate that with host-level metrics from the forwarding nodes themselves, like CPU usage derived from `node_cpu_seconds_total`.
+> 
+> On Grafana, we get a **live cross-region latency map**. If EU→SG latency suddenly jumps, we can immediately see whether:
+> - the forwarding nodes are overloaded,
+> - the network path is degrading, or
+> - the gateway is slowing down.
 
 > **R**: 
-> Insight became a critical tool used by infra teams to diagnose latency issues and improve cross-region reliability. It’s now integrated into our standard observability stack, and helped reduce incident isolation time significantly.
+>This has significantly improved our ability to detect issues early, isolate problems quickly, and plan capacity for regional traffic. It turned cross-region communication from a black box into something observable, without requiring any changes from business services.
 
 ---
 ## Challenges & Resolution
