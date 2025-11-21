@@ -10,7 +10,7 @@ date: 2025-11-11
 
 This is my **[[Digital Garden]]** — where I ***write*** what I learn, ***link*** what I know, and ***debug*** what I don’t.
 
-Some notes are _evergreen_, some are still _seeds_ — all part of a living **[[Atlas/PKM|PKM]] system** that evolves with how I think.
+Some notes are _evergreen_, some are still _seeds_ — all part of a living **[[PKM|PKM]] system** that evolves with how I think.
 
 ---
 ## 🚀 Start Exploring

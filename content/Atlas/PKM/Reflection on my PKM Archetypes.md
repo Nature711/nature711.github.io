@@ -16,7 +16,7 @@ date: 2025-10-20
 I’m someone who’s **deeply introspective** — constantly analyzing myself and the world around me.  
 I genuinely enjoy exploring existential questions and writing my way through complexity. That kind of depth gives me meaning, even if it sometimes makes life feel heavier.
 
-The part on **[[Atlas/PKM#Good PKM vs. Bad PKM|Bad PKM]]** hits especially close:
+The part on **[[PKM#Good PKM vs. Bad PKM|Bad PKM]]** hits especially close:
 
 - I collect more than I revisit.
 - I hoard information out of **[[intellectual FOMO]]**.

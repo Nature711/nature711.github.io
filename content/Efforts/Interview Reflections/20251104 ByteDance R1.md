@@ -99,5 +99,5 @@ Problem: Longest Palindromic Substring
   - Prometheus recording rules and performance implications
   - HTTP protocol evolution: persistent connections, multiplexing, QUIC  
   - Insight project’s real architecture: trace the exact request/metric path  
-- Reflect: what *I* don’t understand about traffic platforms → turn confusion into next-round questions  
+- Reflect: what / don’t understand about traffic platforms → turn confusion into next-round questions  
 - Practice layered project explanations

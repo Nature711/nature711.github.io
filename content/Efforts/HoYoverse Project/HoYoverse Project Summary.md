@@ -6,13 +6,18 @@ date: 2025-10-25
 ---
 ## Opening
 
-I’ve been working at HoYoverse as a software engineer, focusing on internal **infrastructure and observability tooling**.
+I'm Tianran, currently working at HoYoverse as a Software Engineer, focusing on infrastructure and cloud systems. 
 
-Over the past year, I’ve built things like a cloud resource utilization reporting system, a Kafka rollback platform using MirrorMaker2, a cross-region network probe system, and some service quality testing tools using our in-house Golang framework.
+A lot of my work is about making our global infrastructure more reliable and observable.
 
-These experiences have given me a strong foundation in how large-scale systems are deployed, monitored, and maintained. 
+Some examples including: 
+- a cross-region network diagnostics service that gave our teams latency visibility;
+- a cloud resource utilization reporting pipeline that improved capacity planning; 
+- Kafka replication automation workflow to make cross-cluster rollbacks safer
 
-I’m now looking for a role where I can grow further by working on [**infra / platform / AI infrastructure / system design** ← tailor here] at a deeper level, and contribute to systems that are widely used across the org.
+Before this, I studied CS at NUS, where I built projects like a Paxos-based distributed KV Store, and an order-matching engine using concurrency patterns in Go — that’s where my interest in distributed systems started.
+
+Now I’m looking for a backend role where I can apply that systems foundation to product features with real user impact.
 
 ---
 ## Observability & Monitoring
@@ -149,6 +154,7 @@ Working with Takumi really helped me see what “production-ready” means — t
 
 ---
 ## Tips
+
 ### Why're you looking for new roles
 
 Yeah — I’ve been reflecting on that a lot.
