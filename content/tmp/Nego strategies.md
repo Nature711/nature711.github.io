@@ -1,4 +1,9 @@
-
+---
+title:
+draft: true
+tags:
+date:
+---
 Hi  (i - lie - juh), thanks for taking the call — I really appreciate it.”
 
 I’ve been thinking a lot about this role. And I think it aligns very well with where I want to grow long-term, so I'm quite excited about it.  

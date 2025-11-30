@@ -86,6 +86,19 @@ I fixed this by **reusing the client instance instead of recreating it per call*
 After the change, the goroutine count stabilized, memory usage flattened, and the service ran continuously without any further OOM restarts. This not only made the Insight system production-ready, but also strengthened my ability to debug cross-module concurrency issues and handle reliability problems in distributed systems.
 
 ---
+## Impact Stories
+
+### Black-box vs. white-box 
+
+Before Insight, when services complained ‘cross-region is slow,’ our infra team have no way to figure out which part is causing the issue, whether it's the service themselves or the intermediary components. 
+After Insight, we had standardized probes running from every region.  
+
+Once a BU experienced latency spike in their cross-region request, and suspected that there was issue with our infra components. We used our metrics to see that there's no latency / overloading issue with the intermediary components, 
+thus narrowing down the problem to the service itself. 
+
+This had saved us a huge amount of time of unnecessary debugging.
+
+---
 ## Follow-up Q&A
 
 [[Insight -- Follow-up Q&A]]

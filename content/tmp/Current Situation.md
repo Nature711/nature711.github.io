@@ -1,3 +1,9 @@
+---
+title:
+draft: true
+tags:
+date:
+---
 Shopee Offer (received, written format)
 - Base is good (but still a bit less than my expectation)
 - I *negotiated once* (before the written offer is sent); after nego, they pushed the base slightly higher and added some RSU (though very little; probably just a psychological sweetener?)

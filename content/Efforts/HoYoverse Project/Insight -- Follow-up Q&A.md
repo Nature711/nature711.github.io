@@ -31,7 +31,6 @@ date: 2025-11-12
 | **How do you route cross-region?** | "Two modes: static Mediary address or dynamic Zest lookup by zone/env"                        |
 
 ---
-
 ### **4. What You Built vs Framework**
 
 **You built:**
@@ -51,7 +50,6 @@ date: 2025-11-12
 - Logging
 
 ---
-
 ### **5. One-Liner for Each Part**
 
 **End-to-end latency:** "Inject timestamp in request, target calculates difference"
@@ -63,7 +61,6 @@ date: 2025-11-12
 **Service discovery:** "Static addresses or dynamic Zest config lookup"
 
 ----
-
 ### **Q: "How does context propagation work?"**
 
 **Bad answer:** "The framework does it automatically."
@@ -79,7 +76,6 @@ date: 2025-11-12
 > **My code:** I use Takumi's `ctxhelper` functions to **extract** this data. For example, `ctxhelper.GetRPCClientInfo(ctx)` pulls out which service/region called me. I also **inject** my own timing data by adding the `NowMs` field to the request protobuf."
 
 ---
-
 ### **Q: "How do you measure hop-level latency?"**
 
 **Good answer:**
@@ -97,7 +93,6 @@ date: 2025-11-12
 > The framework handles propagating this metadata through the infrastructure. My code extracts and aggregates it."
 
 ---
-
 ### **Q: "Could you build this without Takumi?"**
 
 **Honest answer:**
@@ -122,7 +117,6 @@ date: 2025-11-12
 > - Open-source frameworks like `go-kit` or `kratos` for similar abstractions"
 
 ---
-
 ### **Q: "This sounds like you just called framework APIs. What did YOU actually build?"**
 
 **Strong answer:**

@@ -74,6 +74,19 @@ date: 2025-11-10
 > - **Eliminates Redundancy:** A single recording rule replaces multiple identical slow queries across different dashboards and alerts.
 
 ---
+## Impact Story
+
+### EC2 Cost saving
+
+During internal validation, we found a cluster with **12 t3.large instances** running at **<3% CPU for 14 days**.  
+Each t3.large costs around ~$70/month, so consolidating or downsizing could save roughly **$800–900/month** on just that cluster.
+
+### Workflow example
+
+Once the system flagged a set of underutilized RDS read replicas, our team reached out to the BU. They confirmed those replicas were remnants of performance testing and were safe to remove.  
+After removal, the BU reduced their monthly RDS bill by roughly **$300–400**.
+
+---
 ## Follow-up Q&A
 
 - **Q:** How would you scale to more AWS accounts?  
