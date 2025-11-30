@@ -15,9 +15,13 @@ date: 2025-11-11
 ## Decision & Direction
 
 - [[Making the Right Decision vs. Making the Decision Right]] — A core shift in mindset around agency and forward momentum
-- [[Learning to Choose (A Late Start)]] — My journey of reclaiming choice after years of deferring decisions
+- [[Decision-making Learning Map]]  — A series of decision-making stories that I recorded down along the way
+- [[Learning to Choose, a Late Start]] — My journey of reclaiming choice after years of deferring decisions
 - [[Letter to Future Me, 20251114]] — A letter to the me who might feel lost again
 - [[Learning to Prioritize]] — On learning to choosing what’s truly worth holding and letting everything else go
+- [[The Career Choice that Exposed the Flaw in my Decision-making Mechanism]]
+- [[Building my own Decision-making Framework]]
+- [[8 Universal Life Decision Criteria]]
 
 ---
 ## Identity & Self-Understanding

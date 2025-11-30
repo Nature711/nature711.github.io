@@ -65,6 +65,26 @@ date: 2025-11-09
 > **R**:  
 > In the end, this whole workflow helped me understand Takumi on a much deeper level, and it gave me a repeatable way to handle **complex internal systems**, which I now see as a core skill in any real-world engineering team.
 
+### Debugging Concurrency Issue
+
+**Situation**  
+One meaningful challenge came from my **Insight** project. After deploying it to our testing environment, I saw something unusual: everything worked functionally, metrics were exposed correctly, but after running for some time the service would suddenly **OOM and restart**. 
+
+**Task**  
+My responsibility was to figure out why this is happening, and ensure that Insight’s auto-ping system could run reliably over long periods.
+
+**Action**  
+Because there were no clear errors, I suspected something deeper at the runtime level. I started by examining runtime metrics and noticed that **the number of goroutines was increasing continuously**, even when the service wasn’t under heavy load. That pointed toward a possible concurrency leak rather than a business-logic bug.
+
+Insight has multiple components, so I isolated them one by one: I temporarily disabled parts of the auto-ping flows, converted concurrent sections into sequential ones, and observed how the goroutine count changed. This allows me to effectively narrow down the exact trigger.
+
+Eventually, I realized that it was because each invocation to the Ping Handler creates a new client instance, which, under our internal framework, spawned background goroutines that were never cleaned up. Over time, these accumulated and caused the OOM.
+
+I fixed this by **reusing the client instance instead of recreating it per call**, ensuring proper lifecycle management.
+
+**Result**  
+After the change, the goroutine count stabilized, memory usage flattened, and the service ran continuously without any further OOM restarts. This not only made the Insight system production-ready, but also strengthened my ability to debug cross-module concurrency issues and handle reliability problems in distributed systems.
+
 ---
 ## Follow-up Q&A
 

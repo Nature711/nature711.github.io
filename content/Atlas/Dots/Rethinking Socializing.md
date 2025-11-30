@@ -6,7 +6,7 @@ tags:
 date: 2025-11-15
 ---
 > [!TLDR] TL;DR
-> I used to approach socializing from a place of *inferiority*—trying to please, compensate, and “repay” others.  
+> I used to approach socializing from a place of *inferiority* — trying to please, compensate, and “repay” others.  
 > Now I’m learning that healthy socializing is about ***mutual value*** that comes from who I am, not what I give.  
 > The focus is *shifting inward*: becoming a grounded, growing, self-respecting person whose presence itself carries value.
 

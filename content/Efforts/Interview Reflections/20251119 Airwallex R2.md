@@ -2,6 +2,7 @@
 title:
 draft: true
 tags:
+  - "#real-interview"
 date: 2025-11-19
 ---
 ### **Block A — Core Architecture**

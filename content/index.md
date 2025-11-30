@@ -22,6 +22,15 @@ Some notes are _evergreen_, some are still _seeds_ — all part of a living **[[
 - 🛠 **[[HoYoverse Project Map|Project Glossary]]** — real infra docs, dashboards, and templates  
 - 💭 **[[Dots Map|Reflections & Dots]]** — soft thoughts on decisions, growth, and learning  
 
+> [!tip]- Recent Features
+> ### On Decision-making
+> - [[Debugging my Decision-making System]]
+> - [[Building my own Decision-making Framework]]
+> - [[Making the Right Decision vs. Making the Decision Right]]
+> 
+> ### On Technical Stuff
+> - [[Why This Delayed Queue Question Hit Differently]]
+
 ---
 ## 🧠 About Me
 
