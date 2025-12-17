@@ -6,6 +6,30 @@ date: 2025-12-16
 ---
 > [!info] Some meaningful info shared by my friend, when we were on our way back after a tennis session. 
 
+## Why Invest? The Cost of Waiting
+
+### 1. Inflation is Eating Your Money
+
+- Average inflation: 2-3% annually
+- Bank savings: ~0.5-1% interest
+- **Net result**: losing 1-2% in purchasing power every year
+- $10,000 today → worth only $7,400 in 10 years (real terms)
+
+### 2. The Compounding Gap
+
+**Same $10,000 over 30 years**:
+
+- Savings account (1%): $13,478
+- Investment (8%): $100,627
+- **Opportunity cost**: $87,149 lost by "staying safe"
+
+### 3. Make Money Work for You
+
+- **Working**: Trade time for money (linear)
+- **Investing**: Money makes money while you sleep (exponential)
+- **Goal**: Investment returns eventually exceed salary → financial independence
+
+---
 ## Fundamental Investment Principles
 
 ### Risk-Return Relationship
