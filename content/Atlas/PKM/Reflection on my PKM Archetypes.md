@@ -19,7 +19,7 @@ I genuinely enjoy exploring existential questions and writing my way through com
 The part on **[[PKM#Good PKM vs. Bad PKM|Bad PKM]]** hits especially close:
 
 - I collect more than I revisit.
-- I hoard information out of **[[intellectual FOMO]]**.
+- I hoard information out of *intellectual FOMO*.
 - I assume what I’ve captured = what I know — and I overestimate my brain’s capacity.
 
 ---

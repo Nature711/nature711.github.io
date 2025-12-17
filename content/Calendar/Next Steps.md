@@ -40,3 +40,4 @@ consolidate my understanding of RSU & Stock
 
 learn a bit of psychology in practice -- cooperative & collaboration mindset; lying our interest together to see if we can work out with a solution that maximizes for both of us
 - understanding other's fear / concern 
+

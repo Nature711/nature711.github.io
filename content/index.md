@@ -27,7 +27,6 @@ Some notes are _evergreen_, some are still _seeds_ — all part of a living **[[
 > - [[Debugging my Decision-making System]]
 > - [[Building my own Decision-making Framework]]
 > - [[Making the Right Decision vs. Making the Decision Right]]
-> 
 > ### On Technical Stuff
 > - [[Why This Delayed Queue Question Hit Differently]]
 
@@ -55,10 +54,10 @@ This site is where I weave all these threads together — through notes, systems
 
 This is more than a blog or portfolio — it’s a **Digital Garden**, where ideas grow and evolve over time.
 
-- 📚 **[[Digital Garden|What this Digital Garden is & Why I Build it]]**
+- 📚 **[[Digital Garden|What this Digital Garden is & Why I Build it]]**  
   What this space is, what it means to me, and why building it was hard (but worth it)
 
-- 🤔 **[[Maps, Not Folders|How this Garden is Organized & How to Explore it]]**
+- 🤔 **[[Maps, Not Folders|How this Garden is Organized & How to Explore it]]**  
   The **design philosophy** behind my structure — folders are for storage, maps are for navigation
 
 - 🔧 **[[How I Build this Digital Garden|How I Built this Garden]]**   
