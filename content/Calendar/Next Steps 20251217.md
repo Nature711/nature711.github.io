@@ -18,3 +18,19 @@ start simple, discuss with friends, refine along the way
 learning a bit about AI stuff
 
 gain insights from xinyu & others -- more importantly is cross-disciplinary thinking -- very important!!! not just fixed knowledge / scattered concepts
+
+& Andrey's youtube lecture, so inspiring
+
+---
+reflecting on experiences
+
+[[Chat with tz]]
+
+the tendency to always trying to prove myself, and the (related?) tendency to over-promise; over apologize even 
+
+---
+
+reflecting on improvements over the year; what kind of clarity did i gained; what are the takeaways and what are the points to improve further 
+
+external stimulus --> internal motivation? (i.e., i wanna improve cuz i love & value myself, not because i fear losing behind)
+

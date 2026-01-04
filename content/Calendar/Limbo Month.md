@@ -18,5 +18,4 @@ reflect on
 - 3 things I would do differently
 - 3 mindsets I want to practise going forward (e.g., clarity > speed)
 
-
 structured progress makes me feel more powerful & energized (even more powerful than taking a nap)
