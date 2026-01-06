@@ -1,0 +1,218 @@
+{
+  "main": {
+    "id": "a82845346b852c02",
+    "type": "split",
+    "children": [
+      {
+        "id": "7d15163fae04c4c6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "62fdd183da4c1a8a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "x/Things to contemplate over.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Things to contemplate over"
+            }
+          },
+          {
+            "id": "983745b0363c7f4c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "x/familiarize with mac.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "familiarize with mac"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2f8911a45a5ce052",
+    "type": "split",
+    "children": [
+      {
+        "id": "72f38115f9e037b9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "aa0afb00c98c89d1",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e71918a447f03a41",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "fc8211ff5c516fb5",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "12abcbdc63ea48b3",
+    "type": "split",
+    "children": [
+      {
+        "id": "c218fa541c00e6c0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "00924041097b97dc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Efforts/Shopee/Entry Task - Go.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Entry Task - Go"
+            }
+          },
+          {
+            "id": "62232a0b2fccabdd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Efforts/Shopee/Entry Task - Go.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Entry Task - Go"
+            }
+          },
+          {
+            "id": "df1a0e79f6f450a5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "e08ef7ca5328612a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "332ba7ae9b60b553",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Efforts/Shopee/Entry Task - Go.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Entry Task - Go"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "983745b0363c7f4c",
+  "lastOpenFiles": [
+    "Efforts/Shopee/Entry Task - Go.md",
+    "x/familiarize with mac.md",
+    "Efforts/Shopee/GitLab Authentication Process.md",
+    "private/Template.md",
+    "2025-12-09.md",
+    "Efforts/Last Mile/Chaos Engineering.md",
+    "Efforts/Shopee",
+    "x/Things to contemplate over.md",
+    "private",
+    "images/airwallex-r2-distributed-kv-design.png",
+    "images/airwallex-r4-interview.png",
+    "Atlas/Letter/202512 Zheyuan.md",
+    "index.md",
+    "x"
+  ]
+}
