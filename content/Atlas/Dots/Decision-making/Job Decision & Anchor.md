@@ -1,6 +1,6 @@
 ---
 title:
-draft: false
+draft: true
 tags:
 date: 2025-12-08
 ---

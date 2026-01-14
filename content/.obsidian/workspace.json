@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "x/Things to contemplate over.md",
+                "file": "Calendar/20251212 notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Things to contemplate over"
+              "title": "20251212 notes"
             }
           },
           {
@@ -27,16 +27,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "x/familiarize with mac.md",
+                "file": "Atlas/Dots/Decision-making/高阶烦恼.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "familiarize with mac"
+              "title": "高阶烦恼"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,21 +197,38 @@
       "bases:Create new base": false
     }
   },
-  "active": "983745b0363c7f4c",
+  "active": "62fdd183da4c1a8a",
   "lastOpenFiles": [
-    "Efforts/Shopee/Entry Task - Go.md",
-    "x/familiarize with mac.md",
-    "Efforts/Shopee/GitLab Authentication Process.md",
-    "private/Template.md",
-    "2025-12-09.md",
-    "Efforts/Last Mile/Chaos Engineering.md",
+    "Calendar/Interview Timeline.md",
+    "Calendar/To-dos.md",
+    "Calendar/Next Steps 20251217.md",
+    "Calendar/Next Steps.md",
+    "Calendar/Limbo Month.md",
+    "Atlas/Dots/Decision-making/Small Decision Challenge/20251125 Decision-making.md",
+    "Calendar/Eisenhower Matrix.md",
+    "Atlas/Dots/Decision-making/Small Decision Challenge/20251207 Decision-making.md",
+    "Atlas/Dots/A Poem, a Court, and a Quiet Faith.md",
+    "Atlas/Dots/A Reflection on Comfort, Drift, and Rediscovering Drive.md",
+    "Atlas/Dots/Choosing Between Shopee vs. Airwallex.md",
+    "Atlas/Dots/Learning to Prioritize.md",
+    "Atlas/Dots/Letter to Future Me, 20251114.md",
+    "Atlas/Dots/Rethinking Socializing.md",
+    "Atlas/Dots/The Paralysis of Wanting to Do It Right.md",
+    "Atlas/Letter/2025 Christmas.md",
+    "Atlas/Letter/202512 Zheyuan.md",
+    "Efforts/Interview Reflections/20251104 ByteDance R1.md",
+    "Efforts/Interview Reflections/20251121 Manus AI R2.md",
+    "Efforts/Interview Reflections/20251107 Shopee R1.md",
+    "Efforts/Interview Reflections/20251112 Airwallex R1.md",
+    "Efforts/Interview Reflections/20251113 Shopee R2.md",
+    "Efforts/Interview Reflections/20251117 Manus AI R1.md",
+    "Efforts/Interview Reflections/20251119 Airwallex R2.md",
+    "Efforts/Interview Reflections/20251121 Shopee R1.md",
+    "Efforts/Interview Reflections/20251126 Manus AI R3.md",
     "Efforts/Shopee",
-    "x/Things to contemplate over.md",
     "private",
     "images/airwallex-r2-distributed-kv-design.png",
     "images/airwallex-r4-interview.png",
-    "Atlas/Letter/202512 Zheyuan.md",
-    "index.md",
     "x"
   ]
 }

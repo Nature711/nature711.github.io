@@ -1,3 +1,9 @@
+---
+title:
+draft: true
+tags:
+date:
+---
 
 starting personal finance
 

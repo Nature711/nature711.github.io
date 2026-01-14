@@ -1,6 +1,6 @@
 ---
 title:
-draft: false
+draft: true
 tags:
   - decision-making-practice
 date: 2025-12-07
