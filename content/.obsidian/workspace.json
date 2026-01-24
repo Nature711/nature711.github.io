@@ -8,34 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "62fdd183da4c1a8a",
+            "id": "0e9638b605efe240",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Calendar/20251212 notes.md",
+                "file": "Atlas/Dots/Debugging Life as a Distributed System.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "20251212 notes"
+              "title": "Debugging Life as a Distributed System"
             }
           },
           {
-            "id": "983745b0363c7f4c",
+            "id": "68e1139e4a9f83a1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Atlas/Dots/Decision-making/高阶烦恼.md",
+                "file": "Efforts/Shopee/SPEX.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "高阶烦恼"
+              "title": "SPEX"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -108,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Efforts/Shopee/Entry Task - Go.md",
+                "file": "Efforts/Shopee/SPEX.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Entry Task - Go"
+              "title": "Backlinks for SPEX"
             }
           },
           {
@@ -127,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Efforts/Shopee/Entry Task - Go.md",
+                "file": "Efforts/Shopee/SPEX.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Entry Task - Go"
+              "title": "Outgoing links from SPEX"
             }
           },
           {
@@ -170,21 +171,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Efforts/Shopee/Entry Task - Go.md",
+                "file": "Efforts/Shopee/SPEX.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Entry Task - Go"
+              "title": "Outline of SPEX"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -197,34 +198,37 @@
       "bases:Create new base": false
     }
   },
-  "active": "62fdd183da4c1a8a",
+  "active": "68e1139e4a9f83a1",
   "lastOpenFiles": [
-    "Calendar/Interview Timeline.md",
-    "Calendar/To-dos.md",
-    "Calendar/Next Steps 20251217.md",
-    "Calendar/Next Steps.md",
-    "Calendar/Limbo Month.md",
-    "Atlas/Dots/Decision-making/Small Decision Challenge/20251125 Decision-making.md",
-    "Calendar/Eisenhower Matrix.md",
-    "Atlas/Dots/Decision-making/Small Decision Challenge/20251207 Decision-making.md",
-    "Atlas/Dots/A Poem, a Court, and a Quiet Faith.md",
-    "Atlas/Dots/A Reflection on Comfort, Drift, and Rediscovering Drive.md",
-    "Atlas/Dots/Choosing Between Shopee vs. Airwallex.md",
+    "x/Choices & Life Stages.md",
+    "Efforts/Shopee/SPEX.md",
+    "Atlas/Dots/Debugging Life as a Distributed System.md",
     "Atlas/Dots/Learning to Prioritize.md",
-    "Atlas/Dots/Letter to Future Me, 20251114.md",
-    "Atlas/Dots/Rethinking Socializing.md",
-    "Atlas/Dots/The Paralysis of Wanting to Do It Right.md",
-    "Atlas/Letter/2025 Christmas.md",
-    "Atlas/Letter/202512 Zheyuan.md",
-    "Efforts/Interview Reflections/20251104 ByteDance R1.md",
-    "Efforts/Interview Reflections/20251121 Manus AI R2.md",
-    "Efforts/Interview Reflections/20251107 Shopee R1.md",
-    "Efforts/Interview Reflections/20251112 Airwallex R1.md",
-    "Efforts/Interview Reflections/20251113 Shopee R2.md",
-    "Efforts/Interview Reflections/20251117 Manus AI R1.md",
-    "Efforts/Interview Reflections/20251119 Airwallex R2.md",
+    "Efforts/Shopee/Entry Task 2 - GAS.md",
+    "images/gas-architecture.png",
+    "Efforts/Shopee/Shopee Infra.md",
+    "Efforts/Shopee/GitLab Authentication Process.md",
+    "Efforts/Shopee/GAS Framework.md",
+    "Efforts/Shopee/GAS Overview.md",
+    "Screenshot 2026-01-20 at 4.33.22 PM.png",
+    "Efforts/Shopee/GAS Config.md",
+    "Efforts/Shopee/DIP.md",
+    "Atlas/People/Alexander (Sascha) Zverev.md",
+    "Atlas/Maps/People Map.md",
+    "Atlas/Maps/System Design Map.md",
+    "Atlas/Maps/Decision-making Learning Map.md",
+    "Atlas/Maps/Struggles Map.md",
+    "Atlas/Maps/PKM Map.md",
+    "Atlas/People",
+    "Efforts/Shopee/Day 3 Feature Completion.md",
+    "Calendar/20251212 notes.md",
+    "Efforts/Shopee/Day 1 MVP Cursor rules.md",
+    "x/Things to contemplate over.md",
+    "x/familiarize with mac.md",
+    "Efforts/Shopee/Day 2 Cache & Optimization.md",
+    "Efforts/Interview Reflections/Why This Delayed Queue Question Hit Differently.md",
+    "Efforts/Interview Reflections/The Role of Queue in System Design.md",
     "Efforts/Interview Reflections/20251121 Shopee R1.md",
-    "Efforts/Interview Reflections/20251126 Manus AI R3.md",
     "Efforts/Shopee",
     "private",
     "images/airwallex-r2-distributed-kv-design.png",

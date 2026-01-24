@@ -1,10 +1,9 @@
 ---
 title:
-draft: true
+draft: false
 tags:
 date: 2026-01-06
 ---
-
 encountered error when i try to clone a repo. turned out to be an authentication issue. explored this private / public key authentication mechanism & some ssh stuff
 
 big picture

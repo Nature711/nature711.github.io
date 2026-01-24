@@ -1,8 +1,8 @@
 ---
 title:
-draft: false
+draft: true
 tags:
-date:
+date: 2025-12-14
 ---
 what i hate the most: stuck in the limbo
 - this weird **limbo month**: waiting for contract → resign → notice period → transition → new start
