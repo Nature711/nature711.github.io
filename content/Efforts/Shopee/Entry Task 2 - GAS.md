@@ -182,10 +182,3 @@ Old HTTP Server → New HTTP Server -- also **acts as a SPEX Client** ✅
 │  (via socket)    │              │  (/api/echo)     │
 └──────────────────┘              └──────────────────┘
 ```
-
-```
-curl -X POST http://localhost:8080/api/echo \
-  -H "Content-Type: application/json" \
-  -H "shopee-baggage: PFB=$PFB_NAME" \
-  -d '{"data": "hello world"}'
-```

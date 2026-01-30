@@ -162,3 +162,7 @@ It’s a template.
 1. 把他当作一面镜子，从这些点点滴滴中，看到自己内在的状态、缺乏、需求，从而：
 2. 把能量转向自己。。
 3. 感恩。。
+
+---
+
+the way his eye winks... it's just killing me

@@ -13,30 +13,44 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Atlas/Dots/Debugging Life as a Distributed System.md",
+                "file": "Efforts/Shopee/Warm-up task -- TCC edge case.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Debugging Life as a Distributed System"
+              "title": "Warm-up task -- TCC edge case"
             }
           },
           {
-            "id": "68e1139e4a9f83a1",
+            "id": "0d98667efe84639c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Efforts/Shopee/SPEX.md",
+                "file": "cursor prompts.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SPEX"
+              "title": "cursor prompts"
+            }
+          },
+          {
+            "id": "fb3cd7b5c395319a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "x/10.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "10"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -109,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Efforts/Shopee/SPEX.md",
+                "file": "Efforts/Shopee/Entry Task 2 Demo Scripts.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +133,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for SPEX"
+              "title": "Backlinks for Entry Task 2 Demo Scripts"
             }
           },
           {
@@ -128,12 +142,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Efforts/Shopee/SPEX.md",
+                "file": "Efforts/Shopee/Entry Task 2 Demo Scripts.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from SPEX"
+              "title": "Outgoing links from Entry Task 2 Demo Scripts"
             }
           },
           {
@@ -171,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Efforts/Shopee/SPEX.md",
+                "file": "x/10.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of SPEX"
+              "title": "Outline of 10"
             }
           }
         ],
@@ -198,37 +212,39 @@
       "bases:Create new base": false
     }
   },
-  "active": "68e1139e4a9f83a1",
+  "active": "fb3cd7b5c395319a",
   "lastOpenFiles": [
+    "cursor prompts.md",
+    "x/10.md",
+    "x/random.md",
+    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+    "Efforts/Shopee/Untitled",
+    "Efforts/Shopee/Voucher ER Diagram.md",
+    "x/Debugging Life as a Distributed System.md",
     "x/Choices & Life Stages.md",
+    "private/Template.md",
+    "images/voucher-er-diagram.png",
+    "Efforts/Shopee/Day 3 Feature Completion.md",
+    "Efforts/Shopee/Day 2 Cache & Optimization.md",
+    "Efforts/Shopee/Day 1 MVP Cursor rules.md",
     "Efforts/Shopee/SPEX.md",
-    "Atlas/Dots/Debugging Life as a Distributed System.md",
-    "Atlas/Dots/Learning to Prioritize.md",
-    "Efforts/Shopee/Entry Task 2 - GAS.md",
-    "images/gas-architecture.png",
     "Efforts/Shopee/Shopee Infra.md",
-    "Efforts/Shopee/GitLab Authentication Process.md",
     "Efforts/Shopee/GAS Framework.md",
+    "Efforts/Shopee/GAS Config.md",
+    "Efforts/Shopee/Entry Task 2 - GAS.md",
+    "Efforts/Shopee/Entry Task 2 Demo Scripts.md",
+    "Atlas/Dots/Learning to Prioritize.md",
+    "images/gas-architecture.png",
+    "Efforts/Shopee/GitLab Authentication Process.md",
     "Efforts/Shopee/GAS Overview.md",
     "Screenshot 2026-01-20 at 4.33.22 PM.png",
-    "Efforts/Shopee/GAS Config.md",
     "Efforts/Shopee/DIP.md",
     "Atlas/People/Alexander (Sascha) Zverev.md",
     "Atlas/Maps/People Map.md",
     "Atlas/Maps/System Design Map.md",
     "Atlas/Maps/Decision-making Learning Map.md",
     "Atlas/Maps/Struggles Map.md",
-    "Atlas/Maps/PKM Map.md",
     "Atlas/People",
-    "Efforts/Shopee/Day 3 Feature Completion.md",
-    "Calendar/20251212 notes.md",
-    "Efforts/Shopee/Day 1 MVP Cursor rules.md",
-    "x/Things to contemplate over.md",
-    "x/familiarize with mac.md",
-    "Efforts/Shopee/Day 2 Cache & Optimization.md",
-    "Efforts/Interview Reflections/Why This Delayed Queue Question Hit Differently.md",
-    "Efforts/Interview Reflections/The Role of Queue in System Design.md",
-    "Efforts/Interview Reflections/20251121 Shopee R1.md",
     "Efforts/Shopee",
     "private",
     "images/airwallex-r2-distributed-kv-design.png",
