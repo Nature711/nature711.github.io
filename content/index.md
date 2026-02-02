@@ -22,13 +22,10 @@ Some notes are _evergreen_, some are still _seeds_ — all part of a living **[[
 - 🛠 **[[HoYoverse Project Map|Project Glossary]]** — real infra docs, dashboards, and templates  
 - 💭 **[[Dots Map|Reflections & Dots]]** — soft thoughts on decisions, growth, and learning  
 
-> [!tip]- Recent Features
-> ### On Decision-making
-> - [[Debugging my Decision-making System]]
-> - [[Building my own Decision-making Framework]]
-> - [[Making the Right Decision vs. Making the Decision Right]]
-> ### On Technical Stuff
-> - [[Why This Delayed Queue Question Hit Differently]]
+> [!tip]+ Recent Highlights
+> - [[From Tennis to Life]] — A reflection after a deep talk with a tennis friend
+> - [[Investment 101]] — Some investment mindsets for beginners
+> - [[A Reflection on Comfort, Drift, and Rediscovering Drive]] — As the title suggests
 
 ---
 ## 🧠 About Me

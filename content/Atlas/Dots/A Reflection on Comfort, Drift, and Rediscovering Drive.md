@@ -2,6 +2,7 @@
 title:
 draft: false
 tags:
+  - "#reflection"
 date: 2025-12-13
 ---
 ## Comfort Zones and Fading Ambition

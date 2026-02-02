@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "x/random.md",
+                "file": "x/Can't breathe.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "random"
+              "title": "Can't breathe"
             }
           },
           {
@@ -27,16 +27,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+                "file": "Atlas/Dots/From Tennis to Life.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Warm-up task -- TCC edge case"
+              "title": "From Tennis to Life"
+            }
+          },
+          {
+            "id": "9310a4e633741307",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -93,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "dfc1b2a7d5240cac",
@@ -109,7 +119,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +128,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for index"
+              "title": "Backlinks"
             }
           },
           {
@@ -171,21 +180,20 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of index"
+              "title": "Outline"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,40 +206,40 @@
       "bases:Create new base": false
     }
   },
-  "active": "a7bab360117904fc",
+  "active": "9310a4e633741307",
   "lastOpenFiles": [
-    "x/From Tennis to Life.md",
-    "x/random.md",
+    "Atlas/Letter/2025 Christmas.md",
+    "x/What really matters.md",
+    "x/The Boundary of Language.md",
+    "x/Debugging Life as a Distributed System.md",
+    "x/Choices & Life Stages.md",
+    "x/Can't breathe.md",
+    "index.md",
+    "Atlas/Dots/A Reflection on Comfort, Drift, and Rediscovering Drive.md",
+    "Atlas/Dots/Rethinking Socializing.md",
+    "Atlas/Dots/Choosing Between Shopee vs. Airwallex.md",
+    "Atlas/Dots/Learning to Prioritize.md",
+    "Atlas/Dots/Letter to Future Me, 20251114.md",
+    "Atlas/Dots/Decision-making/Making the Right Decision vs. Making the Decision Right.md",
+    "Atlas/Dots/Decision-making/Debugging my Decision-making System.md",
+    "Atlas/Dots/From Tennis to Life.md",
+    "x/20251212 notes.md",
+    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
     "Atlas/Maps/People Map.md",
     "x/Untitled",
     "Calendar/To-dos.md",
     "Calendar/Next Steps.md",
     "Calendar/Next Steps 20251217.md",
-    "x/20251212 notes.md",
     "Efforts/Shopee/cursor prompts.md",
-    "x/Debugging Life as a Distributed System.md",
-    "x/Choices & Life Stages.md",
     "x/10.md",
-    "index.md",
     "x",
     "private/Template.md",
     "private",
     "images/voucher-er-diagram.png",
     "images/gas-architecture.png",
-    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
     "Efforts/Shopee/Voucher ER Diagram.md",
     "Efforts/Shopee/Shopee Infra.md",
-    "Efforts/Shopee/SPEX.md",
-    "Efforts/Shopee/GitLab Authentication Process.md",
-    "Efforts/Shopee/GAS Framework.md",
-    "Efforts/Shopee/GAS Config.md",
-    "Efforts/Shopee/Entry Task 2 - GAS.md",
-    "Efforts/Shopee/Day 3 Feature Completion.md",
-    "Efforts/Shopee/Day 2 Cache & Optimization.md",
-    "Efforts/Shopee/Day 1 MVP Cursor rules.md",
-    "Efforts/Shopee/DIP.md",
     "Efforts/Shopee",
-    "Atlas/People/Alexander (Sascha) Zverev.md",
     "Atlas/People"
   ]
 }
