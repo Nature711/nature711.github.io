@@ -39,7 +39,7 @@ Big picture: TCC (Try / Confirm / Cancel) --> Cancel
 - i.e., if an order has N associated voucher txn --> make *N / 50*  calls to API 
 - so that the cancellation workflow completes & all vouchers get returned to user
 
-[[cursor prompts]]
+[[tcc cancellation workflow]]
 
 ---
 ## `ss_usage` repo
@@ -48,10 +48,7 @@ Big picture: TCC (Try / Confirm / Cancel) --> Cancel
 
 - `mod/api/module.go` --> `RegisterModule()` --> `handler.VoucherSSUageAPIGASOption()`
 	- what it does: register handler for voucher ss usage service
-
-#### Patterns
-
-
+	
 ### Service initialization
 	
 - `internal/handler/service.go` --> `Init()`
@@ -87,7 +84,18 @@ impl := NewUseVouchersTccCancelV2Impl(mockTcc)
 
 ### Domain service: vouchertx.UseService
 
-- `internal/domain/vouchertx/use_service.go` --> `UseManyTccCancel(...)` --> 
+- `internal/domain/vouchertx/use_service.go` --> `UseManyTccCancel(...)` --> `s.needReturnUserVouchers()` --> `s.voucherTransactionService.GetMulti()`
+
+### Vouchertx service
+
+- `s.voucherTransactionService.GetMulti()` --> `s.repo.GetMulti()`
+
+### Repo layer
+
+- the actual function we're changing
+- original logic: put all vouchertxn identifiers into a single request --> call external API `BatchGetVoucherTransactionUsingMasters()` with it 
+	- problem: if # req > 50 --> exceeds API request size limit --> cancel logic failed --> user voucher not returned 
+- updated logic: split requests into batches (max 50 each) --> call external API for each batch --> return aggregated result
 
 ### Flow
 
@@ -115,3 +123,64 @@ impl := NewUseVouchersTccCancelV2Impl(mockTcc)
                        └─ ❌ Fails if len(identifiers) > 50
 ```
 
+---
+## E2E Testing
+
+### Flow
+
+1. make a test user account in [shopee testing app](https://test.shopee.co.id/)
+2. find your vouchers in [vouchers page](https://test.shopee.co.id/user/voucher-wallet) 
+3. if you don't have > 50 vouchers, dispatch yourself some active vouchers fro [promotion admin](https://admin.promotion.test.shopee.co.id/vm-shopee-voucher)
+4. use [HTTP Gateway](https://confluence.shopee.io/display/SPDC/Spex+HTTP+Gateway) to call the try api using http spex gateway
+5. call the cancel API using http spex gateway and verify transaction API is called multiple times (due to the newly implemented batching logic)
+
+### Dispatch voucher API
+
+> Goal: To get 50+ vouchers to test the new cancel flow; to do so, we use dispatch voucher api (in `ss_distribution` service) to dispatch vouchers to a certain user)
+
+1. URL = which SPEX command you’re calling
+
+	- `/sprpc/voucher.ss.distribution.batch_distribute_voucher`
+	- This is the RPC command name. Gateway maps it to the SPEX service command.
+
+2.  `x-sp-sdu` + `x-sp-servicekey` = “who you are” (auth)
+
+	- `x-sp-sdu: voucher.ssdistributionapi.id.test.master.default x-sp-servicekey: 96537e...`
+	- This is basically: “I am caller X, and here is my key.”  
+	- i.e., pretending that you're the *SPEX Client*, who's authorized to call the SPEX server
+
+3. `shopee-baggage: CID=id` + request `region: "ID"` = route to the right “country slice”
+
+	- `shopee-baggage: CID=id "region": "ID"`
+	- Many Shopee services route by CID/region. If you mismatch these, you might distribute into the wrong shard or fail routing.
+
+ 4. Body = the actual business request
+
+	- `{   "requests": [{     "region": "ID",     "voucher_identifier": { "voucher_id": 1291850623389696 },     "user_id": 80395,     "distribution_method": 2   }] }`
+
+	- **user_id**: the receiver (you)
+	- **voucher_id**: which voucher to grant
+	- **distribution_method**: how to distribute (2 usually means some backend-driven distribution mode in that service)
+
+user_id: 7943359496
+voucher_id: 1346878105206784
+
+### Request shape (for E2E)
+
+- Endpoint: `voucher.ss.usage.use_vouchers_tcc_cancel_v2`
+- Request (conceptually): `UseVouchersTccCancelV2Request` with at least:
+- tcc_transaction_id: id of a TCC try that already exists (from a prior use_vouchers_tcc_try_v2).
+
+So to test your GetMulti change end-to-end you:
+1. Create a TCC try with enough voucher usages that cancel will generate > 50 identifiers
+2. Call TCC Cancel V2 with that tcc_transaction_id.
+
+Then the path above runs and hits GetMulti with 50+ identifiers, so your batching and `batch_get_voucher_txn` logic are exercised.
+
+| What               | Value                                                                                                                  |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Endpoint to test   | voucher.ss.usage.use_vouchers_tcc_cancel_v2                                                                            |
+| Why                | It’s the only path that calls needReturnUserVouchers → GetMulti (your changed code).                                   |
+| When GetMulti runs | During cancel, to decide if vouchers must be returned before cancelling the TCC record.                                |
+| Flow               | HTTP → UseVouchersTccCancelV2 → TccCancelService.Cancel → UseManyTccCancel → needReturnUserVouchers → GetMulti (repo). |
+| E2E for batching   | Create a TCC try with 50+ voucher tx identifiers, then call use_vouchers_tcc_cancel_v2 with that tcc_transaction_id.   |
