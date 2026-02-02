@@ -1,3 +1,9 @@
+---
+title:
+draft: true
+tags:
+date: 2026-02-01
+---
 let's explore this repo as part of the voucher shared service. the big picture is, we have this tcc (try / confirm / cancel) protocol to ensure correctness of user voucher dispatch. now when calling the `batch_get_voucher_txn` API during *cancel*
 
 - i.e., cancelling all voucher txn for a specific order
