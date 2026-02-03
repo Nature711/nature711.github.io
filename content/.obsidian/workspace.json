@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+                "file": "x/tcc cancellation workflow.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Warm-up task -- TCC edge case"
+              "title": "tcc cancellation workflow"
             }
           }
         ],
@@ -107,8 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "12abcbdc63ea48b3",
@@ -186,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+                "file": "x/tcc cancellation workflow.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Warm-up task -- TCC edge case"
+              "title": "Outline of tcc cancellation workflow"
             }
           }
         ],
@@ -215,11 +214,11 @@
   },
   "active": "fb3cd7b5c395319a",
   "lastOpenFiles": [
-    "x/tcc cancellation workflow.md",
     "x/random.md",
+    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+    "x/tcc cancellation workflow.md",
     "x/Debugging Life as a Distributed System.md",
     "x/Choices & Life Stages.md",
-    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
     "x/10.md",
     "index.md",
     "Efforts/Shopee/SPEX.md",
