@@ -82,14 +82,14 @@ It initialized everything:
 Then I just:
 
 1. Set `content/` as the **vault folder** in Obsidian
-2. Write notes as usual — no special saving, syncing, or plugins needed
+2. Write notes as usual
 3. Run: `npx quartz sync` 
+
+And boom — the entire garden goes live.
 
 > [!tip]- Behind the scenes  
 > `quartz sync` pushes the latest content to GitHub, which then triggers a GitHub Actions workflow that builds and deploys the site.  
-> The beautiful things is — you don’t need to know any of that.
-
-And boom — the entire garden goes live.
+> More on that: [[Quartz Sync Behavior]]
 
 Every update, every note, every backlink… published instantly.  
 **No more yak shaving. Just growth.**

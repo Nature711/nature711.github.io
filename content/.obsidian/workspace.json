@@ -4,53 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "7d15163fae04c4c6",
+        "id": "3861bb94a4ea3123",
         "type": "tabs",
         "children": [
           {
-            "id": "0e9638b605efe240",
+            "id": "bd124ec67a6243a3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+                "file": "Atlas/Letter/2025 Christmas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Warm-up task -- TCC edge case"
-            }
-          },
-          {
-            "id": "0d98667efe84639c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cursor prompts.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "cursor prompts"
-            }
-          },
-          {
-            "id": "fb3cd7b5c395319a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "x/tcc cancellation workflow.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "tcc cancellation workflow"
+              "title": "2025 Christmas"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -185,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "x/tcc cancellation workflow.md",
+                "file": "Atlas/Letter/2025 Christmas.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tcc cancellation workflow"
+              "title": "Outline of 2025 Christmas"
             }
           }
         ],
@@ -212,37 +183,37 @@
       "bases:Create new base": false
     }
   },
-  "active": "fb3cd7b5c395319a",
+  "active": "bd124ec67a6243a3",
   "lastOpenFiles": [
+    "Efforts/Shopee/Shopee Infra.md",
+    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+    "Efforts/Shopee/TCC Workflow.md",
+    "Efforts/Shopee/Voucher ER Diagram.md",
+    "x/tcc cancellation workflow.md",
+    "Atlas/PKM/Digital Garden.md",
+    "Atlas/PKM/Quartz Sync Behavior.md",
+    "Atlas/PKM/How I Build this Digital Garden.md",
+    "Atlas/PKM/Maps, Not Folders.md",
+    "x/Choices & Life Stages.md",
+    "Atlas/PKM/Personal Knowledge Management, the Database Way.md",
     "x/What really matters.md",
     "x/The Boundary of Language.md",
+    "x/Debugging Life as a Distributed System.md",
+    "Efforts/Shopee/cursor prompts.md",
     "x/Can't breathe.md",
     "x/20251212 notes.md",
-    "Efforts/Shopee/cursor prompts.md",
     "Atlas/Dots/From Tennis to Life.md",
     "x/random.md",
-    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
-    "x/tcc cancellation workflow.md",
-    "x/Debugging Life as a Distributed System.md",
-    "x/Choices & Life Stages.md",
     "x/10.md",
     "index.md",
     "Efforts/Shopee/SPEX.md",
     "Efforts/Shopee/Untitled",
-    "Efforts/Shopee/Voucher ER Diagram.md",
     "private/Template.md",
     "images/voucher-er-diagram.png",
     "Efforts/Shopee/Day 3 Feature Completion.md",
     "Efforts/Shopee/Day 2 Cache & Optimization.md",
     "Efforts/Shopee/Day 1 MVP Cursor rules.md",
-    "Efforts/Shopee/Shopee Infra.md",
-    "Efforts/Shopee/GAS Framework.md",
-    "Efforts/Shopee/GAS Config.md",
-    "Efforts/Shopee/Entry Task 2 - GAS.md",
-    "Efforts/Shopee/Entry Task 2 Demo Scripts.md",
-    "Atlas/Dots/Learning to Prioritize.md",
     "images/gas-architecture.png",
-    "Efforts/Shopee/GitLab Authentication Process.md",
     "Screenshot 2026-01-20 at 4.33.22 PM.png",
     "Atlas/People",
     "Efforts/Shopee",

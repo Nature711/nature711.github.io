@@ -184,3 +184,92 @@ Then the path above runs and hits GetMulti with 50+ identifiers, so your ba
 | When GetMulti runs | During cancel, to decide if vouchers must be returned before cancelling the TCC record.                                |
 | Flow               | HTTP → UseVouchersTccCancelV2 → TccCancelService.Cancel → UseManyTccCancel → needReturnUserVouchers → GetMulti (repo). |
 | E2E for batching   | Create a TCC try with 50+ voucher tx identifiers, then call use_vouchers_tcc_cancel_v2 with that tcc_transaction_id.   |
+
+---
+## Request structure 
+
+`ss_distribution`:
+
+```
+curl --request POST \
+  --url https://http-gateway.spex.test.shopee.sg/sprpc/voucher.ss.distribution.batch_distribute_voucher \
+  --header '_show_debug_info: 2' \
+  --header 'content-type: application/json' \
+  --header 'cookie: SPC_EC=-; SPC_F=OVGmqweEMmJ1Yr1HM6GHKe7AMzOfK4d5; SPC_R_T_ID=SLP58AneRkIRWvAOMjR01DAeGnZx2U6Yg+rtO6m/F6xYbiPU3zZNx3yrs1eYHsztfGfAytwehWVKtB/fl9S/hK8Ebk2HUpOkj2/SeRSEayE=; SPC_R_T_IV=r9DvgntzgxM24ULI71ccDg==; SPC_T_ID=SLP58AneRkIRWvAOMjR01DAeGnZx2U6Yg+rtO6m/F6xYbiPU3zZNx3yrs1eYHsztfGfAytwehWVKtB/fl9S/hK8Ebk2HUpOkj2/SeRSEayE=; SPC_T_IV=r9DvgntzgxM24ULI71ccDg==; SPC_U=-' \
+  --header 'shopee-baggage: CID=id' \
+  --header 'x-sp-debug: true' \
+  --header 'x-sp-sdu: voucher.ssdistributionapi.id.test.master.default' \
+  --header 'x-sp-servicekey: 96537eb39846c6f6b54d73f8af1869d7' \
+  --cookie 'SPC_EC=-; SPC_F=OVGmqweEMmJ1Yr1HM6GHKe7AMzOfK4d5; SPC_R_T_ID=SLP58AneRkIRWvAOMjR01DAeGnZx2U6Yg+rtO6m/F6xYbiPU3zZNx3yrs1eYHsztfGfAytwehWVKtB/fl9S/hK8Ebk2HUpOkj2/SeRSEayE=; SPC_R_T_IV=r9DvgntzgxM24ULI71ccDg==; SPC_T_ID=SLP58AneRkIRWvAOMjR01DAeGnZx2U6Yg+rtO6m/F6xYbiPU3zZNx3yrs1eYHsztfGfAytwehWVKtB/fl9S/hK8Ebk2HUpOkj2/SeRSEayE=; SPC_T_IV=r9DvgntzgxM24ULI71ccDg==; SPC_U=-' \
+  --data '{
+  "requests": [
+    {
+      "req_meta": {
+        "caller_source": 1
+      },
+      "region": "ID",
+      "voucher_identifier": {
+        "voucher_id": 1291850623389696
+      },
+      "user_id": 80395,
+      "distribution_method": 2,
+      "distributeValidationOption": {}
+    }
+  ]
+}'
+```
+
+setup: 
+- `export PFB_NAME=tianran-dev`
+- `export CID=id`
+
+`try_v2`
+
+```
+curl --request POST \
+  --url 'https://http-gateway.spex.test.shopee.sg/sprpc/voucher.ss.usage.use_vouchers_tcc_try_v2' \
+  --header 'content-type: application/json' \
+  --header 'shopee-baggage: CID=id,PFB=tianran-dev' \
+  --header 'x-sp-debug: true' \
+  --header 'x-sp-processid: e2e_try_v2' \
+  --header 'x-sp-sdu: voucher.ssusageapi.id.test.master.default' \
+  --header 'x-sp-servicekey: bb6382543e4083c38027604fe3dd00ef' \
+  --data '{
+    "req_meta": { "caller_source": 1 },
+    "region": "ID",
+    "user_id": 7943359496,
+    "transaction_reference_ids": ["test-txn-ref-id-001"],
+    "tcc_reference_id": "test-txn-ref-id-001|use_vouchers_tcc_try",
+    "voucher_identifiers": [
+      {
+        "voucher_id": 1346848308871168,
+        "voucher_code": "DD12344"
+      }
+    ],
+    "callback": "order.order_info.check_order_created",
+    "callback_payload": "e30="
+  }'
+```
+
+response: 
+{"resp_meta":{"error_code":0,"debug_message":""},"tcc_transaction_id":"F8SQg2YJejtEKmViLNnGDZwYKh8yJ7Zxz3e896pCECKMyTrcV7fEQRubDU9oAYtpzXbsYHQqiDEokR"}
+
+--> use this `tcc_transaction_id` in the cancel request payload
+- this `id` identifies a particular voucher txn (all vouchers used by a user in a txn)
+- cancelling this txn means reverting the use of all vouchers in this txn
+
+`cancel_v2`
+
+```
+curl --request POST \
+  --url 'https://http-gateway.spex.test.shopee.sg/sprpc/voucher.ss.usage.use_vouchers_tcc_cancel_v2' \
+  --header 'content-type: application/json' \
+  --header 'shopee-baggage: CID=id,PFB=tianran-dev' \
+  --header 'x-sp-debug: true' \
+  --header 'x-sp-processid: e2e_cancel_v2' \
+  --header 'x-sp-sdu: voucher.ssusageapi.id.test.master.default' \
+  --header 'x-sp-servicekey: bb6382543e4083c38027604fe3dd00ef' \
+  --data '{
+    "tcc_transaction_id": "F8SQg2YJejtEKmViLNnGDZwYKh8yJ7Zxz3e896pCECKMyTrcV7fEQRubDU9oAYtpzXbsYHQqiDEokR"
+  }'
+```
