@@ -11,10 +11,42 @@
             "id": "c77f61beec2a1cdd",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Warm-up task -- FCST shallow traffic isolation"
+            }
+          },
+          {
+            "id": "93114bf950f91522",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Efforts/Shopee/Warm-up task 2 -- Planned Timeline.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Warm-up task 2 -- Planned Timeline"
+            }
+          },
+          {
+            "id": "370bcac3e602a6e6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Warm-up task -- FCST shallow traffic isolation"
             }
           }
         ]
@@ -152,13 +184,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Atlas/Letter/2025 Christmas.md",
+                "file": "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 2025 Christmas"
+              "title": "Outline of Warm-up task -- FCST shallow traffic isolation"
             }
           }
         ],
@@ -179,36 +211,36 @@
       "bases:Create new base": false
     }
   },
-  "active": "aa0afb00c98c89d1",
+  "active": "c77f61beec2a1cdd",
   "lastOpenFiles": [
-    "Efforts/Shopee/Shopee Infra.md",
-    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+    "Efforts/Shopee/TOC - Shopee.md",
+    "Efforts/Shopee/Warm-up task 2 -- Planned Timeline.md",
+    "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
     "Efforts/Shopee/TCC Workflow.md",
-    "Efforts/Shopee/Voucher ER Diagram.md",
     "x/tcc cancellation workflow.md",
+    "x/refactor dashboard.md",
+    "x/go version management.md",
+    "Efforts/Shopee/Warm-up task 2 Background.md",
+    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+    "Efforts/Shopee/Voucher ER Diagram.md",
+    "Efforts/Shopee/Shopee Onboarding.md",
+    "Atlas/Dots/From Tennis to Life.md",
+    "x/The Boundary of Language.md",
+    "x/Debugging Life as a Distributed System.md",
+    "x/20251212 notes.md",
+    "x/Can't breathe.md",
+    "x/Choices & Life Stages.md",
+    "x/What really matters.md",
+    "Efforts/Shopee/Shopee Infra.md",
     "Atlas/PKM/Digital Garden.md",
     "Atlas/PKM/Quartz Sync Behavior.md",
     "Atlas/PKM/How I Build this Digital Garden.md",
     "Atlas/PKM/Maps, Not Folders.md",
-    "x/Choices & Life Stages.md",
     "Atlas/PKM/Personal Knowledge Management, the Database Way.md",
-    "x/What really matters.md",
-    "x/The Boundary of Language.md",
-    "x/Debugging Life as a Distributed System.md",
     "Efforts/Shopee/cursor prompts.md",
-    "x/Can't breathe.md",
-    "x/20251212 notes.md",
-    "Atlas/Dots/From Tennis to Life.md",
     "x/random.md",
-    "x/10.md",
-    "index.md",
-    "Efforts/Shopee/SPEX.md",
     "Efforts/Shopee/Untitled",
-    "private/Template.md",
     "images/voucher-er-diagram.png",
-    "Efforts/Shopee/Day 3 Feature Completion.md",
-    "Efforts/Shopee/Day 2 Cache & Optimization.md",
-    "Efforts/Shopee/Day 1 MVP Cursor rules.md",
     "images/gas-architecture.png",
     "Screenshot 2026-01-20 at 4.33.22 PM.png",
     "Atlas/People",
