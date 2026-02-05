@@ -29,6 +29,7 @@ date: 2025-11-11
 - [[Reflection on my PKM Archetypes]] — How I relate to the roles I play in managing knowledge and learning
 - [[A Poem, a Court, and a Quiet Faith]] — Tennis, belief, and the deeper architecture of trust in life
 - [[Rethinking Socializing]] — How the idea of "socialization as value exchange" helped me build a healthier model of socializing 
+- [[Time?]] — Some loose reflections on time, memory, and the strange feeling of looking back
 
 ---
 ## Reinvention & System Rebuild

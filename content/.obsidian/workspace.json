@@ -1,70 +1,41 @@
 {
   "main": {
-    "id": "a82845346b852c02",
+    "id": "1b3389332c5a5efa",
     "type": "split",
     "children": [
       {
-        "id": "98b01133db8ff48b",
+        "id": "5067c6d015d4a857",
         "type": "tabs",
         "children": [
           {
-            "id": "93114bf950f91522",
+            "id": "1a5c0fbc468e457d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Warm-up task -- FCST shallow traffic isolation"
-            }
-          },
-          {
-            "id": "7ab8a87400507a53",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Efforts/Shopee/TOC - Shopee.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "TOC - Shopee"
-            }
-          },
-          {
-            "id": "bd5aa2e5891063ce",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Efforts/Shopee/Warm-up task 2 -- TD.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Warm-up task 2 -- TD"
+              "title": "index"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "2f8911a45a5ce052",
+    "id": "b6ef6da487888fff",
     "type": "split",
     "children": [
       {
-        "id": "72f38115f9e037b9",
+        "id": "acacb9f9a2d4fdab",
         "type": "tabs",
         "children": [
           {
-            "id": "aa0afb00c98c89d1",
+            "id": "e7799de046b59f13",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -77,7 +48,7 @@
             }
           },
           {
-            "id": "e71918a447f03a41",
+            "id": "3152079ebf477370",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -94,7 +65,7 @@
             }
           },
           {
-            "id": "fc8211ff5c516fb5",
+            "id": "96bfc28e9e6fc06b",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -110,20 +81,20 @@
     "width": 200
   },
   "right": {
-    "id": "12abcbdc63ea48b3",
+    "id": "dfc1b2a7d5240cac",
     "type": "split",
     "children": [
       {
-        "id": "c218fa541c00e6c0",
+        "id": "2a8a118d3c09c0cc",
         "type": "tabs",
         "children": [
           {
-            "id": "00924041097b97dc",
+            "id": "e80035293be41d4c",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Efforts/Shopee/Entry Task 2 Demo Scripts.md",
+                "file": "Efforts/Shopee/Voucher ER Diagram.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,25 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Entry Task 2 Demo Scripts"
+              "title": "Backlinks for Voucher ER Diagram"
             }
           },
           {
-            "id": "62232a0b2fccabdd",
+            "id": "2a23b707a886268a",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Efforts/Shopee/Entry Task 2 Demo Scripts.md",
+                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Entry Task 2 Demo Scripts"
+              "title": "Outgoing links from index"
             }
           },
           {
-            "id": "df1a0e79f6f450a5",
+            "id": "7fa4aac2eb0b7656",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -166,7 +137,7 @@
             }
           },
           {
-            "id": "e08ef7ca5328612a",
+            "id": "7192b0205912baf0",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -180,18 +151,18 @@
             }
           },
           {
-            "id": "332ba7ae9b60b553",
+            "id": "e0f1286bdd09a5ba",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Efforts/Shopee/Warm-up task 2 -- TD.md",
+                "file": "index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Warm-up task 2 -- TD"
+              "title": "Outline of index"
             }
           }
         ],
@@ -199,7 +170,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -212,43 +183,40 @@
       "bases:Create new base": false
     }
   },
-  "active": "bd5aa2e5891063ce",
+  "active": "e7799de046b59f13",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Efforts/Shopee/Warm-up task 2 -- TD.md",
-    "Efforts/Shopee/TOC - Shopee.md",
-    "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
-    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
-    "Efforts/Shopee/Warm-up task 2 -- Planned Timeline.md",
-    "Efforts/Shopee/Warm-up task 2 Background.md",
-    "index.md",
-    "time?.md",
-    "Efforts/Shopee/TCC Workflow.md",
-    "x/tcc cancellation workflow.md",
-    "x/refactor dashboard.md",
+    "images/the-persistence-of-memory.png",
+    "Atlas/Dots/Time?.md",
     "x/go version management.md",
-    "Efforts/Shopee/Voucher ER Diagram.md",
+    "Efforts/Shopee/Warm-up task 2 Background.md",
+    "Efforts/Shopee/Warm-up task 2 -- TD.md",
+    "Efforts/Shopee/Warm-up task 2 -- Planned Timeline.md",
+    "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
+    "Efforts/Shopee/TOC - Shopee.md",
     "Efforts/Shopee/Shopee Onboarding.md",
-    "Atlas/Dots/From Tennis to Life.md",
-    "x/The Boundary of Language.md",
-    "x/Debugging Life as a Distributed System.md",
-    "x/20251212 notes.md",
-    "x/Can't breathe.md",
-    "x/Choices & Life Stages.md",
-    "x/What really matters.md",
-    "Efforts/Shopee/Shopee Infra.md",
-    "Atlas/PKM/Digital Garden.md",
-    "Atlas/PKM/Quartz Sync Behavior.md",
-    "Atlas/PKM/How I Build this Digital Garden.md",
-    "Efforts/Shopee/Untitled",
+    "index.md",
+    "Atlas/People/Alexander (Sascha) Zverev.md",
+    "Atlas/Maps/People Map.md",
+    "Atlas/Maps/Dots Map.md",
+    "Atlas/Maps/HoYoverse Project Map.md",
+    "Atlas/Maps/PKM Map.md",
+    "Atlas/Maps/Struggles Map.md",
+    "Atlas/Maps/System Design Map.md",
+    "Atlas/Maps/Decision-making Learning Map.md",
+    "Atlas/Dots/Letter to Future Me, 20251114.md",
+    "Atlas/Dots/The Paralysis of Wanting to Do It Right.md",
+    "Atlas/Dots/A Poem, a Court, and a Quiet Faith.md",
+    "Atlas/Dots/A Reflection on Comfort, Drift, and Rediscovering Drive.md",
+    "Efforts/Shopee/Voucher ER Diagram.md",
+    "Efforts/Shopee/TCC Workflow.md",
+    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+    "SES Asynchronous Report Pipeline.md",
+    "x/Untitled",
+    "x",
+    "private",
     "images/voucher-er-diagram.png",
     "images/gas-architecture.png",
-    "Screenshot 2026-01-20 at 4.33.22 PM.png",
-    "Atlas/People",
     "Efforts/Shopee",
-    "private",
-    "images/airwallex-r2-distributed-kv-design.png",
-    "images/airwallex-r4-interview.png",
-    "x"
+    "Atlas/People"
   ]
 }
