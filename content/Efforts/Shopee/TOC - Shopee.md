@@ -49,4 +49,5 @@ date: 2026-02-04
 - [[Warm-up task 2 Background]] (for AI to read)
 - [[Warm-up task -- FCST shallow traffic isolation]]
 - [[Warm-up task 2 -- Planned Timeline]]
+- [[Warm-up task 2 -- TD]]
 

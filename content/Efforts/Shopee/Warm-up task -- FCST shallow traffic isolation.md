@@ -268,3 +268,9 @@ if isShadow(ctx) {
 }
 ```
 
+----
+
+Other services (e.g., uservoucher): uses `resilience`  when it starts
+
+- `resilience.RegisterClientInterceptor(resilience.WithConfigKey(interceptorResilienceConfigKey))` 
+	- where is `resilience` come from -- `promotion/voucher-common/interceptor/resilience`

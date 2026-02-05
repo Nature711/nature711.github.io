@@ -8,39 +8,11 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c77f61beec2a1cdd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Warm-up task -- FCST shallow traffic isolation"
-            }
-          },
-          {
             "id": "93114bf950f91522",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Efforts/Shopee/Warm-up task 2 -- Planned Timeline.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Warm-up task 2 -- Planned Timeline"
-            }
-          },
-          {
-            "id": "370bcac3e602a6e6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
                 "mode": "source",
                 "source": false
@@ -48,8 +20,37 @@
               "icon": "lucide-file",
               "title": "Warm-up task -- FCST shallow traffic isolation"
             }
+          },
+          {
+            "id": "7ab8a87400507a53",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Efforts/Shopee/TOC - Shopee.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TOC - Shopee"
+            }
+          },
+          {
+            "id": "bd5aa2e5891063ce",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Efforts/Shopee/Warm-up task 2 -- TD.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Warm-up task 2 -- TD"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -184,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
+                "file": "Efforts/Shopee/Warm-up task 2 -- TD.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Warm-up task -- FCST shallow traffic isolation"
+              "title": "Outline of Warm-up task 2 -- TD"
             }
           }
         ],
@@ -211,17 +212,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "c77f61beec2a1cdd",
+  "active": "bd5aa2e5891063ce",
   "lastOpenFiles": [
+    "Untitled.md",
+    "Efforts/Shopee/Warm-up task 2 -- TD.md",
     "Efforts/Shopee/TOC - Shopee.md",
-    "Efforts/Shopee/Warm-up task 2 -- Planned Timeline.md",
     "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
+    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
+    "Efforts/Shopee/Warm-up task 2 -- Planned Timeline.md",
+    "Efforts/Shopee/Warm-up task 2 Background.md",
+    "index.md",
+    "time?.md",
     "Efforts/Shopee/TCC Workflow.md",
     "x/tcc cancellation workflow.md",
     "x/refactor dashboard.md",
     "x/go version management.md",
-    "Efforts/Shopee/Warm-up task 2 Background.md",
-    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
     "Efforts/Shopee/Voucher ER Diagram.md",
     "Efforts/Shopee/Shopee Onboarding.md",
     "Atlas/Dots/From Tennis to Life.md",
@@ -235,10 +240,6 @@
     "Atlas/PKM/Digital Garden.md",
     "Atlas/PKM/Quartz Sync Behavior.md",
     "Atlas/PKM/How I Build this Digital Garden.md",
-    "Atlas/PKM/Maps, Not Folders.md",
-    "Atlas/PKM/Personal Knowledge Management, the Database Way.md",
-    "Efforts/Shopee/cursor prompts.md",
-    "x/random.md",
     "Efforts/Shopee/Untitled",
     "images/voucher-er-diagram.png",
     "images/gas-architecture.png",
