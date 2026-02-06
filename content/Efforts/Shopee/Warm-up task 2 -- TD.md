@@ -80,7 +80,7 @@ So: one config namespace for resilience and for both rate limit mechanisms; no 
 
 ---
 ## How is Shadow Traffic Detected
-
+ø
 ### Observation
 
 - shadow info is carried in the **platform tracing span context** (package: `git.garena.com/shopee/platform/tracing`)
@@ -220,3 +220,9 @@ multi_key_rate_limit_v2:
 resilience: Same as voucher-common: once the interceptor uses `shadow.<cmd>` when shadow (with fallback), no extra change in ss-distribution except ensuring the config for resilience_interceptor includes entries like shadow.voucher.code.batch_get_code_using_cache.
 
 Summary: Change rate_limit and multi_key_rate_limit_v2 config shapes to include shadow; in both Limiter and MultiKeyLimiterV2, branch on IsShadowTraffic(ctx) and use shadow config + shadow Redis prefix, with fallback to normal config when shadow config is absent.
+
+
+---
+
+resilience 69-72
+rate_limiter 25-28

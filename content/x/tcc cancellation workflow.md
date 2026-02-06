@@ -1,3 +1,9 @@
+---
+title:
+draft: true
+tags:
+date:
+---
 this is my first warm-up task
 it's to change a simple logic in the voucher shared service. 
 the big picture is, we have this tcc (try / confirm / cancel) protocol to ensure correctness of user voucher dispatch. now when calling the `batch_get_voucher_txn` API during *cancel*

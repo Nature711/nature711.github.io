@@ -26,5 +26,19 @@ date: 2026-02-03
 ## Local testing
 
 - local spex socket
-- pfb
+- export socket varibale
+- export certain flags (PFB_NAME, CID -- as required in shopee-baggage)
+	- how to know which vairables to export / what are needed
+- pfb: pfb-get-multi-batching
 - routing to certain instances
+
+if run locally: 
+- will create logs in data/ folder
+- otherwise see online log platform
+
+every time a push will trigger a deployment pipeline (using pfb = pfb-auto-dev-test), can see in [CMDB Deployment](https://space.shopee.io/console/cmdb/deployment/detail/shopee.marketplace_core.promotion.voucher.ss_usage.api) for that service
+
+check [shark portal](https://shark.test.shopee.io/playback-tasks?project_name=voucher-ssusageapi&task_group_id=41948&tab=2)for failed test cases, explain if they're expected
+
+
+
