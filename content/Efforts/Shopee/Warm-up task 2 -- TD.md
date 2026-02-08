@@ -223,6 +223,84 @@ Summary: Change rate_limit and multi_key_rate_limit_v2 config shapes to include
 
 
 ---
+## Code rerff
 
 resilience 69-72
 rate_limiter 25-28
+
+----
+## Again
+
+### 2.1 voucher-common
+
+- Resilience interceptor (interceptor/resilience/)
+
+- Spex client interceptor; wraps outbound calls with circuit breaker.
+
+- Config key is configurable (e.g. resilience_interceptor or resilience via WithConfigKey).
+
+- Protector is chosen only by cmd; no context (e.g. shadow) used.
+
+- Single map of protectors: resilience.GetProtector(cmd).
+
+- Rate limit (ratelimit/)
+
+- Distributed limiters (e.g. inadaptive) with KeyPrefix, Limit, Burst.
+
+- No context-based branching; no shadow prefix or separate instances.
+
+- Context
+
+- ctxmeta: puts client name (from spex instance ID) in context. No shadow flag.
+
+### 2.2 voucher-ss-distribution
+
+- Resilience: resilience.RegisterClientInterceptor() with default config key → resilience_interceptor.
+
+- Rate limit:
+
+- Single limiter (Limiter): one config rate_limit → one KeyPrefix, limit, burst; used for e.g. distribution QPS.
+
+- MultiKeyLimiterV2: many key prefixes (ads, smart voucher, affiliate, etc.) from multi_key_rate_limit_v2; each key prefix gets one limiter instance. No ctx in Allow/CanAllow for traffic type.
+
+- Config (internal/config): RateLimit, MultiKeyRateLimitV2, no resilience in this struct (resilience comes from config SPI key resilience_interceptor).
+
+- Flow: Handler → service → rate limit check → (if pass) spex call (through resilience interceptor). No shadow path anywhere.
+
+### 2.3 voucher-uservoucher
+
+- Resilience: resilience.RegisterClientInterceptor(resilience.WithConfigKey("resilience")) → config key resilience.
+
+- Rate limit: default_rate_limit with SoftRateLimit and HardRateLimit → two limiters (soft + hard), created once at init from config. Used in e.g. create_service.go via rateLimiter.Allow(ctx, key).
+
+- Config: DefaultRateLimit *RateLimits with SoftRateLimit / HardRateLimit; no shadow fields yet.
+
+- Flow: Handler/domain calls GetSoftUserVoucherRateLimiter() / GetHardUserVoucherRateLimiter() and Allow(ctx, key). No shadow branch.
+
+So today: one resilience control plane and one (or two) rate-limit control plane per service; no shadow/normal split.
+
+---
+
+“We store resilience settings per RPC command name.  
+For each RPC name we create one circuit breaker instance.  
+At runtime we look up the breaker using the command name string.”
+
+- Today: **one command string → one protector instance (shared state)**
+    
+- Problem: shadow and real traffic use the **same command string**, so they share the **same breaker state**
+    
+- Goal: keep the _same business RPC command_, but have **two protector instances** (and optionally two configs): one for normal, one for shadow
+    
+
+So the “further separation” is simply:
+
+> **make the lookup key different for shadow traffic**  
+> (even though the actual RPC command being called is the same)
+
+---
+## concerns
+
+- number of configs to be loaded
+	- before: 1 protector per config (cmd) entry
+	- after: double -- 1 for normal, 1 for shadow
+- is that a concern? should be lightweight

@@ -12,3 +12,8 @@ date: 2026-02-03
 
 Career transition? 
 - this one may be more tricky; we'll cover that in a while
+
+the tendency to very fanastisize unrealized wishes -- even things like being selected to sascha's vip box
+
+ the asymmetric stuff
+ 
