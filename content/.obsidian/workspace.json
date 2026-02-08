@@ -11,10 +11,14 @@
             "id": "1a5c0fbc468e457d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Atlas/Letter/2026 CNY.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "2026 CNY"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 324.5
   },
   "right": {
     "id": "dfc1b2a7d5240cac",
@@ -152,12 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Atlas/Letter/2026 CNY.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of 2026 CNY"
             }
           }
         ],
@@ -181,10 +186,11 @@
   "active": "1a5c0fbc468e457d",
   "lastOpenFiles": [
     "Atlas/Letter/202602 Gerald.md",
+    "Atlas/Letter/202602 Gerald.md",
     "x/placeholder title.md",
     "x/Website unreachable debugging.md",
     "Atlas/Letter/202602 Naseer.md",
-    "Atlas/Letter/2025 CNY.md",
+    "Atlas/Letter/2026 CNY.md",
     "x/Reflection on Productivity.md",
     "Atlas/Letter/202512 Nikhil.md",
     "Atlas/Letter/202512 Zheyuan.md",
@@ -206,7 +212,6 @@
     "Atlas/Maps/Struggles Map.md",
     "Atlas/Maps/System Design Map.md",
     "Atlas/Maps/Decision-making Learning Map.md",
-    "Atlas/Dots/Letter to Future Me, 20251114.md",
     "x/Untitled",
     "x",
     "private",
