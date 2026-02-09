@@ -1,84 +1,41 @@
 {
   "main": {
-    "id": "a82845346b852c02",
+    "id": "e7567b543804a151",
     "type": "split",
     "children": [
       {
-        "id": "98b01133db8ff48b",
+        "id": "67ee357a641459c7",
         "type": "tabs",
         "children": [
           {
-            "id": "93114bf950f91522",
+            "id": "13c6e9caf037f03b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "x/placeholder title.md",
+                "file": "Efforts/Shopee/Warm-up task 2 -- TD.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "placeholder title"
-            }
-          },
-          {
-            "id": "7ab8a87400507a53",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Efforts/Shopee/TOC - Shopee.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "TOC - Shopee"
-            }
-          },
-          {
-            "id": "bd5aa2e5891063ce",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Atlas/Letter/2025 CNY.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2025 CNY"
-            }
-          },
-          {
-            "id": "fb6b687e6fd2b1d0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Atlas/Letter/2025 CNY.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2025 CNY"
+              "title": "Warm-up task 2 -- TD"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "2f8911a45a5ce052",
+    "id": "f57967cb1bf61c18",
     "type": "split",
     "children": [
       {
-        "id": "72f38115f9e037b9",
+        "id": "5dc20885e90d72c6",
         "type": "tabs",
         "children": [
           {
-            "id": "aa0afb00c98c89d1",
+            "id": "a7cc833d0f3d92c6",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -91,7 +48,7 @@
             }
           },
           {
-            "id": "e71918a447f03a41",
+            "id": "a524b9bc8a7d0b3e",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -108,7 +65,7 @@
             }
           },
           {
-            "id": "fc8211ff5c516fb5",
+            "id": "4ee462963ea17a05",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -121,23 +78,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300
   },
   "right": {
-    "id": "12abcbdc63ea48b3",
+    "id": "cc9a2ba439ab79ed",
     "type": "split",
     "children": [
       {
-        "id": "c218fa541c00e6c0",
+        "id": "e2ae7e06f365f96e",
         "type": "tabs",
         "children": [
           {
-            "id": "00924041097b97dc",
+            "id": "ff4a493ba3b55f64",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Efforts/Shopee/Entry Task 2 Demo Scripts.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,25 +103,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Entry Task 2 Demo Scripts"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "62232a0b2fccabdd",
+            "id": "293ba6ade467f079",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Efforts/Shopee/Entry Task 2 Demo Scripts.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Entry Task 2 Demo Scripts"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "df1a0e79f6f450a5",
+            "id": "6e128e0bf557d034",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -180,7 +135,7 @@
             }
           },
           {
-            "id": "e08ef7ca5328612a",
+            "id": "1a8f0583b245aafa",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -194,26 +149,25 @@
             }
           },
           {
-            "id": "332ba7ae9b60b553",
+            "id": "b64cac6a74ae0281",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Atlas/Letter/2025 CNY.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 2025 CNY"
+              "title": "Outline"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -226,44 +180,26 @@
       "bases:Create new base": false
     }
   },
-  "active": "fb6b687e6fd2b1d0",
+  "active": "13c6e9caf037f03b",
   "lastOpenFiles": [
-    "Atlas/Letter/202512 Zheyuan.md",
-    "Atlas/Letter/202602 Naseer.md",
-    "Atlas/Letter/2025 CNY.md",
-    "Atlas/Letter/202512 Nikhil.md",
+    "Calendar/Reflection Journals/20260208 Reflection Sheet.md",
+    "Calendar/Reflection Journals/Reflection Template.md",
+    "x/random.md",
+    "Calendar/Reflection Journals",
+    "Calendar/Untitled.md",
+    "x/travel plan.md",
+    "2026-02-09.md",
+    "images/reflection-qns.jpeg",
+    "Screenshot 2026-02-06 at 3.55.26 PM.png",
     "x/go version management.md",
     "Efforts/Shopee/Warm-up task 2 -- TD.md",
-    "x/placeholder title.md",
-    "x/What really matters.md",
-    "Efforts/Shopee/TOC - Shopee.md",
     "x/Website unreachable debugging.md",
-    "Efforts/Shopee/Warm-up task 2 Background.md",
-    "Efforts/Shopee/Warm-up task 2 -- Planned Timeline.md",
-    "Efforts/Shopee/Warm-up task -- TCC edge case.md",
-    "Efforts/Shopee/Warm-up task -- FCST shallow traffic isolation.md",
-    "index.md",
-    "private/Template.md",
-    "Untitled.md",
-    "Atlas/Maps/PKM Map.md",
-    "x/tcc cancellation workflow.md",
-    "x/20251212 notes.md",
-    "x/Can't breathe.md",
+    "x/What really matters.md",
     "x/Debugging Life as a Distributed System.md",
-    "Atlas/Maps/Dots Map.md",
-    "Efforts/Shopee/TCC Workflow.md",
-    "x/The Boundary of Language.md",
-    "Atlas/Dots/Time?.md",
-    "images/the-persistence-of-memory.png",
-    "Efforts/Shopee/Untitled",
-    "images/voucher-er-diagram.png",
-    "images/gas-architecture.png",
-    "Screenshot 2026-01-20 at 4.33.22 PM.png",
-    "Atlas/People",
-    "Efforts/Shopee",
-    "private",
-    "images/airwallex-r2-distributed-kv-design.png",
-    "images/airwallex-r4-interview.png",
-    "x"
+    "Efforts/Shopee/Warm-up task 2 Background.md",
+    "Atlas/Letter/202512 Zheyuan.md",
+    "Atlas/Letter/202512 Zheng Yong.md",
+    "Atlas/Letter/202602 Naseer.md",
+    "Atlas/Letter/202602 Gerald.md"
   ]
 }

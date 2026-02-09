@@ -1,3 +1,9 @@
+---
+title:
+draft: true
+tags:
+date: 2026-02-07
+---
 Jan
 - (from last yr): shanghai + travel (china + hk)
 - stressed out

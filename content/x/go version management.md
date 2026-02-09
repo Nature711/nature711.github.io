@@ -15,3 +15,16 @@ link: git.garena.com/shopee/devops/golang_aegislib/aegislib: invalid reference t
 ```
 
 workaround: `unset GOFLAGS`
+
+---
+
+`go-get -u ....`: update a certain dependency to use a certain updated version (external lib)
+
+if there's any error, do `go mod tidy`  -- tidy the module graph
+- what's happening here: after `go get` we may end up with: extra / redundant entries in `go.mod / go.sum`; noisy dependency graph
+- after doing `go mod tidy`:
+	- Makes go.mod match what your code actually imports (adds missing, removes unused)
+	- Prunes go.sum so it only has checksums for modules that are still in the graph
+	- Leaves you with a minimal, consistent module graph
+
+---

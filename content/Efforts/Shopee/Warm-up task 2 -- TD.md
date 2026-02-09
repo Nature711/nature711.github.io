@@ -280,6 +280,9 @@ rate_limiter 25-28
 So today: one resilience control plane and one (or two) rate-limit control plane per service; no shadow/normal split.
 
 ---
+## Understandings
+
+### Resilience config / cmd entry
 
 “We store resilience settings per RPC command name.  
 For each RPC name we create one circuit breaker instance.  
@@ -297,6 +300,45 @@ So the “further separation” is simply:
 > **make the lookup key different for shadow traffic**  
 > (even though the actual RPC command being called is the same)
 
+### Rate limiter
+
+`rate_limiter_config.go`
+
+- Defines the shape of the data that comes from config (config center / YAML under default_rate_limit).
+- RateLimits has SoftRateLimit and HardRateLimit (each *RateLimit with KeyPrefix, WindowSizeSecond, Limit).
+- The rest of the app uses config.GetConfig().DefaultRateLimit, which is a *RateLimits filled from the default_rate_limit config key.
+
+`user_voucher_ratelimit.go`
+
+- Reads that config and builds the rate limiters at init.
+- mustInitUserVoucherRateLimit(cfg *config.Config, rateLimiterRedisCache) uses:
+	- cfg.DefaultRateLimit.SoftRateLimit
+	- cfg.DefaultRateLimit.HardRateLimit
+
+to call distributelimiter.NewRateLimiter(...) and assign to c.softUvRateLimit and c.hardUvRateLimit.
+
+So: config = “what fields exist and how they’re loaded”; resource = “how those fields are used to create the limiters.” Config is the input; resource is the consumer.
+
+### existing handling of key
+
+- in ucache `getFixedCacheKey`
+
+### recap
+
+- ShadowAwareLimiter routes to normal vs shadow limiter by shadow.IsShadow(ctx) and passes the same key (no prefix in our code).
+
+- Ucache prepends "shadow." to Redis keys when the request context is shadowed, so normal and shadow limiters use different Redis keys even with the same logical key.
+
+- Config supports optional shadow_soft_rate_limit / shadow_hard_rate_limit; shadow limiter falls back to normal config when those are unset.
+
+### difference in behavior
+
+`voucher-ss-distribution` is built in a **different pattern** from `voucher-uservoucher`:
+
+- **`voucher-uservoucher`** explicitly wires multiple limiter objects in a container (`softUvRateLimit`, `hardUvRateLimit`) → so adding _more instances_ (shadow soft/hard) is natural.
+    
+- **`voucher-ss-distribution`** uses **GAS DI + a single exported Limiter object** whose `Init()` builds **one** `ratelimit.RateLimiter` and stores it in `crl.limiter`.
+
 ---
 ## concerns
 
@@ -304,3 +346,11 @@ So the “further separation” is simply:
 	- before: 1 protector per config (cmd) entry
 	- after: double -- 1 for normal, 1 for shadow
 - is that a concern? should be lightweight
+
+---
+## Resources
+
+- resilience config in uservoucher: [config center](https://space.shopee.io/console/cmdb/config_center/detail/shopee.marketplace_core.promotion.voucher.uservoucher.api/resource_management?env=nonlive&project=%5Bsp%5Dvoucher.uservoucher&resourceType=spex&spexServiceName=voucher.uservoucher.api&tab=namespace) -- key: `resilience`
+- rate limiter config in uservoucher: config center -- key: `default_rate_limit`
+- resilience config in ss-distribution: [config center](https://space.shopee.io/console/cmdb/config_center/detail/shopee.marketplace_core.promotion.voucher.ss_distribution.api/resource_management?env=nonlive&project=%5Bsp%5Dvoucher&resourceType=spex&spexServiceName=voucher.ssdistributionapi&tab=namespace) -- key: `resilience_interceptor` (default in voucher-common)
+- rate limiter config in uservoucher: config center -- key: `multi_key_rate_limit_v2`, `rate_limit`
