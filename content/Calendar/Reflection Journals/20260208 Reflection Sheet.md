@@ -5,26 +5,280 @@ tags:
 date: 2026-02-09
 link: "[[Reflection Template]]"
 ---
-## 1. Stop
+## 1. Stop — What do I need to stop doing?
 
-> What do I need to stop doing this year?
+> Stop decision remorse.
 
-Fantasizing over the "path not chosen"
+Stop using my present self to judge and blame my past self — especially when my past self did not have the same information, maturity, or perspective I have now.
+### Current Pattern
 
-## 
+As I gain new information, I often:
+- Romanticize paths not taken (i.e., the "parallel universe")
+- Drained myself in regret & emotional self-criticism
+    
+> Reflection is healthy, but emotional rumination is not.
 
-| # | Theme | Question | What It Reveals | Why It Matters | Action |
+> [!important] Shift
+> Channel energy toward building the future instead of replaying the past.
 
-| 1 | Stop | What do I need to stop doing this year? | Energy drains, misalignment | Less friction → clarity | Stop one habit. Create space. |
-| 2 | Priorities | What actually matters most in 2026? | Real vs false priorities | Focus → better decisions | Define 3 non-negotiables. |
-| 3 | Energy | Where am I wasting energy? | Over-effort, people-pleasing | Energy regained → momentum | Remove one energy leak. |
-| 4 | Avoidance | What am I avoiding because it’s uncomfortable? | Fear, postponed decisions | Courage → progress | Schedule the conversation. |
-| 5 | Desire | What do I want more of this year? | Values, emotional needs | Alignment → sustainability | Create space for it. |
-| 6 | Success | What does success mean for me in 2026? | Borrowed definitions | Clarity → right goals | Write your own in 1 sentence.|
-| 7 | Trust | What would I do if I trusted myself more? | Self-doubt, hesitation | Trust → clean decisions | Decide without over-checking.|
-| 8 | Alignment | What needs to change to feel aligned? | Inner conflict | Alignment → calm | Adjust one boundary. |
-| 9 | Let Go | What am I ready to let go of? | Old identities | Release → growth | Close one chapter. |
-|10 | Identity | Who do I choose to be this year? | Leadership identity | Identity drives behavior | Choose 3 guiding words. |
-Okay, so my career advisor sent me this reflection sheet, and I try to review it like uh several every several weeks or at least monthly. And here I'm going to write my first uh reflection. Uh, so there are 10 themes here and I'm going to reflect one by one. So first, stop. What do I need to stop doing this year? It reviews the energy drains and misalignment and give me less friction so that I can aim towards more clarity. And I think an important thing I wanna stop doing this year is to stop decision remorse and like use the present self to blame the past self when the past me doesn't have enough information or wasn't mature enough. Yeah, so every time as I gain new information, I tend to realize some of my previous choices are incorrect and I'm always in that parallel universe version and idealize the past that I haven't taken the choices I haven't made and wonder about all the what-ifs. And sometimes it is good, generally good, to reflect on the decision and to extract meaning out of it. Yeah, that's the good part, but what I did was I tend to be quite emotional and just get sunk in the emotion of loss and feel so bad about myself. And yeah, and that made me feel too bad, too bad, and I wasted a lot of energy and that drained me and yeah, kept me in a like a remorse state. So I know it's a hard thing to change, but I try to stop and channel my energy to more meaningful things because choices are choices, what's the past is past.And second is the priority, what matters most in this year, three non-negotiables. I think the first one is my career growth. I want to close the gap sooner because I feel that I've wasted so much time in the previous company not learning anything and falling behind my peers. So I want to wrap up and grow in backend direction and learn the fundamentals and grow fast, as fast as possible. Yeah, that's the career. And also better understand myself whether it's a good fit. Yeah, also, yeah. And the second priority is the social connection. So I need to, because at this time, it's not just about developing on your own or 闭门造车吧. It's more about building meaningful connection, which will help you and good relationship also nurture you. Yeah. And yeah, so I want to maintain good connection with good people. Yeah, and I need to actively allocate the time for that and be present. Third, the priority is for financial management. Yeah, I need to start investing and finding more meaningful ways of allocating my money and explore my relationship with money because I tend to, because there is the term 开源节流, I tend to do 节流 too much but not thinking about the 开源. Yeah, that's a bad mindset. Yeah, because I'm always trying to save, but I've, that drained too much of my energy and I really want to be more proactive and change my mindset and find more meaningful ways to earn more money instead of just focusing on saving. Yeah, and I explore more ways of doing so. Yeah.OK, third one is energy. Where am I wasting energy? Uh, yeah, a lot of things. So one is um what I mentioned is tightly coupled to the first one, the action I want to stop, uh, which is like decision remorse. I'm trying to 陷入一些负面情绪 and uh regret about the decision I made and the path idealizing the path not taken and feel so bad about that. Yeah, um I want to channel more energy into building the future instead of remorseing the past. Uh and the second one is about um yeah, it's tied to the second priority, uh the the money thing. I'm wasting too much energy trying to find the cheapest thing, trying to uh save money and compare a lot of things financially, whereas I could have used that energy to uh build more meaningful things.
+---
+## 2. Priorities — 3 non-negotiables
 
+### 1. Career Growth
 
+- Strengthen backend fundamentals
+- Grow faster and more intentionally
+- Regaining momentum & confidence
+- Understand whether this direction truly fits me
+
+### 2. Meaningful Social Connection
+
+- High-quality relationships
+- Intentional connection
+- Presence with good people
+
+### 3. Financial Management
+
+#### Current Problem
+
+> Focused too much on *saving* (节流）and not enough on *creating*（开源）
+
+- Over-optimize small expenses
+- Compare prices excessively
+- Drain mental energy on minor savings
+
+#### Mindset shift: From scarcity to abundance
+
+- Invest intentionally
+- Learn structured financial knowledge
+- Build long-term earning capacity
+
+---
+## 3. Energy — Where am I wasting it?
+
+### Regret loops (#1 in Stop)
+
+- Constantly replaying old decisions
+- Emotionally attaching to alternative realities
+
+### Hyper-optimization of trivial things (#3 in Priorities)
+
+- Research excessively about where to go for the next holiday, try to find the "best" place by taking into numerous factors
+- Spending excessive time trying to find the cheapest / best option when buying small things
+
+> Consequence: Not enough energy when it comes it decisions that really matters.
+
+---
+## 4. Avoidance — What am I avoiding because it’s uncomfortable?
+
+> Financial planning
+
+Reason: 
+- Requires structured learning
+- Feels complex
+- Demands long-term thinking
+
+Meanwhile, I envy friends who: 
+- planned early
+- took steps towards their goals
+- built assets successfully
+
+> Takeaway: Delay The best time to start is NOW. 
+
+---
+
+## 5. Desire — What do I want more of this year?
+
+**Clarity.**
+
+Clarity in:
+
+- Career direction
+    
+- Strengths and weaknesses
+    
+- Relationship compatibility
+    
+- Self-understanding
+    
+
+I know clarity is not a one-time realization.  
+It is built through action and feedback.
+
+But I want to feel:
+
+- On track
+    
+- Intentional
+    
+- Less internally fragmented
+    
+
+---
+
+## 6. Success — What does success mean in 2026?
+
+Two dimensions:
+
+### Career Success
+
+- Perform strongly in current role
+    
+- Increase compensation OR
+    
+- Transition to a better opportunity (if aligned)
+    
+
+Not just salary — but growth + meaningful challenge.
+
+---
+
+### Emotional Success
+
+- Become internally coherent (逻辑自洽)
+    
+- Stop bouncing between decisions
+    
+- Develop stable self-confidence
+    
+- Make clean decisions without constant doubt
+    
+
+---
+
+## 7. Trust — What would I do if I trusted myself more?
+
+In the past:
+
+- I rushed decisions out of fear.
+    
+- I underestimated my market value.
+    
+- I settled quickly instead of negotiating confidently.
+    
+
+If I trusted myself more:
+
+- I would negotiate harder.
+    
+- I would wait for better terms.
+    
+- I would assess my value more accurately.
+    
+- I would make decisions from strength, not urgency.
+    
+
+This is not about regret —  
+it’s about recalibrating self-worth going forward.
+
+---
+
+## 8. Alignment — What needs to change to feel aligned?
+
+Two major internal conflicts:
+
+### Career Alignment
+
+- I feel challenged and struggle daily in backend.
+    
+- I question if I’m truly good at it.
+    
+- I wonder if I should pivot to something more communication-oriented (e.g., PM).
+    
+
+Conflict:  
+Growth pain vs wrong direction?
+
+---
+
+### Relationship Alignment
+
+- Stability vs passion.
+    
+- Suitability vs emotional spark.
+    
+- Being committed while feeling drawn elsewhere.
+    
+
+This creates cognitive dissonance and emotional confusion.
+
+Alignment requires honest evaluation — not avoidance.
+
+---
+
+## 9. Let Go — What am I ready to release?
+
+I want to let go of:
+
+- Regret over bonuses and benefits I gave up.
+    
+- Comparison with “what could have been.”
+    
+- Anger toward my past impulsiveness.
+    
+- Fantasy narratives about other companies.
+    
+
+These are sunk costs.
+
+Holding them drains future capacity.
+
+---
+
+## 10. Identity — Who do I choose to be in 2026?
+
+I want to become:
+
+- Self-generated, not externally ignited.
+    
+- Someone who brings joy to herself first.
+    
+- Someone who radiates energy instead of chasing it.
+    
+- Internally stable — not reactive to every external stimulus.
+    
+
+Less dependency on external validation.  
+More internal authorship.
+
+Not driven by “something outside lighting me up.”
+
+But becoming the light source.
+
+---
+
+# Meta Observation
+
+Across all 10 themes, one pattern repeats:
+
+**Energy ownership.**
+
+- Stop leaking it.
+    
+- Stop outsourcing it.
+    
+- Stop attaching it to the past.
+    
+- Stop attaching it to external sparks.
+    
+
+Your real theme of 2026 might not be “clarity.”
+
+It might be:
+
+> **Reclaiming authorship over your energy and decisions.**
+
+---
+
+If you'd like, next we can:
+
+- Distill this into a 1-page manifesto
+    
+- Extract 3 guiding words for 2026
+    
+- Or turn this into a clean “monthly review template” you can reuse
+    
+
+You are not messy.
+
+You are just in transition.

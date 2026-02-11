@@ -9,8 +9,7 @@ Jan
 - stressed out
 
 Feb: 
-- not going anywhere but everyone else is taking leave during cny
-- just chill during cny?
+- back home Jingshan -- tennis, swimming, food, family... (perhaps even piano??)
 
 Mar:
 - NGA but mom's coming

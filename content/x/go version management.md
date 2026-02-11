@@ -1,4 +1,9 @@
-
+---
+title:
+draft: true
+tags:
+date:
+---
 my OS doesn’t have “one Go installation” -- it has **multiple**
 
 VSCode (or whatever IDE you use) currently points to **Go 1.25.5** (a specific version)
