@@ -46,8 +46,13 @@ date: 2026-02-04
 
 ### Task 2: FCST Shadow Traffic Isolation
 
-- [[Warm-up task 2 Background]] (for AI to read)
 - [[Warm-up task -- FCST shallow traffic isolation]]
-- [[Warm-up task 2 -- Planned Timeline]]
 - [[Warm-up task 2 -- TD]]
+
+----
+## Progress Check & Feedback
+
+### Probation
+
+- [[Shopee Probation Cycle 1 Review]]
 
