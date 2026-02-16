@@ -59,8 +59,4 @@ date: 2026-02-12
 ---
 ## Reflection & Action Items
 
-### Definition of Done
-
-> Is there anything else I should do but didn't do?
-
-### 
+[[Shopee Probation Cycle 1 Reflection]]

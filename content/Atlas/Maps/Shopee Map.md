@@ -55,4 +55,21 @@ date: 2026-02-04
 ### Probation
 
 - [[Shopee Probation Cycle 1 Review]]
+- [[Shopee Probation Cycle 1 Reflection]]
 
+---
+## General Learnings
+
+- Rate Limiter, algos (e.g., token bucket) -- related to 2nd warm-up task
+- Distributed txns, TCC -- related to 1st warm-up task
+- Config center, hot reload, concepts, how they're achieved -- related to internal tools
+
+---
+## GAS & SPEX
+
+- [[Reading GAS logs]]
+
+---
+## Extracting impact from work
+
+- todo
