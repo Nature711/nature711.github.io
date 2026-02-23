@@ -1,0 +1,243 @@
+---
+title:
+draft: true
+tags:
+date: 2026-02-23
+---
+## Request flow
+
+### Path 1: ID/MY/TH (ShopeeFood API)
+
+```
+Frontend
+  -> voucher.bff (page API)
+      -> voucher.ss.business (voucher domain + food adaptor)
+          -> ShopeeFood promotion API (get_voucher_batch_v2)
+```
+
+### Path 2: VN (NewFood API)
+
+```
+Frontend
+  -> voucher.bff
+      -> voucher.bass (FoodyProxy client)
+          -> NowFood/Foody API
+```
+
+### Path 3: VN (DataSync)
+
+```
+Food system -> datasync -> VSS DB
+Frontend
+  -> voucher.bff
+      -> voucher.ss.business / voucher.ss.query
+          -> DB
+```
+
+### Layers & Ownership
+
+| Layer                                | What it is                                                                                                           | What it owns                    | Analogy                         |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------- |
+| `voucher.bff` (backend-for-frontend) | serves **page-shaped APIs** to frontend (e.g., My Voucher page, SVIP page)                                           | page behavior & shaping         | view-model assember             |
+| `ss.business`                        | handles voucher domain business logic; integrates with upstream services (e.g., ShopeeFood API) on behalf of Voucher | data fetching & mapping         | domain logic + upstream adaptor |
+| BASS                                 | a layer used in some regions (e.g., VN) to call external / legacy systems (e.g., NowFood, FoodyProxy)                | data fetching & mapping         | external system client wrapper  |
+| `ss.query` / DB / datasync           | another VN path                                                                                                      | stored fields only              | read model, not business logic  |
+| upstream food / NowFood              | external services                                                                                                    | ground truth of voucher content | /                               |
+
+---
+## 1) Big picture (what problem are we solving?)
+
+Food vouchers are shown in multiple Shopee surfaces (My Voucher page, SVIP pages, microsite). But different regions integrate with different Food systems, so the same voucher is rendered with *inconsistent links and subtitle logic*.
+
+This task is about making the UI behavior consistent by ensuring BFF has the right data:
+
+### Goal
+
+- **UseLink**: Use configured use_link from upstream for ID/MY/TH My Voucher; no homepage fallback when use_link exists.
+
+- **TncLink**: Keep voucher detail page but add a source query param (e.g. my_voucher, svip_pre, svip_post).
+
+- **Subtitle**: ID/MY/TH use Food-backed subtitle (pass-through); stop using only mp_transify_key-based generation for Food there. VN can keep mp_transify_key per scope.
+
+---
+
+## 2) How to read the spreadsheet (what it is saying)
+
+### Columns / regions
+
+- **ID/MY/TH** block is tied to **ShopeeFood API Integration**:  
+    `voucher.bff -> voucher.ss.business -> shopeefood.promotion.promotion.get_voucher_batch_v2`  
+    And it explicitly says: **Food needs to add subtitle in API**, and BFF will read **use_link, tnc_link, subtitle** from `ss.business`.
+    
+- **VN** block has **two paths** in the sheet:
+    
+    1. **NowFood API Integration**:  
+        `voucher.bff -> voucher.bass -> FoodyProxy.GetUserVoucherList`  
+        Needs NowFood API to add `tnc_link` param with `source`, and BFF reads from `bass`.
+        
+    2. **FoodVN DataSync Integration**:  
+        `voucher.bff -> voucher.ss.business -> voucher.ss.query -> DB <- datasync`  
+        Needs Food to add `source` in `tnc_link` synced into VSS.
+        
+
+### Rows (the actual functional requirements)
+
+For each region × page, it lists **Current Behaviour** vs **Intended Behaviour** for:
+
+- UseLink
+    
+- TncLink
+    
+- Subtitle (Min Spend)
+    
+
+Example (ID/MY/TH, “My Voucher Page”):
+
+- UseLink: **Current = Go to homepage**, Intended = **Go to configured use link**  
+    So your change is: stop falling back to homepage in that entry point.
+    
+
+---
+
+## 3) What you need to do (deliverables translated into engineering tasks)
+
+Think of this as **3 parallel workstreams**:
+
+### Workstream A — Contract & upstream changes (Food side)
+
+You can’t finish your side unless upstream provides data.
+
+**ID/MY/TH (ShopeeFood API `get_voucher_batch_v2`)**
+
+- Add / expose **subtitle** in the response (for min spend).
+    
+- Ensure **use_link** and **tnc_link** are present as expected (or confirm already present).
+    
+
+**VN (NowFood API)**
+
+- Add `tnc_link` parameter that includes `source` (or add `source` field that BFF can append).
+    
+
+**VN (DataSync path)**
+
+- Ensure datasync writes `tnc_link` with **source included** into VSS DB.
+    
+
+> Your practical job here: open a ticket / message the owning team with the **exact field-level contract** you need, plus sample payloads.
+
+---
+
+### Workstream B — Voucher BFF aggregation logic (your side, likely main code changes)
+
+BFF must produce consistent fields to frontend per page:
+
+#### 1) UseLink logic (most important behavioral change)
+
+- **ID/MY/TH My Voucher Page**: change from “homepage” fallback to “configured use_link”.
+    
+- **SVIP pre-purchase**: “Not shown” → likely no change.
+    
+- **VN microsite**: “Not Supported” → no change, explicitly out.
+    
+
+Implementation-wise, this usually means:
+
+- find where the BFF builds the voucher card model for those pages
+    
+- locate defaulting logic like `if empty(use_link) -> homepage`
+    
+- gate by **region + page type**, and switch fallback strategy to “must use configured use_link” (or only fallback if truly missing)
+    
+
+#### 2) TncLink logic (add `source`)
+
+For ID/MY/TH and VN pages (except out-of-scope / not supported), intended says:
+
+- “add source, and go to voucher detail page”
+    
+
+This suggests you need:
+
+- a **source identifier** (likely the page / channel / entry point)
+    
+- BFF to attach it consistently:
+    
+    - either append as query param `...?source=XYZ`
+        
+    - or use a structured `tnc_link` provided by upstream (VN cases)
+        
+
+Also note one cell says “add source… @ dujiabin” (ownership marker).  
+So this part might require aligning with that person on the canonical `source` values.
+
+#### 3) Subtitle (Min Spend)
+
+- **ID/MY/TH**: switch from “mp transify key” to “food backend provide sub title”.  
+    So BFF needs to:
+    
+    - read the subtitle field returned by `ss.business` (fed by shopeefood API)
+        
+    - pass through to FE instead of the old translation-key behavior
+        
+- **VN**: keep “mp transify key” (no change).
+    
+
+---
+
+### Workstream C — End-to-end verification plan (how you prove it’s done)
+
+You’ll want a tight checklist by **region × page**:
+
+**For each page (My Voucher / SVIP pre / SVIP post / Microsite):**
+
+- Is UseLink shown? If shown, does it go to the right place?
+    
+- Is TncLink shown? If shown, does it land on voucher detail page AND carry the correct `source`?
+    
+- Is subtitle sourced correctly (Food-provided vs mp transify key)?
+    
+
+Because the sheet is essentially your acceptance criteria.
+
+---
+
+## 4) A concrete “what should I do tomorrow morning” plan
+
+1. **Extract the exact requirements into a mini spec** (1 page):
+    
+    - list: Region → integration path → fields required (use_link / tnc_link(+source) / subtitle)
+        
+    - list: Page → intended behavior for each field
+        
+    - include sample payload you expect to send to FE  
+        (This is literally reformatting the sheet into an engineer-friendly doc.)
+        
+2. **Identify code owners / repos**:
+    
+    - `voucher.bff` rendering logic for the 4 pages
+        
+    - the caller path for ID/MY/TH: `voucher.ss.business`
+        
+    - VN path: `voucher.bass` (NowFood) and/or `voucher.ss.query` + DB fields
+        
+3. **Start with the “pure BFF” change that doesn’t depend on upstream**:
+    
+    - remove/adjust “go to homepage” fallback in ID/MY/TH My Voucher (if use_link already exists today)
+        
+    - implement `source` injection logic in TncLink generation (even if upstream later also adds it)
+        
+4. **In parallel, unblock upstream dependencies** (message/ticket Food team):
+    
+    - “Please add subtitle field to get_voucher_batch_v2”
+        
+    - “Please add tnc_link/source handling for NowFood”
+        
+    - “Please ensure datasync persists tnc_link with source into VSS”
+        
+5. **Write a minimal test matrix** and verify using:
+    
+    - mock/stub responses for the upstream additions (subtitle/source) so you can finish your MR before upstream deploys
+        
+    - plus integration test in staging once upstream is ready
+        

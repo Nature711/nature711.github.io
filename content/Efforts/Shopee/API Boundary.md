@@ -265,13 +265,3 @@ When writing code, always ask:
     
 
 That’s production maturity.
-
----
-
-If I give you a scenario:
-
-> Downstream API sometimes partially succeeds — returns 30 successes and 20 failures.
-
-From a repo layer perspective, what are your options in propagating this to upstream?
-
-Think about it for a second.

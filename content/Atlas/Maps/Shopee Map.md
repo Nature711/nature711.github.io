@@ -49,6 +49,10 @@ date: 2026-02-04
 - [[Warm-up task -- FCST shallow traffic isolation]]
 - [[Warm-up task 2 -- TD]]
 
+### Medium Task: Shopee Food Integration
+
+ - [[Shopee Food Task Exploration]]
+
 ----
 ## Progress Check & Feedback
 
