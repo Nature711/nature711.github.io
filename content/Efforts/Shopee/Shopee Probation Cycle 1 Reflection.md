@@ -57,3 +57,4 @@ That's powerful, but it can become **noise** if not channeled.
 - reading logs faster
 - understanding module structure
     
+> Learning: [[Code Navigation -- Theory]]

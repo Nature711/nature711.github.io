@@ -48,6 +48,7 @@ date: 2026-02-04
 
 - [[Warm-up task -- FCST shallow traffic isolation]]
 - [[Warm-up task 2 -- TD]]
+- [[Warm-up task 2 -- E2E Request Flow]]
 
 ### Medium Task: Shopee Food Integration
 
@@ -64,16 +65,22 @@ date: 2026-02-04
 ---
 ## General Learnings
 
+### Technical
+
 - Rate Limiter, algos (e.g., token bucket) -- related to 2nd warm-up task
+	- [[rate limiter]]
 - Distributed txns, TCC -- related to 1st warm-up task
 - Config center, hot reload, concepts, how they're achieved -- related to internal tools
 
----
-## GAS & SPEX
+### Productivity
 
-- [[Reading GAS logs]]
+- [[Code Navigation -- Theory]]
+- [[Code Navigation -- Practical Example]]
 
 ---
 ## Extracting impact from work
 
-- todo
+- [[Things to take note]]
+- [[Warm-up task 2 Shadow Traffic -- Meta Learnings]]
+
+---
