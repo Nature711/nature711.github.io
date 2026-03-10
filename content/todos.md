@@ -1,0 +1,12 @@
+- [ ] merge MR
+	- [x] voucher-common
+	- [x] uservoucher
+	- [x] ss-distribution
+- [ ] update rate limiter & resilience config (in which env?)
+	- [ ] voucher-common
+	- [ ] uservoucher
+	- [ ] ss-distribution
+- [ ] update voucher-common version tag in `go.mod` 
+	- [ ] uservoucher
+	- [ ] ss-distribution
+
