@@ -1,8 +1,8 @@
 ---
 title:
-draft: true
+draft: false
 tags:
-date:
+date: 2026-03-11
 ---
 my OS doesn’t have “one Go installation” -- it has **multiple**
 
@@ -32,4 +32,11 @@ if there's any error, do `go mod tidy`  -- tidy the module graph
 	- Prunes go.sum so it only has checksums for modules that are still in the graph
 	- Leaves you with a minimal, consistent module graph
 
----
+e.g.,  fetch a dependency at a **specific commit / tagged version** directly from its repository
+`go get -u git.garena.com/shopee/promotion/voucher-common@<commit-hash>`
+or 
+`go get -u git.garena.com/shopee/promotion/voucher-common@<tag>`
+
+```
+go get -u git.garena.com/shopee/promotion/voucher-common@v1.23.0
+```

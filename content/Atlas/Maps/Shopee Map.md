@@ -42,7 +42,7 @@ date: 2026-02-04
 - [[TCC Workflow]] (to complete)
 - [[Voucher ER Diagram]] (to complete)
 	- [[tcc cancellation workflow]] (for AI to read)
-	- [[go version management]] (to be refactored)
+	- [[Go Version Management]] (to be refactored)
 
 ### Task 2: FCST Shadow Traffic Isolation
 
@@ -72,15 +72,21 @@ date: 2026-02-04
 - Distributed txns, TCC -- related to 1st warm-up task
 - Config center, hot reload, concepts, how they're achieved -- related to internal tools
 
-### Productivity
+### Productivity & Debugging
 
 - [[Code Navigation -- Theory]]
 - [[Code Navigation -- Practical Example]]
+- Debugging Technique: [Always Verify Runtime Behavior, Not Just Service-Layer Code](https://confluence.shopee.io/pages/resumedraft.action?draftId=3120706803&draftShareId=3573e58a-2e68-4a47-8bb8-1434a255a18b&)
+- [[Git Advanced Operations]]
+
+### Go related
+
+- [[Go Version Management]]
+- [[Proto File Management]]
 
 ---
 ## Extracting impact from work
 
 - [[Things to take note]]
 - [[Warm-up task 2 Shadow Traffic -- Meta Learnings]]
-
----
+- 
