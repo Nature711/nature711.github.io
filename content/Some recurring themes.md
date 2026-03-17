@@ -1,0 +1,7 @@
+
+## Counterfactual Thinking
+
+## FOMO 
+
+## Comparison 
+

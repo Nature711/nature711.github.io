@@ -38,11 +38,15 @@ env
 ---
 perhaps so good things (so that i don't feel like dying)
 
-- good location, close to NUS -- can go to science canteen every day & tennis court
+- good location, close to NUS
+	- can go to science canteen every day & tennis court
 - milk is fresh (rather than UHT)
 - mpb m4 16inch 24G 1T -- heavy but good model
 - napping pod (tho always full)
 - gym (tho seldomly used)
 - multi-grain bread for breakfast
 - 2 more days for family care leave
+	- took it during CNY hhh
 - good ppl is general
+	- nice colleagues, very helpful, both more seniors guide me, and junior talk and have fun (and guide as well)
+- 

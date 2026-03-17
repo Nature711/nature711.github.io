@@ -41,7 +41,6 @@ date: 2026-02-04
 - [[Warm-up task -- TCC edge case]]
 - [[TCC Workflow]] (to complete)
 - [[Voucher ER Diagram]] (to complete)
-	- [[tcc cancellation workflow]] (for AI to read)
 	- [[Go Version Management]] (to be refactored)
 
 ### Task 2: FCST Shadow Traffic Isolation
@@ -52,7 +51,9 @@ date: 2026-02-04
 
 ### Medium Task: Shopee Food Integration
 
- - [[Shopee Food Task Exploration]]
+ - TD: [Food voucher task TD](https://confluence.shopee.io/display/SPPT/Voucher+Backend+-+2026-02-23+-+Food+Voucher+Customization)
+ - Test: [Food voucher task E2E test doc](https://docs.google.com/document/d/1jUMvIuAGEuHTacZetmGvV-fiIBvbcvtvFTIPNp1rWfo/edit?tab=t.0#heading=h.dd0gn483jjkq)
+ - Test case: [TCM](https://tcm.epd.i.shopee.io/manage/detail/edit?domain=testcase&testcaseSetId=34128&projectId=210&mindMode=editor&mode=online)
 
 ----
 ## Progress Check & Feedback
@@ -82,11 +83,18 @@ date: 2026-02-04
 ### Go related
 
 - [[Go Version Management]]
-- [[Proto File Management]]
+- [[Proto File & Service Mesh Best Practices]]
 
 ---
 ## Extracting impact from work
 
 - [[Things to take note]]
 - [[Warm-up task 2 Shadow Traffic -- Meta Learnings]]
-- 
+
+----
+
+## Reflections
+
+- [[Shopee 2 Months Working -- Meta Reflection]]
+	- [[Feedback & Reflection (2+ Months at Shopee)]]
+ 
