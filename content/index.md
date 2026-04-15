@@ -27,7 +27,6 @@ Some notes are _evergreen_, some are still _seeds_ — all part of a living **[[
 > - [[From Tennis to Life]] — A reflection after a deep talk with a tennis friend
 > - [[Investment 101]] — Some investment mindsets for beginners
 
-
 ---
 ## 🧠 About Me
 

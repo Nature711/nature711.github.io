@@ -65,3 +65,6 @@ devops (ML platform)
 [[2025 End Job Hunting Experience - General]]
 
 [[2025 End Job Hunting Experience - Technical]]
+
+[[2025 End Job Hunting Experience - Behavioral]]
+

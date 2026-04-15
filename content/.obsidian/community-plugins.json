@@ -1,6 +1,6 @@
 [
-  "cmenu-plugin",
   "dataview",
   "obsidian-excalidraw-plugin",
-  "obsidian-kanban"
+  "obsidian-kanban",
+  "cmenu-plugin"
 ]
